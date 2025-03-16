@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="pageId" content="1">
+  <meta name="pageId" content="2">
   <title>Kredi Başvuru Akışı - Modern Tasarım</title>
   <!-- Google Fonts: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -335,79 +335,7 @@
             
             <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
           </div>
-            <!-- Ekran 4: İşlem Özeti -->
-            <div class="screen" id="screen-4">
-              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
-              <h2 class="screen-heading">İşlem Özeti</h2>
-              
-              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
-              <div class="summary-box">
-                <div class="summary-text">İşlem Özeti Detayları</div>
-              </div>
-              
-              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="nextScreen(4)" class="continue-button">Başvur</button>
-            </div>
-
-            <!-- Ekran 5: Onay -->
-            <div class="screen" id="screen-5">
-              <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
-              <p class="confirmation-message">
-                Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
-              </p>
-              
-              <!-- Hesap Seçimi -->
-              <div class="vade-select-container">
-                <select id="hesap-select" required>
-                  <option value="" disabled selected hidden style="color: #aaa; opacity: 0.1;">Kredi Tutarının Yatırılacağı Hesap</option>
-                  <option value="hesap1">hesap1</option>
-                  <option value="hesap2">hesap2</option>
-                  <option value="hesap3">hesap3</option>
-                </select>
-              </div>
-
-              
-              <!-- Upsell Teklifi -->
-              <div class="upsell-offer">
-                <p class="upsell-text">
-                  İsterseniz,  <span id="upsell-amount">-</span> TL tutarındaki onaylı kredi ile devam edebilirsiniz.
-                </p>
-              </div>
-              
-              <!-- Sözleşme Onayları -->
-              <div class="agreement-container">
-                <div class="agreement">
-                  <input type="checkbox" id="agreement1">
-                  <label for="agreement1">
-                    Tüketici Kredisi Sözleşme Öncesi Ürün Bilgi Formu ve Ödeme Planı’nı okudum, onaylıyorum.
-                  </label>
-                </div>
-                <div class="agreement">
-                  <input type="checkbox" id="agreement2">
-                  <label for="agreement2">
-                    Tüketici Kredisi Tercih Formu’nu okudum, onaylıyorum.
-                  </label>
-                </div>
-                <div class="agreement">
-                  <input type="checkbox" id="agreement3">
-                  <label for="agreement3">
-                    İhtiyaç kredisini amacına uygun bir şekilde genel ihtiyaçlarım için kullanacağımı, finansal yatırım (vadeli mevduat, döviz, altın, hisse senedi, yatırım fonu, repo, kripto varlık vb.) veya kayıtlı bankacılık/sermaye piyasası sistemi dışına para transferi yapmayacağımı ve verdiğim güncel bilgilerimle işleme devam edeceğimi kabul ediyorum.
-                  </label>
-                </div>
-              </div>
-              
-              <!-- İki Devam Butonu -->
-              <div class="continue-buttons" style="display: flex; gap: 10px; justify-content: center; width: 90%; margin: 15px auto;">
-                <button id="continue-offered" onclick="nextScreen(5)" class="continue-button"></button>
-                <button id="continue-requested" onclick="nextScreen(5)" class="continue-button"></button>
-              </div>
-            </div>
-
-            <!-- Ekran 6: Sonuç -->
-            <div class="screen" id="screen-6">
-              <h2>Başvurunuz Alındı!</h2>
-              <p>Kısa süre içerisinde sonuç tarafınıza bildirilecektir.</p>
-            </div>
+        
           </div>
           
           <!-- Ödeme Planı Pop-up (Mobil Uygulama Ekranı içinde) -->
@@ -425,7 +353,7 @@
     <div class="right-panel" id="flow-panel">
       <div class="flow-screens-header">
         <h2>Ekran Görünümü</h2>
-        <button class="nextPageButton" onclick="window.location.href='index2.html';">Mevcut Başvurularım</button>
+        <button class="nextPageButton" onclick="window.location.href='index.html';">Başvuru Adımları</button>
         <div class="controls-container">
           <div class="zoom-controls">
             <button onclick="zoomOut()">–</button>
@@ -452,14 +380,11 @@
           <!-- Filtreleme Alanı -->
           <div class="notes-filter">
             <label for="note-filter-select">Filtrele:</label>
-            <select id="note-filter-select" onchange="renderNotes(1)">
+            <select id="note-filter-select" onchange="renderNotes(2)">
               <option value="all" selected>Tüm Adımlar</option>
               <option value="1">Adım 1</option>
               <option value="2">Adım 2</option>
               <option value="3">Adım 3</option>
-              <option value="4">Adım 4</option>
-              <option value="5">Adım 5</option>
-              <option value="6">Adım 6</option>
             </select>
           </div>
           <div class="notes-list" id="notes-list"></div>
@@ -469,16 +394,13 @@
               <option value="1">Adım 1</option>
               <option value="2">Adım 2</option>
               <option value="3">Adım 3</option>
-              <option value="4">Adım 4</option>
-              <option value="5">Adım 5</option>
-              <option value="6">Adım 6</option>
             </select>
             <input type="text" id="note-input" placeholder="Yeni not ekle">
-            <button onclick="addNote(1)">Ekle</button>
+            <button onclick="addNote(2)">Ekle</button>
           </div>
         </div>
       </div>
     </div>
-  <script src="script.js"></script>
+  <script src="script2.js"></script>
 </body>
 </html>
