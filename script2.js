@@ -7,7 +7,7 @@ let krediTuru = null;
 let pageId = 2; 
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 6; i++) {
     addMiniScreen(i);
   }
   updateMiniScreenHighlight(currentScreen);
@@ -57,7 +57,7 @@ function addMiniScreen(stepNumber) {
   
   const miniTracker = document.createElement('div');
   miniTracker.className = 'mini-tracker';
-  miniTracker.innerText = `Adım ${stepNumber}/3`;
+  miniTracker.innerText = `Adım ${stepNumber}/6`;
   miniScreen.appendChild(miniTracker);
   
   flowScreens.appendChild(miniScreen);
@@ -113,7 +113,7 @@ function toggleOverlay() {
 }
 
 function updateTracker() {
-  const percentage = (currentScreen / 3) * 100;
+  const percentage = (currentScreen / 6) * 100;
   const tracker = document.getElementById('tracker-progress');
   if (tracker) {
     tracker.style.width = percentage + "%";
@@ -302,3 +302,76 @@ document.addEventListener('mouseup', function() {
   }
 });
 
+function openOfferPopup(cardElement) {
+  // Popup container'ı oluştur
+  let popup = document.createElement('div');
+  popup.className = 'offer-popup';
+  popup.style.display = 'flex';
+  
+  // Popup içerik container'ı oluştur
+  let content = document.createElement('div');
+  content.className = 'offer-popup-content';
+  
+  // Kapatma butonu (opsiyonel)
+  let closeBtn = document.createElement('span');
+  closeBtn.className = 'close-popup';
+  closeBtn.innerText = '×';
+  closeBtn.onclick = function(e) {
+    e.stopPropagation();
+    popup.remove();
+  };
+  content.appendChild(closeBtn);
+  
+  // Butonlar için container oluştur
+  let btnContainer = document.createElement('div');
+  btnContainer.className = 'popup-buttons';
+  
+  // "Devam Et" butonu: ekran 2'den ekran 3'e geçiş yapılması için nextScreen(2) çağrılır
+  let devamBtn = document.createElement('button');
+  devamBtn.className = 'continue-button'; // Mevcut continue-button stilini kullanır
+  devamBtn.innerText = 'Devam Et';
+  devamBtn.onclick = function() {
+    nextScreen(2); // Screen 2'nin aktif olduğu varsayılarak ekran geçişi tetikleniyor (screen-2'den screen-3'e)
+    popup.remove();
+  };
+  btnContainer.appendChild(devamBtn);
+  
+  // "Revize Et" butonu: benzer şekilde ekran geçişi
+  let revizeBtn = document.createElement('button');
+  revizeBtn.className = 'continue-button'; // Aynı stili kullanır
+  revizeBtn.innerText = 'Revize Et';
+  revizeBtn.onclick = function() {
+    nextScreen(2); // Burada da ekran geçişi sağlanıyor; ihtiyaca göre farklı işlev eklenebilir.
+    popup.remove();
+  };
+  btnContainer.appendChild(revizeBtn);
+  
+  content.appendChild(btnContainer);
+  popup.appendChild(content);
+  
+  // Popup'ı mobil uygulama ekranı kapsayıcısı (.mobile-mockup) içine ekleyin
+  const mobileMockup = document.querySelector('.mobile-mockup');
+  mobileMockup.appendChild(popup);
+}
+
+
+function toggleLegalInfo() {
+  const legalPopup = document.getElementById('legal-info-popup');
+  if (window.getComputedStyle(legalPopup).display === "none") {
+    legalPopup.style.display = "block";
+    setTimeout(() => {
+      document.addEventListener('click', closeLegalPopupOnOutside);
+    }, 0);
+  } else {
+    legalPopup.style.display = "none";
+    document.removeEventListener('click', closeLegalPopupOnOutside);
+  }
+}
+function closeLegalPopupOnOutside(event) {
+  const legalPopup = document.getElementById('legal-info-popup');
+  const infoIcon = document.querySelector('.info-icon');
+  if (!legalPopup.contains(event.target) && !infoIcon.contains(event.target)) {
+    legalPopup.style.display = "none";
+    document.removeEventListener('click', closeLegalPopupOnOutside);
+  }
+}

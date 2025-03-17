@@ -6,7 +6,7 @@ let selectedVade = null;
 let krediTuru = null;
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 7; i++) {
     addMiniScreen(i);
   }
   updateMiniScreenHighlight(currentScreen);
@@ -82,7 +82,7 @@ function addMiniScreen(stepNumber) {
   
   const miniTracker = document.createElement('div');
   miniTracker.className = 'mini-tracker';
-  miniTracker.innerText = `Adım ${stepNumber}/6`;
+  miniTracker.innerText = `Adım ${stepNumber}/7`;
   miniScreen.appendChild(miniTracker);
   
   flowScreens.appendChild(miniScreen);
@@ -138,7 +138,7 @@ function toggleOverlay() {
 }
 
 function updateTracker() {
-  const percentage = (currentScreen / 6) * 100;
+  const percentage = (currentScreen / 7) * 100;
   const tracker = document.getElementById('tracker-progress');
   if (tracker) {
     tracker.style.width = percentage + "%";

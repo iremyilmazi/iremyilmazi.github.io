@@ -89,9 +89,26 @@
             </div>
           </div>
             <!-- Ekran 2: Kredi Detayları Seçimi -->
-          <div class="screen active" id="screen-2">
+          <div class="screen" id="screen-2">
             <div class="screen-sections">
-              <div class="offer-card">
+               <!-- 2. Kart -->
+              <div class="offer-card" onclick="openOfferPopup(this)">
+                <div class="offer-header">Standart Teminatsız Kredi</div>
+                <div class="offer-detail">Kredi Tutarı:</div>
+                <div class="offer-detail">Taksit Tutarı:</div>
+                <div class="offer-detail">Geçerlilik Tarihi:</div>
+                <div class="offer-status">Kredi Kullanıma Hazır</div>
+              </div>
+               <!-- 2. Kart -->
+              <div class="offer-card" onclick="openOfferPopup(this)">
+                <div class="offer-header">Standart Teminatsız Kredi</div>
+                <div class="offer-detail">Kredi Tutarı:</div>
+                <div class="offer-detail">Taksit Tutarı:</div>
+                <div class="offer-detail">Geçerlilik Tarihi:</div>
+                <div class="offer-status">Kredi Kullanıma Hazır</div>
+              </div>
+               <!-- 3. Kart -->
+              <div class="offer-card" onclick="openOfferPopup(this)">
                 <div class="offer-header">Standart Teminatsız Kredi</div>
                 <div class="offer-detail">Kredi Tutarı:</div>
                 <div class="offer-detail">Taksit Tutarı:</div>
@@ -100,224 +117,122 @@
               </div>
             </div>
           </div>
-            <!-- Ekran 3: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <!-- Ekran 3: Kredi Revize -->
           <div class="screen" id="screen-3">
-            <h2>Gelir ve Kişisel Bilgiler</h2>
+            <h2>Kredi Revize</h2>
             
-            <!-- Gelir Bilgisi -->
-            <div class="input-with-info" style="width:90%; margin: 10px auto;">
-              <input id="gelir-input" type="text" placeholder="Gelir Bilgisi (TL)" oninput="formatCurrency(this);" />
-              <!-- Info simgesi gerekirse buraya eklenebilir -->
+            <!-- Talep Kredi Tutarı Girişi -->
+            <div class="input-with-info"style="width:90%; margin: 10px auto;">
+              <input id="revize-kredi-tutar-input" type="text" placeholder="Talep Kredi Tutarı (TL)" oninput="formatCurrency(this)" />
+              <span class="info-icon" onclick="toggleLegalInfo()">i</span>
+              <div class="legal-info-popup" id="legal-info-popup">
+                <p>Onaylı kredi tutarı yanlıza azaltılabilir.</p>
+              </div>
             </div>
             
-            <!-- Çalışma Şekli -->
+            <!-- Vade Seçimi Alanı -->
             <div class="vade-select-container">
-              <label for="calisma-sekli">Çalışma Şekli</label>
-              <select id="calisma-sekli">
-                <option value="Ev Hanımı">Ev Hanımı</option>
-                <option value="Öğrenci">Öğrenci</option>
-                <option value="Çalışmıyor">Çalışmıyor</option>
-                <option value="Yan Gelir Sahibi">Yan Gelir Sahibi</option>
-                <option value="Part Time Çalışan">Part Time Çalışan</option>
-                <option value="Özel Sektör Ücretli">Özel Sektör Ücretli</option>
-                <option value="Kamu Ücretli">Kamu Ücretli</option>
-                <option value="Esnaf/Ticaret">Esnaf/Ticaret</option>
-                <option value="Emekli">Emekli</option>
-                <option value="Emekli Çalışıyor">Emekli Çalışıyor</option>
-              </select>
+              <label for="revize-vade-select">Vade Seçimi</label>
+              <select id="revize-vade-select" onchange="vadeChange(this.value)">
+                <option value="1">1 Ay - %2.5 Faiz</option>
+                <option value="2">2 Ay - %2.5 Faiz</option>
+                <option value="3">3 Ay - %2.5 Faiz</option>
+                <option value="4">4 Ay - %2.5 Faiz</option>
+                <option value="5">5 Ay - %2.5 Faiz</option>
+                <option value="6">6 Ay - %2.5 Faiz</option>
+                <option value="7">7 Ay - %2.5 Faiz</option>
+                <option value="8">8 Ay - %2.5 Faiz</option>
+                <option value="9">9 Ay - %2.5 Faiz</option>
+                <option value="10">10 Ay - %2.5 Faiz</option>
+                <option value="11">11 Ay - %2.5 Faiz</option>
+                <option value="12" selected>12 Ay - %2.5 Faiz</option>
+                <option value="13">13 Ay - %3.0 Faiz</option>
+                <option value="14">14 Ay - %3.0 Faiz</option>
+                <option value="15">15 Ay - %3.0 Faiz</option>
+                <option value="16">16 Ay - %3.0 Faiz</option>
+                <option value="17">17 Ay - %3.0 Faiz</option>
+                <option value="18">18 Ay - %3.0 Faiz</option>
+                <option value="19">19 Ay - %3.0 Faiz</option>
+                <option value="20">20 Ay - %3.0 Faiz</option>
+                <option value="21">21 Ay - %3.0 Faiz</option>
+                <option value="22">22 Ay - %3.0 Faiz</option>
+                <option value="23">23 Ay - %3.0 Faiz</option>
+                <option value="24">24 Ay - %3.0 Faiz</option>
+                <option value="25">25 Ay - %3.5 Faiz</option>
+                <option value="26">26 Ay - %3.5 Faiz</option>
+                <option value="27">27 Ay - %3.5 Faiz</option>
+                <option value="28">28 Ay - %3.5 Faiz</option>
+                <option value="29">29 Ay - %3.5 Faiz</option>
+                <option value="30">30 Ay - %3.5 Faiz</option>
+                <option value="31">31 Ay - %3.5 Faiz</option>
+                <option value="32">32 Ay - %3.5 Faiz</option>
+                <option value="33">33 Ay - %3.5 Faiz</option>
+                <option value="34">34 Ay - %3.5 Faiz</option>
+                <option value="35">35 Ay - %3.5 Faiz</option>
+                <option value="36">36 Ay - %3.5 Faiz</option>
+              </select>            
             </div>
             
-            <!-- Meslek -->
-            <div class="vade-select-container">
-              <label for="meslek">Meslek</label>
-              <select id="meslek">
-                <option value="Antikacı">Antikacı</option>
-                <option value="Asker">Asker</option>
-                <option value="Aşçı">Aşçı</option>
-                <option value="Avukat">Avukat</option>
-                <option value="Ayakkabıcı">Ayakkabıcı</option>
-                <option value="Bakan/Belediye">Bakan/Belediye</option>
-                <option value="Başkanı/Diplomat/Büyükelçi/Kaymakam/Vali/Milletvekili/Müsteşar">Başkanı/Diplomat/Büyükelçi/Kaymakam/Vali/Milletvekili/Müsteşar</option>
-                <option value="Bakkal/Market/Manav">Bakkal/Market/Manav</option>
-                <option value="Balıkçı">Balıkçı</option>
-                <option value="Bebek/Hasta Bakıcısı">Bebek/Hasta Bakıcısı</option>
-                <option value="Bekçi/Güvenlik Görevlisi">Bekçi/Güvenlik Görevlisi</option>
-                <option value="Berber/Kuaför/Güzellik Uzmanı">Berber/Kuaför/Güzellik Uzmanı</option>
-                <option value="Beyaz Eşya/Elektronik Eşya Bayii">Beyaz Eşya/Elektronik Eşya Bayii</option>
-                <option value="Biyolog">Biyolog</option>
-                <option value="Cafe/Pastane Sahibi">Cafe/Pastane Sahibi</option>
-                <option value="Camcı">Camcı</option>
-                <option value="Çağrı Merkezi Çalışanı">Çağrı Merkezi Çalışanı</option>
-                <option value="Çanta Satıcısı">Çanta Satıcısı</option>
-                <option value="Çiçekçi">Çiçekçi</option>
-                <option value="Çiftçi">Çiftçi</option>
-                <option value="Dekorasyoncu">Dekorasyoncu</option>
-                <option value="Denizci">Denizci</option>
-                <option value="Devlet Memuru">Devlet Memuru</option>
-                <option value="Diş Hekimi">Diş Hekimi</option>
-                <option value="Diyetisyen">Diyetisyen</option>
-                <option value="Doçent">Doçent</option>
-                <option value="Doktor">Doktor</option>
-                <option value="Döviz Bürosu Sahibi/Çalışanı">Döviz Bürosu Sahibi/Çalışanı</option>
-                <option value="Ebe">Ebe</option>
-                <option value="Eczacı">Eczacı</option>
-                <option value="Elektrikçi">Elektrikçi</option>
-                <option value="Emlakçı">Emlakçı</option>
-                <option value="E-Ticaret Sitesi Sahibi">E-Ticaret Sitesi Sahibi</option>
-                <option value="Fabrika Sahibi">Fabrika Sahibi</option>
-                <option value="Fırıncı">Fırıncı</option>
-                <option value="Finans/Bankacı/Sigortacı">Finans/Bankacı/Sigortacı</option>
-                <option value="Finansal/Yatırım Danışmanı">Finansal/Yatırım Danışmanı</option>
-                <option value="Fizyoterapist">Fizyoterapist</option>
-                <option value="Fotoğrafçı/Film Yapımcısı – Yönetmeni">Fotoğrafçı/Film Yapımcısı – Yönetmeni</option>
-                <option value="Garson">Garson</option>
-                <option value="Gazete/Milli Piyango/İddaa Bayii Sahibi">Gazete/Milli Piyango/İddaa Bayii Sahibi</option>
-                <option value="Gazeteci">Gazeteci</option>
-                <option value="Gemi Kaptanı/Gemici">Gemi Kaptanı/Gemici</option>
-                <option value="Hakim/Savcı">Hakim/Savcı</option>
-                <option value="Hemşire">Hemşire</option>
-                <option value="Hostes/Host">Hostes/Host</option>
-                <option value="İhracatçı">İhracatçı</option>
-                <option value="İmalathane Sahibi">İmalathane Sahibi</option>
-                <option value="İmam/Din Görevlisi">İmam/Din Görevlisi</option>
-                <option value="İş Güvenliği Uzmanı">İş Güvenliği Uzmanı</option>
-                <option value="İş Makinesi Operatörü">İş Makinesi Operatörü</option>
-                <option value="İşçi">İşçi</option>
-                <option value="İtfaiyeci">İtfaiyeci</option>
-                <option value="İthalatçı">İthalatçı</option>
-                <option value="Kameraman/Işıkçı">Kameraman/Işıkçı</option>
-                <option value="Kapıcı/Hademe">Kapıcı/Hademe</option>
-                <option value="Kargo Acentası Sahibi">Kargo Acentası Sahibi</option>
-                <option value="Kimyager">Kimyager</option>
-                <option value="Kitapçı/Kırtasiyeci">Kitapçı/Kırtasiyeci</option>
-                <option value="Koç (Yaşam, Meslek, Eğitim)">Koç (Yaşam, Meslek, Eğitim)</option>
-                <option value="Konfeksiyoncu">Konfeksiyoncu</option>
-                <option value="Kozmetik Ürünler/Parfümeri Sahibi">Kozmetik Ürünler/Parfümeri Sahibi</option>
-                <option value="Kömür/Mermer Bayii">Kömür/Mermer Bayii</option>
-                <option value="Kripto Para Borsası Çalışanı/Uzmanı/Yatırımcısı">Kripto Para Borsası Çalışanı/Uzmanı/Yatırımcısı</option>
-                <option value="Kuru Temizlemeci">Kuru Temizlemeci</option>
-                <option value="Kuruyemiş/Aktar">Kuruyemiş/Aktar</option>
-                <option value="Kurye">Kurye</option>
-                <option value="Kuyumcu">Kuyumcu</option>
-                <option value="Kürkçü/Perukçu">Kürkçü/Perukçu</option>
-                <option value="Lokanta/Restaurant Sahibi">Lokanta/Restaurant Sahibi</option>
-                <option value="Makinist/Vatman">Makinist/Vatman</option>
-                <option value="Mali Müşavir">Mali Müşavir</option>
-                <option value="Manken">Manken</option>
-                <option value="Marangoz">Marangoz</option>
-                <option value="Matbaacı">Matbaacı</option>
-                <option value="Medikal Ürünler Satıcısı">Medikal Ürünler Satıcısı</option>
-                <option value="Menajer">Menajer</option>
-                <option value="Meyve Sebze Komisyoncusu">Meyve Sebze Komisyoncusu</option>
-                <option value="Mimar/İç Mimar">Mimar/İç Mimar</option>
-                <option value="Mobilya İmalat/Satış">Mobilya İmalat/Satış</option>
-                <option value="Modacı">Modacı</option>
-                <option value="Muhasebeci">Muhasebeci</option>
-                <option value="Muhtar">Muhtar</option>
-                <option value="Mühendis">Mühendis</option>
-                <option value="Müşteri Temsilcisi/Satış Temsilcisi/Pazarlamacı">Müşteri Temsilcisi/Satış Temsilcisi/Pazarlamacı</option>
-                <option value="Müteahhit">Müteahhit</option>
-                <option value="Müzisyen">Müzisyen</option>
-                <option value="Nakliyeci">Nakliyeci</option>
-                <option value="Nalbur">Nalbur</option>
-                <option value="Noter">Noter</option>
-                <option value="Otel/Pansiyon Sahibi">Otel/Pansiyon Sahibi</option>
-                <option value="Oto Alım Satım/Kiralama Galerisi Sahibi">Oto Alım Satım/Kiralama Galerisi Sahibi</option>
-                <option value="Oto Yedek Parça">Oto Yedek Parça</option>
-                <option value="Oto Yıkama/Lastikçi">Oto Yıkama/Lastikçi</option>
-                <option value="Öğretim Üyesi">Öğretim Üyesi</option>
-                <option value="Öğretmen">Öğretmen</option>
-                <option value="Pazarcı">Pazarcı</option>
-                <option value="Pilot">Pilot</option>
-                <option value="Polis">Polis</option>
-                <option value="Profesör">Profesör</option>
-                <option value="Psikolog">Psikolog</option>
-                <option value="Reklamcı">Reklamcı</option>
-                <option value="Ressam/Heykeltraş/Karikatürist">Ressam/Heykeltraş/Karikatürist</option>
-                <option value="Saatçi">Saatçi</option>
-                <option value="Sanatçı">Sanatçı</option>
-                <option value="Sekreter/Yönetici Asistanı">Sekreter/Yönetici Asistanı</option>
-                <option value="Senarist">Senarist</option>
-                <option value="Seyyar Satıcı">Seyyar Satıcı</option>
-                <option value="Simitçi">Simitçi</option>
-                <option value="Sosyal Medya Fenomeni/Içerik Üreticisi">Sosyal Medya Fenomeni/Içerik Üreticisi</option>
-                <option value="Sosyolog">Sosyolog</option>
-                <option value="Sporcu/Antrenör">Sporcu/Antrenör</option>
-                <option value="Şarküteri/Kantin Sahibi">Şarküteri/Kantin Sahibi</option>
-                <option value="Şoför">Şoför</option>
-                <option value="Tamirci">Tamirci</option>
-                <option value="Tekel Bayi">Tekel Bayi</option>
-                <option value="Teknisyen">Teknisyen</option>
-                <option value="Tekstil Atölyesi Sahibi">Tekstil Atölyesi Sahibi</option>
-                <option value="Telefon/Bilgisayar Bayii">Telefon/Bilgisayar Bayii</option>
-                <option value="Temizlikçi/Ev Yardımcısı">Temizlikçi/Ev Yardımcısı</option>
-                <option value="Tercüman">Tercüman</option>
-                <option value="Terzi">Terzi</option>
-                <option value="Tezgahtar">Tezgahtar</option>
-                <option value="Toptancı">Toptancı</option>
-                <option value="Tuhafiyeci/Mefruşatçı/Züccaciyeci">Tuhafiyeci/Mefruşatçı/Züccaciyeci</option>
-                <option value="Tur Rehberi/Turizm Sektörü Çalışanı">Tur Rehberi/Turizm Sektörü Çalışanı</option>
-                <option value="Turizmci">Turizmci</option>
-                <option value="Vale">Vale</option>
-                <option value="Veteriner">Veteriner</option>
-                <option value="Yapımcı/Yönetmen">Yapımcı/Yönetmen</option>
-                <option value="Yazar/Editör">Yazar/Editör</option>
-                <option value="Yazılımcı/Analist">Yazılımcı/Analist</option>
-                <option value="Zanaatkar">Zanaatkar</option>
-              </select>
-            </div>
             
-            <!-- Unvan -->
-            <div class="vade-select-container">
-              <label for="unvan">Unvan</label>
-              <select id="unvan">
-                <option value="Firma Sahibi/Ortak">Firma Sahibi/Ortak</option>
-                <option value="Usta">Usta</option>
-                <option value="Kalfa">Kalfa</option>
-                <option value="Çırak">Çırak</option>
-                <option value="İşçi">İşçi</option>
-                <option value="Üst Düzey Yönetici (CEO/GM/GMY)">Üst Düzey Yönetici (CEO/GM/GMY)</option>
-                <option value="Müdür">Müdür</option>
-                <option value="Müdür Yard.">Müdür Yard.</option>
-                <option value="Yönetici">Yönetici</option>
-                <option value="Uzman">Uzman</option>
-                <option value="Kıdemli Uzman">Kıdemli Uzman</option>
-                <option value="Çalışan/İşçi">Çalışan/İşçi</option>
-                <option value="Memur">Memur</option>
-                <option value="Stajyer">Stajyer</option>
-              </select>
-            </div>
-            
-            <!-- Eğitim -->
-            <div class="vade-select-container">
-              <label for="egitim">Eğitim</label>
-              <select id="egitim">
-                <option value="Okur Yazar">Okur Yazar</option>
-                <option value="İlkokul">İlkokul</option>
-                <option value="Ortaokul">Ortaokul</option>
-                <option value="Lise">Lise</option>
-                <option value="Yüksekokul">Yüksekokul</option>
-                <option value="Lisans">Lisans</option>
-                <option value="Yüksek Lisans">Yüksek Lisans</option>
-              </select>
-            </div>
             
             <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
           </div>
-        
-          </div>
-          
-          <!-- Ödeme Planı Pop-up (Mobil Uygulama Ekranı içinde) -->
-          <div id="odeme-plani-popup" class="odeme-plani-popup">
-            <div class="odeme-plani-content">
-              <div class="odeme-plani-close" onclick="closeOdemePlaniPopup()">×</div>
-              <div class="odeme-plani-text">Ödeme Planı</div>
+            <!-- Ekran 4: İşlem Özeti -->
+          <div class="screen" id="screen-4">
+            <h2 class="screen-heading"> İşlem Özeti </h2>
+            <div class="summary-box">
+              <div class="summary-text">İşlem Özeti Detayları</div>
             </div>
+            <button onclick="nextScreen(5)" class="continue-button">Devam</button>
           </div>
-          
+          <!-- Ekran 5: İşlem Özeti -->
+           <div class="screen" id="screen-5">
+            <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
+              <p class="confirmation-message">
+                Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
+              </p>
+              <!-- Hesap Seçimi -->
+              <div class="vade-select-container">
+                <select id="hesap-select" required>
+                  <option value="" disabled selected hidden style="color: #aaa; opacity: 0.1;">Kredi Tutarının Yatırılacağı Hesap</option>
+                  <option value="hesap1">hesap1</option>
+                  <option value="hesap2">hesap2</option>
+                  <option value="hesap3">hesap3</option>
+                </select>
+              </div>
+              <!-- Sözleşme Onayları -->
+              <div class="agreement-container">
+                <div class="agreement">
+                  <input type="checkbox" id="agreement1">
+                  <label for="agreement1">
+                    Tüketici Kredisi Sözleşme Öncesi Ürün Bilgi Formu ve Ödeme Planı’nı okudum, onaylıyorum.
+                  </label>
+                </div>
+                <div class="agreement">
+                  <input type="checkbox" id="agreement2">
+                  <label for="agreement2">
+                    Tüketici Kredisi Tercih Formu’nu okudum, onaylıyorum.
+                  </label>
+                </div>
+                <div class="agreement">
+                  <input type="checkbox" id="agreement3">
+                  <label for="agreement3">
+                    İhtiyaç kredisini amacına uygun bir şekilde genel ihtiyaçlarım için kullanacağımı, finansal yatırım (vadeli mevduat, döviz, altın, hisse senedi, yatırım fonu, repo, kripto varlık vb.) veya kayıtlı bankacılık/sermaye piyasası sistemi dışına para transferi yapmayacağımı ve verdiğim güncel bilgilerimle işleme devam edeceğimi kabul ediyorum.
+                  </label>
+                </div>
+              </div>
+              <button onclick="nextScreen(6)" class="continue-button">Kullan</button>
+           </div>
+          </div> 
+          <!-- Ekran 6: Sonuç -->
+          <div class="screen" id="screen-6">
+            <h1 class="confirmation-title">Krediniz Onaylandı</h1>
+            <p class="confirmation-message"> Kredi tutarı Seçilen Hesap adlı hesabınıza aktarıldı.</p>
+          </div>   
         </div>
       </div>
     </div>
+    
     <!-- Sağ Panel: Mini Ekran Kopyaları -->
     <div class="right-panel" id="flow-panel">
       <div class="flow-screens-header">
