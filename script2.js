@@ -331,6 +331,7 @@ function openOfferPopup(cardElement) {
   devamBtn.className = 'continue-button'; // Mevcut continue-button stilini kullanır
   devamBtn.innerText = 'Devam Et';
   devamBtn.onclick = function() {
+    currentScreen = 4
     nextScreen(2); // Screen 2'nin aktif olduğu varsayılarak ekran geçişi tetikleniyor (screen-2'den screen-3'e)
     popup.remove();
   };

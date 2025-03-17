@@ -942,19 +942,24 @@ body, html {
   margin-top: 20px;
 }
 
-/* Popup buton stili */
-.popup-button {
-  flex: 1;
-  padding: 12px;
-  background-color: #3498db;
-  color: #fff;
+
+/* Devam Butonu */
+.continue-button-rev {
+  margin: 54px auto;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 25px;
+  color: #fff;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
-.popup-button:hover {
-  background-color: #2980b9;
+.continue-button-rev:hover {
+  background: linear-gradient(135deg, #2980b9, #2471a3);
+  transform: translateY(-3px);
 }
