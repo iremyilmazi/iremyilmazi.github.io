@@ -33,104 +33,73 @@
           <!-- Ekranlar Container (Tracker altı, tam ortalanmış) -->
           <div class="screens-container">
             <!-- Ekran 1: Hoşgeldiniz -->
-            <div class="screen active" id="screen-1">
-              <h2>Kredi Başvurusuna Hoşgeldiniz</h2>
-              <p>Başlamak için "Devam" butonuna tıklayın.</p>
-              <button onclick="nextScreen(1)">Devam</button>
+          <div class="screen active" id="screen-1">
+            <div class="screen-sections">
+              <div class="screen-section">...</div>
+              <div class="screen-section">...</div>
+              <div class="screen-section">...</div>
+              <div class="screen-section" clickable" onclick="nextScreen(1)">kredilerim</div>
+              <div class="screen-section">...</div>
+              <div class="screen-section">...</div>
+              <div class="screen-section">...</div>
             </div>
+          </div>
+            <!-- Alt Navigasyon: Sadece Screen 1 için sabit -->
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9z"></path>
+              </svg>
+              <span>Anasayfa</span>
+            </div>
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="12" y1="17" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+              <span>Hesap/Kart</span>
+            </div>
+            <div class="nav-item selected">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>İşlemler</span>
+            </div>
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="11" x2="14" y2="11"></line>
+                <line x1="22" y1="11" x2="18" y2="15"></line>
+                <line x1="22" y1="11" x2="18" y2="7"></line>
+                <line x1="2" y1="11" x2="10" y2="11"></line>
+                <line x1="2" y1="11" x2="6" y2="7"></line>
+                <line x1="2" y1="11" x2="6" y2="15"></line>
+              </svg>
+              <span>Para Gönder</span>
+            </div>
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20l9-5-9-5-9 5 9 5z"></path>
+                <polyline points="12 12 12 20"></polyline>
+                <polyline points="3 9 12 4 21 9"></polyline>
+              </svg>
+              <span>Başvuru</span>
+            </div>
+          </div>
             <!-- Ekran 2: Kredi Detayları Seçimi -->
-            <div class="screen" id="screen-2">
-              <h2>Kredi Detayları Seçimi</h2>
-              
-              <!-- Talep Edilen Kredi Tutarı Alanı ve Info Simge -->
-              <div class="input-with-info" style="width:90%; margin: 10px auto;">
-                <input id="kredi-tutar-input" type="text" placeholder="Talep Edilen Kredi Tutarı (TL)" oninput="formatCurrency(this); updateInstallmentInfo();" />
-                <span class="info-icon" onclick="toggleLegalInfo()">i</span>
-                <div class="legal-info-popup" id="legal-info-popup">
-                  <p>Yasal Düzenlemeler: Vade limiti; ₺0 - ₺50.000: 36 ay, ₺50.000 - ₺100.000: 24 ay, ₺100.000 üzeri: 12 ay.</p>
-                </div>
+          <div class="screen active" id="screen-2">
+            <div class="screen-sections">
+              <div class="offer-card">
+                <div class="offer-header">Standart Teminatsız Kredi</div>
+                <div class="offer-detail">Kredi Tutarı:</div>
+                <div class="offer-detail">Taksit Tutarı:</div>
+                <div class="offer-detail">Geçerlilik Tarihi:</div>
+                <div class="offer-status">Kredi Kullanıma Hazır</div>
               </div>
-              
-              <!-- Kredi Türü Açılır Liste Alanı -->
-              <div class="kredi-turu-select-container">
-                <label for="kredi-turu-select">Kredi Türü</label>
-                <select id="kredi-turu-select" onchange="krediTuruChange()">
-                  <option value="sigortalı-issizlik" selected>Sigortalı - İşsizlik</option>
-                  <option value="sigortalı-hayat">Sigortalı - Hayat</option>
-                  <option value="sigortasız">Sigortasız</option>
-                </select>
-              </div>
-              
-              <!-- Vade Seçimi Açılır Liste Alanı -->
-              <div class="vade-select-container">
-                <label for="vade-select" class="input-label">Vade Seçimi</label>
-                <select id="vade-select" onchange="vadeChange(this.value)">
-                  <option value="1">1 Ay - %2.5 Faiz</option>
-                  <option value="2">2 Ay - %2.5 Faiz</option>
-                  <option value="3">3 Ay - %2.5 Faiz</option>
-                  <option value="4">4 Ay - %2.5 Faiz</option>
-                  <option value="5">5 Ay - %2.5 Faiz</option>
-                  <option value="6">6 Ay - %2.5 Faiz</option>
-                  <option value="7">7 Ay - %2.5 Faiz</option>
-                  <option value="8">8 Ay - %2.5 Faiz</option>
-                  <option value="9">9 Ay - %2.5 Faiz</option>
-                  <option value="10">10 Ay - %2.5 Faiz</option>
-                  <option value="11">11 Ay - %2.5 Faiz</option>
-                  <option value="12" selected>12 Ay - %2.5 Faiz</option>
-                  <option value="13">13 Ay - %3.0 Faiz</option>
-                  <option value="14">14 Ay - %3.0 Faiz</option>
-                  <option value="15">15 Ay - %3.0 Faiz</option>
-                  <option value="16">16 Ay - %3.0 Faiz</option>
-                  <option value="17">17 Ay - %3.0 Faiz</option>
-                  <option value="18">18 Ay - %3.0 Faiz</option>
-                  <option value="19">19 Ay - %3.0 Faiz</option>
-                  <option value="20">20 Ay - %3.0 Faiz</option>
-                  <option value="21">21 Ay - %3.0 Faiz</option>
-                  <option value="22">22 Ay - %3.0 Faiz</option>
-                  <option value="23">23 Ay - %3.0 Faiz</option>
-                  <option value="24">24 Ay - %3.0 Faiz</option>
-                  <option value="25">25 Ay - %3.5 Faiz</option>
-                  <option value="26">26 Ay - %3.5 Faiz</option>
-                  <option value="27">27 Ay - %3.5 Faiz</option>
-                  <option value="28">28 Ay - %3.5 Faiz</option>
-                  <option value="29">29 Ay - %3.5 Faiz</option>
-                  <option value="30">30 Ay - %3.5 Faiz</option>
-                  <option value="31">31 Ay - %3.5 Faiz</option>
-                  <option value="32">32 Ay - %3.5 Faiz</option>
-                  <option value="33">33 Ay - %3.5 Faiz</option>
-                  <option value="34">34 Ay - %3.5 Faiz</option>
-                  <option value="35">35 Ay - %3.5 Faiz</option>
-                  <option value="36">36 Ay - %3.5 Faiz</option>
-                </select>
-              </div>
-              
-              <!-- İlk Taksit Tarihi -->
-              <div class="date-input-container" style="width:90%; margin: 10px auto;">
-                <label class="input-label">İlk Taksit Tarihi</label>
-                <input type="date" id="ilk-taksit-tarihi" class="date-input" placeholder="gg.a.yyyy" />
-                <small class="input-hint">Kredi taksidinin ilk ödeme tarihi 3 aya kadar ertelenebilir.</small>
-              </div>
-              
-              <!-- Kapsayıcı Kutucuk: Ödeme Planı, Aylık Taksit, Toplam Geri Ödeme -->
-              <div class="repayment-info-box" style="width:90%; margin:10px auto; padding:10px; background-color: rgba(52,152,219,0.1); border-radius:6px; text-align: left;">
-
-                <!-- Aylık Taksit Bilgisi -->
-                <div class="installment-info" id="installment-info" style="width:90%; margin:10px auto;">
-                  Aylık Taksit: -
-                </div>
-
-                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
-                <div class="installment-info" id="total-repayment" style="width:90%; margin:10px auto; text-align: left;">
-                  Toplam Geri Ödeme: -
-                </div>
-                
-                <!-- Ödeme Planı Linki -->
-                <div class="odeme-plani-link" style="width:90%; margin: 10px auto; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
-                
-              </div>
-              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-
+          </div>
             <!-- Ekran 3: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
           <div class="screen" id="screen-3">
             <h2>Gelir ve Kişisel Bilgiler</h2>

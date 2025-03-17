@@ -4,6 +4,7 @@ let zoomFactor = 1;
 let overlayVisible = false;
 let selectedVade = null;
 let krediTuru = null;
+let pageId = 2; 
 
 document.addEventListener("DOMContentLoaded", function() {
   for (let i = 1; i <= 3; i++) {
@@ -12,32 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
   updateMiniScreenHighlight(currentScreen);
   updateTracker();
   
-  // "İlk Taksit Tarihi" inputu için tarih aralığı (bugünden 15 gün sonrası - 90 gün sonrası)
-  const dateInput = document.getElementById('ilk-taksit-tarihi');
-  if (dateInput) {
-    let today = new Date();
-    let minDate = new Date();
-    minDate.setDate(today.getDate() + 15);
-    let ddMin = String(minDate.getDate()).padStart(2, '0');
-    let mmMin = String(minDate.getMonth() + 1).padStart(2, '0');
-    let yyyyMin = minDate.getFullYear();
-    dateInput.min = `${yyyyMin}-${mmMin}-${ddMin}`;
-    
-    let maxDate = new Date();
-    maxDate.setDate(today.getDate() + 90);
-    let ddMax = String(maxDate.getDate()).padStart(2, '0');
-    let mmMax = String(maxDate.getMonth() + 1).padStart(2, '0');
-    let yyyyMax = maxDate.getFullYear();
-    dateInput.max = `${yyyyMax}-${mmMax}-${ddMax}`;
-  }
-  
-  // Varsayılan vade: 12
-  document.getElementById('vade-select').value = "12";
-  selectedVade = "12";
-  updateInstallmentInfo();
-  const metaTag = document.querySelector('meta[name="pageId"]');
-  const pageId =  metaTag.getAttribute('content');
-  console.log("pageId",pageId);
   // Tek Not Alanını Yükle
   renderNotes(pageId);
 });
@@ -156,93 +131,6 @@ function vadeChange(value) {
   updateInstallmentInfo();
 }
 
-function updateInstallmentInfo() {
-  const krediInput = document.getElementById('kredi-tutar-input');
-  const installmentInfo = document.getElementById('installment-info');
-  let krediValue = krediInput.value.replace(/,/g, '');
-  let krediNum = parseFloat(krediValue);
-  if (isNaN(krediNum) || krediNum <= 0) {
-    installmentInfo.innerText = 'Aylık Taksit: -';
-    document.getElementById('total-repayment').innerText = 'Toplam Geri Ödeme: -';
-    updateUpsellOffer();
-    return;
-  }
-  let vade = parseInt(selectedVade, 10);
-  if (isNaN(vade) || vade <= 0) {
-    installmentInfo.innerText = 'Aylık Taksit: -';
-    document.getElementById('total-repayment').innerText = 'Toplam Geri Ödeme: -';
-    updateUpsellOffer();
-    return;
-  }
-  let installment = krediNum / vade;
-  installmentInfo.innerText = 'Aylık Taksit: ' + installment.toFixed(2) + ' TL';
-  
-  let faiz;
-  if (vade <= 12) {
-    faiz = 2.5;
-  } else if (vade <= 24) {
-    faiz = 3.0;
-  } else {
-    faiz = 3.5;
-  }
-  let totalRepayment = krediNum * (1 + faiz / 100);
-  document.getElementById('total-repayment').innerText = "Toplam Geri Ödeme: " + totalRepayment.toFixed(2) + " TL";
-  
-  updateUpsellOffer();
-}
-
-function updateUpsellOffer() {
-  const krediInput = document.getElementById('kredi-tutar-input');
-  let krediValue = krediInput.value.replace(/,/g, '');
-  let krediNum = parseFloat(krediValue);
-  if (isNaN(krediNum) || krediNum <= 0) {
-    //document.getElementById('upsell-amount').innerText = '-';
-    updateContinueButtons('-', krediInput.value);
-    return;
-  }
-  let upsell = krediNum * 1.25;
-  let formattedUpsell = Math.floor(upsell).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-  document.getElementById('upsell-amount').innerText = formattedUpsell;
-  updateContinueButtons(formattedUpsell, krediInput.value);
-}
-
-function updateContinueButtons(offered, requested) {
-  const btnOffered = document.getElementById('continue-offered');
-  const btnRequested = document.getElementById('continue-requested');
-  if (btnOffered && btnRequested) {
-    btnOffered.innerText = "Teklif Edilen " + offered + " ile Devam Et";
-    btnRequested.innerText = "Talep Edilen " + requested + " ile Devam Et";
-  }
-}
-
-function krediTuruChange() {
-  const select = document.getElementById('kredi-turu-select');
-  krediTuru = select.value;
-}
-
-// Pop-up fonksiyonları (Sayfa 5'te kullanılmıyor)
-function openOdemePlaniPopup() {}
-function closeOdemePlaniPopup() {}
-function toggleLegalInfo() {
-  const legalPopup = document.getElementById('legal-info-popup');
-  if (window.getComputedStyle(legalPopup).display === "none") {
-    legalPopup.style.display = "block";
-    setTimeout(() => {
-      document.addEventListener('click', closeLegalPopupOnOutside);
-    }, 0);
-  } else {
-    legalPopup.style.display = "none";
-    document.removeEventListener('click', closeLegalPopupOnOutside);
-  }
-}
-function closeLegalPopupOnOutside(event) {
-  const legalPopup = document.getElementById('legal-info-popup');
-  const infoIcon = document.querySelector('.info-icon');
-  if (!legalPopup.contains(event.target) && !infoIcon.contains(event.target)) {
-    legalPopup.style.display = "none";
-    document.removeEventListener('click', closeLegalPopupOnOutside);
-  }
-}
 
 /* ========== Tek Not Alanı Fonksiyonları (Notlar artık not nesneleri içeriyor) ========== */
 function loadNotes(pageId) {
