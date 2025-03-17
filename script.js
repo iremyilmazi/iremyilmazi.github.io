@@ -423,3 +423,22 @@ function closeOdemePlaniPopup() {
   const popup = document.getElementById('odeme-plani-popup');
   popup.style.display = "none";
 }
+
+function toggleDropdown() {
+  const list = document.getElementById('custom-dropdown-list');
+  // Eğer görünürse kapat, kapalıysa aç
+  if (list.style.display === 'block') {
+    list.style.display = 'none';
+  } else {
+    list.style.display = 'block';
+  }
+}
+
+function selectOption(optionElem) {
+  const selectedText = optionElem.querySelector('.option-title').innerText;
+  document.querySelector('.custom-dropdown-selected').innerText = selectedText;
+  document.getElementById('kredi-turu-select').value = optionElem.getAttribute('data-value');
+  krediTuruChange(); // eski fonksiyonunuz
+  // Dropdown'u kapat
+  document.getElementById('custom-dropdown-list').style.display = 'none';
+}

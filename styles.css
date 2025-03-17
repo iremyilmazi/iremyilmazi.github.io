@@ -963,3 +963,64 @@ body, html {
   background: linear-gradient(135deg, #2980b9, #2471a3);
   transform: translateY(-3px);
 }
+
+/* Kredi Türü Açılır Liste Konteyneri */
+.kredi-turu-select-container {
+  width: 90%;
+  max-width: 360px;
+  margin: 10px auto;
+}
+
+/* Özelleştirilmiş Dropdown */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Seçili Kısım */
+.custom-dropdown-selected {
+  padding: 10px;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+/* Açılır Liste */
+.custom-dropdown-list {
+  position: fixed; /* Fixed konumlandırma, sayfa viewport’una göre konumlanır */
+  top: 427px;          /* Mobil uygulama ekranının üst kısmına hizalar */
+  left: 24px;
+  width: 326px;    /* Mobil uygulama ekranı genişliği (örneğin 375px) */
+  height: 481px;   /* Mobil uygulama ekranı yüksekliği (örneğin 812px) */
+  background: #fff;
+  overflow-y: auto;
+  z-index: 200;    /* Diğer öğelerin üstünde görünmesi için yüksek z-index */
+  display: none;   /* Başlangıçta gizli */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Her Seçenek */
+.dropdown-option {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+.option-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+.option-detail {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 3px;
+}
