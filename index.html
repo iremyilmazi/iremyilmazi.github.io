@@ -32,16 +32,17 @@
           </div>
           <!-- Ekranlar Container (Tracker altı, tam ortalanmış) -->
           <div class="screens-container">
-            <!-- Ekran 1: Hoşgeldiniz -->
+            <!-- Ekran 1: Kredi Detayları Seçimi -->
             <div class="screen active" id="screen-1">
-              <h2>Kredi Başvurusuna Hoşgeldiniz</h2>
-              <p>Başlamak için "Devam" butonuna tıklayın.</p>
-              <button onclick="nextScreen(1)">Devam</button>
-            </div>
-            <!-- Ekran 2: Kredi Detayları Seçimi -->
-            <div class="screen" id="screen-2">
               <h2>Kredi Detayları Seçimi</h2>
-              
+
+              <!-- HazırLimit Teklifi -->
+              <div class="upsell-offer">
+                <p class="upsell-text">
+                  12 ay vadeli 250,000 TL ön onaylı krediniz ile devam edebilirsiniz.
+                </p>
+              </div>
+
               <!-- Talep Edilen Kredi Tutarı Alanı ve Info Simge -->
               <div class="input-with-info" style="width:90%; margin: 10px auto;">
                 <input id="kredi-tutar-input" type="text" placeholder="Talep Edilen Kredi Tutarı (TL)" oninput="formatCurrency(this); updateInstallmentInfo();" />
@@ -55,42 +56,42 @@
               <div class="vade-select-container">
                 <label for="vade-select" class="input-label">Vade Seçimi</label>
                 <select id="vade-select" onchange="vadeChange(this.value)">
-                  <option value="1">1 Ay - %2.5 Faiz</option>
-                  <option value="2">2 Ay - %2.5 Faiz</option>
-                  <option value="3">3 Ay - %2.5 Faiz</option>
-                  <option value="4">4 Ay - %2.5 Faiz</option>
-                  <option value="5">5 Ay - %2.5 Faiz</option>
-                  <option value="6">6 Ay - %2.5 Faiz</option>
-                  <option value="7">7 Ay - %2.5 Faiz</option>
-                  <option value="8">8 Ay - %2.5 Faiz</option>
-                  <option value="9">9 Ay - %2.5 Faiz</option>
-                  <option value="10">10 Ay - %2.5 Faiz</option>
-                  <option value="11">11 Ay - %2.5 Faiz</option>
-                  <option value="12" selected>12 Ay - %2.5 Faiz</option>
-                  <option value="13">13 Ay - %3.0 Faiz</option>
-                  <option value="14">14 Ay - %3.0 Faiz</option>
-                  <option value="15">15 Ay - %3.0 Faiz</option>
-                  <option value="16">16 Ay - %3.0 Faiz</option>
-                  <option value="17">17 Ay - %3.0 Faiz</option>
-                  <option value="18">18 Ay - %3.0 Faiz</option>
-                  <option value="19">19 Ay - %3.0 Faiz</option>
-                  <option value="20">20 Ay - %3.0 Faiz</option>
-                  <option value="21">21 Ay - %3.0 Faiz</option>
-                  <option value="22">22 Ay - %3.0 Faiz</option>
-                  <option value="23">23 Ay - %3.0 Faiz</option>
-                  <option value="24">24 Ay - %3.0 Faiz</option>
-                  <option value="25">25 Ay - %3.5 Faiz</option>
-                  <option value="26">26 Ay - %3.5 Faiz</option>
-                  <option value="27">27 Ay - %3.5 Faiz</option>
-                  <option value="28">28 Ay - %3.5 Faiz</option>
-                  <option value="29">29 Ay - %3.5 Faiz</option>
-                  <option value="30">30 Ay - %3.5 Faiz</option>
-                  <option value="31">31 Ay - %3.5 Faiz</option>
-                  <option value="32">32 Ay - %3.5 Faiz</option>
-                  <option value="33">33 Ay - %3.5 Faiz</option>
-                  <option value="34">34 Ay - %3.5 Faiz</option>
-                  <option value="35">35 Ay - %3.5 Faiz</option>
-                  <option value="36">36 Ay - %3.5 Faiz</option>
+                  <option value="1">1 Ay</option>
+                  <option value="2">2 Ay</option>
+                  <option value="3">3 Ay</option>
+                  <option value="4">4 Ay</option>
+                  <option value="5">5 Ay</option>
+                  <option value="6">6 Ay</option>
+                  <option value="7">7 Ay</option>
+                  <option value="8">8 Ay</option>
+                  <option value="9">9 Ay</option>
+                  <option value="10">10 Ay</option>
+                  <option value="11">11 Ay</option>
+                  <option value="12" selected>12 Ay</option>
+                  <option value="13">13 Ay</option>
+                  <option value="14">14 Ay</option>
+                  <option value="15">15 Ay</option>
+                  <option value="16">16 Ay</option>
+                  <option value="17">17 Ay</option>
+                  <option value="18">18 Ay</option>
+                  <option value="19">19 Ay</option>
+                  <option value="20">20 Ay</option>
+                  <option value="21">21 Ay</option>
+                  <option value="22">22 Ay</option>
+                  <option value="23">23 Ay</option>
+                  <option value="24">24 Ay</option>
+                  <option value="25">25 Ay</option>
+                  <option value="26">26 Ay</option>
+                  <option value="27">27 Ay</option>
+                  <option value="28">28 Ay</option>
+                  <option value="29">29 Ay</option>
+                  <option value="30">30 Ay</option>
+                  <option value="31">31 Ay</option>
+                  <option value="32">32 Ay</option>
+                  <option value="33">33 Ay</option>
+                  <option value="34">34 Ay</option>
+                  <option value="35">35 Ay</option>
+                  <option value="36">36 Ay</option>
                 </select>
               </div>
               <div class="agreement">
@@ -99,70 +100,81 @@
                   İlk taksidimi 3 ay ertelemek istiyorum.
                 </label>
               </div>
-
-              <!-- Kredi Türü Açılır Liste Alanı -->
-              <div class="kredi-turu-select-container">
-                <label for="kredi-turu-select">Kredi Türü</label>
-                <div class="custom-dropdown" id="custom-dropdown">
-                  <div class="custom-dropdown-selected" onclick="toggleDropdown()">
-                    Sigortalı - İşsizlik
-                  </div>
-                  <div class="custom-dropdown-list" id="custom-dropdown-list">
-                    <div class="dropdown-option" data-value="sigortalı-issizlik" onclick="selectOption(this)">
-                      <div class="option-title">Sigortalı - İşsizlik</div>
-                      <div class="option-detail">Faiz Oranı: %2.5</div>
-                      <div class="option-detail">Taksit Tutarı: 500 TL</div>
-                      <div class="option-detail">Toplam Sigorta Primi: 50 TL</div>
-                      <div class="option-detail">Toplam Ücret: 550 TL</div>
-                      <div class="option-detail">Geri Ödenecek Tutar: 6000 TL</div>
-                    </div>
-                    <div class="dropdown-option" data-value="sigortalı-hayat" onclick="selectOption(this)">
-                      <div class="option-title">Sigortalı - Hayat</div>
-                      <div class="option-detail">Faiz Oranı: %3.0</div>
-                      <div class="option-detail">Taksit Tutarı: 550 TL</div>
-                      <div class="option-detail">Toplam Sigorta Primi: 60 TL</div>
-                      <div class="option-detail">Toplam Ücret: 610 TL</div>
-                      <div class="option-detail">Geri Ödenecek Tutar: 6600 TL</div>
-                    </div>
-                    <div class="dropdown-option" data-value="sigortasız" onclick="selectOption(this)">
-                      <div class="option-title">Sigortasız</div>
-                      <div class="option-detail">Faiz Oranı: %3.5</div>
-                      <div class="option-detail">Taksit Tutarı: 600 TL</div>
-                      <div class="option-detail">Toplam Ücret: 600 TL</div>
-                      <div class="option-detail">Geri Ödenecek Tutar: 7200 TL</div>
-                    </div>
-                  </div>
-                </div>
-                <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
-              </div>              
-              <!-- İlk Taksit Tarihi -->
-              <div class="date-input-container" style="width:90%; margin: 10px auto;">
-                <label class="input-label">İlk Taksit Tarihi</label>
-                <input type="date" id="ilk-taksit-tarihi" class="date-input" placeholder="gg.a.yyyy" />
-                <small class="input-hint">Kredi taksidinin ilk ödeme tarihi 3 aya kadar ertelenebilir.</small>
-              </div>
+              <!-- Yenileme Butonu (Sayfa yüklendiğinde gizli) -->
+              <button id="show-post-vade" style="display: block; margin: 10px auto;" onclick="showPostVade()">Devam</button>
+              <div class="post-vade-container" style="display: none;">
               
-              <!-- Kapsayıcı Kutucuk: Ödeme Planı, Aylık Taksit, Toplam Geri Ödeme -->
-              <div class="repayment-info-box" style="width:90%; margin:10px auto; padding:10px; background-color: rgba(52,152,219,0.1); border-radius:6px; text-align: left;">
-
-                <!-- Aylık Taksit Bilgisi -->
-                <div class="installment-info" id="installment-info" style="width:90%; margin:10px auto;">
-                  Aylık Taksit: -
-                </div>
-
-                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
-                <div class="installment-info" id="total-repayment" style="width:90%; margin:10px auto; text-align: left;">
-                  Toplam Geri Ödeme: -
+                
+                  <!-- Kredi Türü Açılır Liste Alanı -->
+                  <div class="kredi-turu-select-container">
+                    <label for="kredi-turu-select">Kredi Türü</label>
+                    <div class="custom-dropdown" id="custom-dropdown">
+                      <div class="custom-dropdown-selected" onclick="toggleDropdown()">
+                        Sigortalı - İşsizlik
+                      </div>
+                      <div class="custom-dropdown-list" id="custom-dropdown-list">
+                        <div class="dropdown-option" data-value="sigortalı-issizlik" onclick="selectOption(this)">
+                          <div class="option-title">Sigortalı - İşsizlik</div>
+                          <div class="option-detail">Faiz Oranı: %2.5</div>
+                          <div class="option-detail">Aylık Taksit: 500 TL</div>
+                          <div class="option-detail">Toplam Sigorta Primi: 50 TL</div>
+                          <div class="option-detail">Toplam Ücret: 550 TL</div>
+                          <div class="option-detail">Toplam Geri Ödeme: 6000 TL</div>
+                        </div>
+                        <div class="dropdown-option" data-value="sigortalı-hayat" onclick="selectOption(this)">
+                          <div class="option-title">Sigortalı - Hayat</div>
+                          <div class="option-detail">Faiz Oranı: %3.0</div>
+                          <div class="option-detail">Aylık Taksit: 550 TL</div>
+                          <div class="option-detail">Toplam Sigorta Primi: 60 TL</div>
+                          <div class="option-detail">Toplam Ücret: 610 TL</div>
+                          <div class="option-detail">Toplam Geri Ödeme: 6600 TL</div>
+                        </div>
+                        <div class="dropdown-option" data-value="sigortasız" onclick="selectOption(this)">
+                          <div class="option-title">Sigortasız</div>
+                          <div class="option-detail">Faiz Oranı: %3.5</div>
+                          <div class="option-detail">Aylık Taksit: 600 TL</div>
+                          <div class="option-detail">Toplam Ücret: 600 TL</div>
+                          <div class="option-detail">Toplam Geri Ödeme: 7200 TL</div>
+                        </div>
+                      </div>
+                    </div>
+                  <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
+                </div>              
+                <!-- İlk Taksit Tarihi -->
+                <div class="date-input-container" style="width:90%; margin: 10px auto;">
+                  <label class="input-label">İlk Taksit Tarihi</label>
+                  <input type="date" id="ilk-taksit-tarihi" class="date-input" placeholder="gg.a.yyyy" />
+                  <small class="input-hint">Kredi taksidinin ilk ödeme tarihi 3 aya kadar ertelenebilir.</small>
                 </div>
                 
-                <!-- Ödeme Planı Linki -->
-                <div class="odeme-plani-link" style="width:90%; margin: 10px auto; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
-                
+                <!-- Kapsayıcı Kutucuk: Ödeme Planı, Aylık Taksit, Toplam Geri Ödeme -->
+                <div class="repayment-info-box" style="width:90%; margin:10px ; padding:10px; background-color: rgba(52,152,219,0.1); border-radius:6px; text-align: left;">
+                  
+                  <!-- Faiz Oranı Bilgisi (Aylık Taksit'in üstünde) -->
+                  <div class="installment-info" id="faiz-orani" style="width:90%; margin:10px auto; text-align: left;">Faiz Oranı: -</div>
+
+                  <!-- Aylık Taksit Bilgisi -->
+                  <div class="installment-info" id="installment-info" style="width:90%; margin:10px auto;">
+                    Aylık Taksit: -
+                  </div>
+                  <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
+                  <div class="installment-info"  style="width:90%; margin:10px auto; text-align: left;">
+                    Toplam Sigorta Primi: 500 TL
+                  </div>
+                  <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
+                  <div class="installment-info" id="total-repayment" style="width:90%; margin:10px auto; text-align: left;">
+                    Toplam Geri Ödeme: -
+                  </div>
+                  
+                  <!-- Ödeme Planı Linki -->
+                  <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
+                  
+                </div>
+                <button onclick="nextScreen(1)" style="margin: 15px auto; display: block;">Devam</button>
               </div>
-              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-            <!-- Ekran 3: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
-            <div class="screen" id="screen-3">
+            <!-- Ekran 2: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <div class="screen" id="screen-2">
               <h2>Gelir ve Kişisel Bilgiler</h2>
               
               <!-- Gelir Bilgisi -->
@@ -363,10 +375,10 @@
                 </select>
               </div>
               
-              <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
+              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-            <!-- Ekran 4: İşlem Özeti -->
-            <div class="screen" id="screen-4">
+            <!-- Ekran 3: İşlem Özeti -->
+            <div class="screen" id="screen-3">
               <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
               <h2 class="screen-heading">İşlem Özeti</h2>
               
@@ -376,10 +388,10 @@
               </div>
               
               <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="nextScreen(4)" class="continue-button">Başvur</button>
+              <button onclick="nextScreen(3)" class="continue-button">Başvur</button>
             </div>
-            <!-- Ekran 5: Onay -->
-            <div class="screen" id="screen-5">
+            <!-- Ekran 4: Onay -->
+            <div class="screen" id="screen-4">
               <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
               <p class="confirmation-message">
                 Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
@@ -394,15 +406,6 @@
                   <option value="hesap3">hesap3</option>
                 </select>
               </div>
-
-              
-              <!-- Upsell Teklifi -->
-              <div class="upsell-offer">
-                <p class="upsell-text">
-                  İsterseniz,  <span id="upsell-amount">-</span> TL tutarındaki onaylı kredi ile devam edebilirsiniz.
-                </p>
-              </div>
-              
               <!-- Sözleşme Onayları -->
               <div class="agreement-container">
                 <div class="agreement">
@@ -426,21 +429,10 @@
               </div>
               
               <!-- İki Devam Butonu -->
-              <div class="continue-buttons" style="display: flex; gap: 10px; justify-content: center; width: 90%; margin: 15px auto;">
-                <button id="continue-offered" onclick="nextScreen(5)" class="continue-button"></button>
-                <button id="continue-requested" onclick="currentScreen = 6;nextScreen(5)" class="continue-button"></button>
-              </div>
+              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Kullan</button>
             </div>
-            <!-- Ekran 6: Sonuç -->
-            <div class="screen" id="screen-6">
-              <h2 class="screen-heading">İşlem Özeti</h2>
-              <div class="summary-box">
-                <div class="summary-text">İşlem Özeti Detayları</div>
-              </div>
-              <button onclick="nextScreen(6)" class="continue-button">Kullan</button>
-            </div>
-            <!-- Ekran 7: Sonuç -->
-            <div class="screen" id="screen-7">
+            <!-- Ekran 5: Sonuç -->
+            <div class="screen" id="screen-5">
               <h1 class="confirmation-title">Krediniz Onaylandı</h1>
               <p class="confirmation-message">
                 Kredi tutarı [Seçilen Hesap] adlı hesabınıza aktarıldı.
@@ -497,8 +489,6 @@
               <option value="3">Adım 3</option>
               <option value="4">Adım 4</option>
               <option value="5">Adım 5</option>
-              <option value="6">Adım 6</option>
-              <option value="7">Adım 7</option>
             </select>
           </div>
           <div class="notes-list" id="notes-list"></div>
@@ -510,8 +500,6 @@
               <option value="3">Adım 3</option>
               <option value="4">Adım 4</option>
               <option value="5">Adım 5</option>
-              <option value="6">Adım 6</option>
-              <option value="7">Adım 7</option>
             </select>
             <input type="text" id="note-input" placeholder="Yeni not ekle">
             <button onclick="addNote(1)">Ekle</button>

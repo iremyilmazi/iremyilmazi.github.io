@@ -6,7 +6,7 @@ let selectedVade = null;
 let krediTuru = null;
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 1; i <= 5; i++) {
     addMiniScreen(i);
   }
   updateMiniScreenHighlight(currentScreen);
@@ -82,7 +82,7 @@ function addMiniScreen(stepNumber) {
   
   const miniTracker = document.createElement('div');
   miniTracker.className = 'mini-tracker';
-  miniTracker.innerText = `Adım ${stepNumber}/7`;
+  miniTracker.innerText = `Adım ${stepNumber}/5`;
   miniScreen.appendChild(miniTracker);
   
   flowScreens.appendChild(miniScreen);
@@ -138,7 +138,7 @@ function toggleOverlay() {
 }
 
 function updateTracker() {
-  const percentage = (currentScreen / 7) * 100;
+  const percentage = (currentScreen / 5) * 100;
   const tracker = document.getElementById('tracker-progress');
   if (tracker) {
     tracker.style.width = percentage + "%";
@@ -153,8 +153,44 @@ function formatCurrency(input) {
 
 function vadeChange(value) {
   selectedVade = value;
-  updateInstallmentInfo();
+  updateInstallmentInfo(); // Aylık taksit, toplam geri ödeme, faiz oranı hesaplamaları
+  
+  // Gizli olan post-vade container'ı otomatik olarak göster
+  const postVadeContainer = document.querySelector('.post-vade-container');
+  if (value && parseInt(value) > 0) {
+    postVadeContainer.style.display = 'block';
+  } else {
+    postVadeContainer.style.display = 'none';
+  }
+  
+  // Eğer "Göster" butonu varsa, gizleyelim (çünkü otomatik tetikleme oldu)
+  const showBtn = document.getElementById('show-post-vade');
+  if (showBtn) {
+    showBtn.style.display = 'none';
+  }
 }
+
+function updateFaizOraniForDropdown(vade) {
+  let faiz;
+  if (vade < 12) {
+    faiz = 2.5;
+  } else if (vade < 24) {
+    faiz = 3.0;
+  } else {
+    faiz = 3.5;
+  }
+  // Tüm kredi türü dropdown seçeneklerini güncelle
+  const options = document.querySelectorAll('.custom-dropdown-list .dropdown-option');
+  options.forEach(option => {
+    // Varsayalım ilk .option-detail satırı Faiz Oranı bilgisini içeriyor
+    let details = option.querySelectorAll('.option-detail');
+    if (details.length > 0) {
+      details[0].innerText = "Faiz Oranı: %" + faiz;
+    }
+  });
+}
+
+
 
 function updateInstallmentInfo() {
   const krediInput = document.getElementById('kredi-tutar-input');
@@ -164,32 +200,95 @@ function updateInstallmentInfo() {
   if (isNaN(krediNum) || krediNum <= 0) {
     installmentInfo.innerText = 'Aylık Taksit: -';
     document.getElementById('total-repayment').innerText = 'Toplam Geri Ödeme: -';
+    document.getElementById('faiz-orani').innerText = 'Faiz Oranı: -';
     updateUpsellOffer();
+    updateDropdownDetails();
     return;
   }
   let vade = parseInt(selectedVade, 10);
   if (isNaN(vade) || vade <= 0) {
     installmentInfo.innerText = 'Aylık Taksit: -';
     document.getElementById('total-repayment').innerText = 'Toplam Geri Ödeme: -';
+    document.getElementById('faiz-orani').innerText = 'Faiz Oranı: -';
     updateUpsellOffer();
+    updateDropdownDetails();
     return;
   }
   let installment = krediNum / vade;
   installmentInfo.innerText = 'Aylık Taksit: ' + installment.toFixed(2) + ' TL';
   
   let faiz;
-  if (vade <= 12) {
+  if (vade < 12) {
     faiz = 2.5;
-  } else if (vade <= 24) {
+  } else if (vade < 24) {
     faiz = 3.0;
   } else {
     faiz = 3.5;
   }
+  // Faiz oranı bilgisini güncelle (yeni eklenen alan)
+  document.getElementById('faiz-orani').innerText = "Faiz Oranı: %" + faiz;
+  
   let totalRepayment = krediNum * (1 + faiz / 100);
   document.getElementById('total-repayment').innerText = "Toplam Geri Ödeme: " + totalRepayment.toFixed(2) + " TL";
   
   updateUpsellOffer();
+  updateDropdownDetails();
 }
+
+
+/* Yeni fonksiyon: Dropdown'daki "Taksit Tutarı" alanını "Aylık Taksit" olarak güncelleyin */
+function updateDropdownDetails() {
+  const krediInput = document.getElementById('kredi-tutar-input');
+  let krediValue = krediInput.value.replace(/,/g, '');
+  let krediNum = parseFloat(krediValue);
+  let vade = parseInt(selectedVade, 10);
+  
+  let monthlyInstallment = 0;
+  let totalRepayment = 0;
+  let faiz = 0;
+  
+  if (!isNaN(krediNum) && krediNum > 0 && !isNaN(vade) && vade > 0) {
+    monthlyInstallment = krediNum / vade;
+    if (vade < 12) {
+      faiz = 2.5;
+    } else if (vade < 24) {
+      faiz = 3.0;
+    } else {
+      faiz = 3.5;
+    }
+    totalRepayment = krediNum * (1 + faiz / 100);
+  }
+  
+  let installmentText = "Aylık Taksit: " + monthlyInstallment.toFixed(2) + " TL";
+  let repaymentText = "Toplam Geri Ödeme: " + totalRepayment.toFixed(2) + " TL";
+  
+  // Tüm dropdown seçeneklerini gez
+  const options = document.querySelectorAll('.custom-dropdown-list .dropdown-option');
+  options.forEach(option => {
+    let details = option.querySelectorAll('.option-detail');
+    
+    // İlk detay: Faiz Oranı
+    if (details.length >= 1) {
+      details[0].innerText = "Faiz Oranı: %" + faiz;
+    }
+    // İkinci detay: Aylık Taksit
+    if (details.length >= 2) {
+      details[1].innerText = installmentText;
+    }
+    // Son detay: Toplam Geri Ödeme – beklenen index 4
+    if (details.length >= 5) {
+      details[4].innerText = repaymentText;
+    } else {
+      // Eğer sigortasız seçeneğinde detay sayısı 4 ise (veya eksikse), yeni bir detay öğesi oluşturup ekleyelim
+      let newDetail = document.createElement('div');
+      newDetail.className = 'option-detail';
+      newDetail.innerText = repaymentText;
+      option.appendChild(newDetail);
+    }
+  });
+}
+
+
 
 function updateUpsellOffer() {
   const krediInput = document.getElementById('kredi-tutar-input');
@@ -441,4 +540,67 @@ function selectOption(optionElem) {
   krediTuruChange(); // eski fonksiyonunuz
   // Dropdown'u kapat
   document.getElementById('custom-dropdown-list').style.display = 'none';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById('ilk-taksit-tarihi');
+  if (dateInput) {
+    let today = new Date();
+    // Bugünden 30 gün sonrasını hesapla
+    today.setDate(today.getDate() + 30);
+    // Tarihi "yyyy-mm-dd" formatına çevir
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Aylar 0-indexed
+    const yyyy = today.getFullYear();
+    dateInput.value = `${yyyy}-${mm}-${dd}`;
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  setFirstInstallmentDate(); // Sayfa yüklendiğinde default tarihi ayarla
+
+  // Checkbox değiştiğinde tarihi güncelle
+  const checkbox = document.getElementById('agreement2');
+  if (checkbox) {
+    checkbox.addEventListener('change', function() {
+      setFirstInstallmentDate();
+    });
+  }
+});
+
+function setFirstInstallmentDate() {
+  const dateInput = document.getElementById('ilk-taksit-tarihi');
+  if (!dateInput) return;
+  
+  let today = new Date();
+  // Varsayılan olarak 30 gün sonrası
+  let daysToAdd = 30;
+  const checkbox = document.getElementById('agreement2');
+  if (checkbox && checkbox.checked) {
+    // Eğer checkbox seçiliyse 90 gün sonrası
+    daysToAdd = 90;
+  }
+  today.setDate(today.getDate() + daysToAdd);
+  
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  
+  dateInput.value = `${yyyy}-${mm}-${dd}`;
+}
+
+
+function showPostVade() {
+  const postVadeContainer = document.querySelector('.post-vade-container');
+  postVadeContainer.style.display = 'block';
+  
+  // "Göster" butonunu gizle
+  const showBtn = document.getElementById('show-post-vade');
+  showBtn.style.display = 'none';
+  
+  // "HazırLimit Teklifi" bileşenini (upsell-offer) de gizle
+  const upsellOffer = document.querySelector('.upsell-offer');
+  if (upsellOffer) {
+    upsellOffer.style.display = 'none';
+  }
 }

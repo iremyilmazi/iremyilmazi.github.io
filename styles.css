@@ -271,8 +271,8 @@ body, html {
 /* Installment Info (Aylık Taksit) */
 .installment-info {
   width: 100%;
-  padding: 10px;
-  font-size: 14px;
+  padding: 1px;
+  font-size: 13px;
   color: #2c3e50;
   margin: 10px 0;
   text-align: left;
@@ -400,6 +400,7 @@ body, html {
   text-align: left;
   margin-bottom: 5px;
 }
+
 #screen-4{
   height:100vh;
 }
@@ -1009,6 +1010,7 @@ body, html {
   border-bottom: 1px solid #eee;
   padding: 10px 0;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 .dropdown-option:last-child {
   border-bottom: none;
@@ -1023,4 +1025,26 @@ body, html {
   font-size: 14px;
   color: #555;
   margin-bottom: 3px;
+}
+
+/* Post-Vade Container: Başlangıçta gizli */
+.post-vade-container {
+  width: 100%;
+  /* Ekran 2'nin kalan alanını kaplayabilir; isteğe bağlı ek padding/margin ayarlayın */
+  display: none;
+}
+/* "Göster" Butonu */
+#show-post-vade {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+#show-post-vade:hover {
+  background-color: #2980b9;
 }
