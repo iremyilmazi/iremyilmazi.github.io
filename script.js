@@ -1,6 +1,6 @@
 // Global Değişkenler
 let currentScreen = 1;
-let zoomFactor = 1;
+let zoomFactor = 1.6;
 let overlayVisible = false;
 let selectedVade = null;
 let krediTuru = null;
