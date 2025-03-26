@@ -32,12 +32,156 @@
           </div>
           <!-- Ekranlar Container (Tracker altı, tam ortalanmış) -->
           <div class="screens-container">
-            <!-- Ekran 1: Kredi Detayları Seçimi -->
+            <!-- Ekran 1: Ana Menü -->
             <div class="screen active" id="screen-1">
+              <div class="screen-sections">
+                <div class="screen-section-notClickable">...</div>
+                <div class="screen-section-notClickable">...</div>
+                <div class="screen-section-notClickable">Mevcut Kredilerim</div>
+                <div class="screen-section" clickable" onclick="nextScreen(1)">Başvuru Ve Hazır Limitlerim</div>
+                <div class="screen-section-notClickable">...</div>
+                <div class="screen-section-notClickable">...</div>
+                <div class="screen-section-notClickable">...</div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9z"></path>
+                  </svg>
+                  <span>Anasayfa</span>
+                </div>
+                <div class="nav-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="12" y1="17" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                  <span>Hesap/Kart</span>
+                </div>
+                <div class="nav-item selected">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span>İşlemler</span>
+                </div>
+                <div class="nav-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="11" x2="14" y2="11"></line>
+                    <line x1="22" y1="11" x2="18" y2="15"></line>
+                    <line x1="22" y1="11" x2="18" y2="7"></line>
+                    <line x1="2" y1="11" x2="10" y2="11"></line>
+                    <line x1="2" y1="11" x2="6" y2="7"></line>
+                    <line x1="2" y1="11" x2="6" y2="15"></line>
+                  </svg>
+                  <span>Para Gönder</span>
+                </div>
+                <div class="nav-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20l9-5-9-5-9 5 9 5z"></path>
+                    <polyline points="12 12 12 20"></polyline>
+                    <polyline points="3 9 12 4 21 9"></polyline>
+                  </svg>
+                  <span>Başvuru</span>
+                </div>
+              </div>
+            </div>
+            <!-- Ekran 2: Başvuru ve Hazır Limitlerim -->
+            <div class="screen" id="screen-2">
+              <!-- Filtre Alanları -->
+              <div class="offer-filter-container">
+                <div class="filter-group">
+                  <label for="urun-turu-filter" class="input-label">Ürün Türü:</label>
+                  <select id="urun-turu-filter" onchange="filterOffers()">
+                    <option value="all" selected>Tümü</option>
+                    <option value="kmh">KMH</option>
+                    <option value="krediler">Krediler</option>
+                    <option value="kartlar">Kartlar</option>
+                  </select>
+                </div>
+                <div class="filter-group">
+                  <label for="tarih-filter" class="input-label">Tarih:</label>
+                  <select id="tarih-filter" onchange="filterOffers()">
+                    <option value="all" selected>Tümü</option>
+                    <option value="1">Son bir ay</option>
+                    <option value="2">Son iki ay</option>
+                  </select>
+                </div>
+              </div>              
+              <!--hazır limit ve onaylı krediler-->
+              <div class="offer-grid-container">
+                <div class="screen-sectionshl">
+                  <!-- Grup 1: Krediler -->
+                  <div class="offer-group">
+                    <h3 class="group-header">Krediler</h3>
+                    <!-- 1. Kart -->
+                    <div class="offer-card" onclick="openOfferPopup(this)">
+                      <div class="offer-header">Standart Teminatsız Kredi</div>
+                      <div class="offer-detail">Kredi Tutarı: 250,000</div>
+                      <div class="offer-detail">Taksit Tutarı: 21,000</div>
+                      <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
+                      <div class="offer-status">Kullanıma Hazır</div>
+                    </div>
+                    <!-- 2. Kart -->
+                    <div class="offer-card" onclick="openOfferPopup(this)">
+                      <div class="offer-header">Standart Teminatsız Kredi</div>
+                      <div class="offer-detail">Kredi Tutarı: 200,000</div>
+                      <div class="offer-detail">Taksit Tutarı: 3,000</div>
+                      <div class="offer-detail">Geçerlilik Tarihi: 18/03/2025</div>
+                      <div class="offer-status">Kullanıma Hazır</div>
+                    </div>
+                    <!-- 3. Kart -->
+                    <div class="offer-card">
+                      <div class="offer-header">Standart Teminatsız Kredi</div>
+                      <div class="offer-detail">Kredi Tutarı: 50,000</div>
+                      <div class="offer-detail">Taksit Tutarı: 6,000</div>
+                      <div class="offer-detail">Başvuru Tarihi: 20/01/2025</div>
+                      <div class="offer-status-decline">Reddedildi</div>
+                    </div>
+                  </div>
+                  <!-- Grup 2: KMH -->
+                  <div class="offer-group">
+                    <h3 class="group-header">KMH</h3>
+                    <div class="offer-card">
+                      <div class="card-header">KMH</div>
+                      <p>Detay 1</p>
+                    </div>
+                    <div class="offer-card">
+                      <div class="card-header">KMH</div>
+                      <p>Detay 2</p>
+                    </div>
+                    <div class="offer-card">
+                      <div class="card-header">KMH</div>
+                      <p>Detay 3</p>
+                    </div>
+                  </div>
+                  <!-- Grup 3: Kredi Kartları -->
+                  <div class="offer-group">
+                    <h3 class="group-header">Kredi Kartları</h3>
+                    <div class="offer-card">
+                      <div class="card-header">Kredi Kartları</div>
+                      <p>Detay 1</p>
+                    </div>
+                    <div class="offer-card">
+                      <div class="card-header">Kredi Kartları</div>
+                      <p>Detay 2</p>
+                    </div>
+                    <div class="offer-card">
+                      <div class="card-header">Kredi Kartları</div>
+                      <p>Detay 3</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Yeni Başvuru</button>
+            </div>
+            <!-- Ekran 3: Kredi Detayları Seçimi -->
+            <div class="screen" id="screen-3">
               <h2>Kredi Detayları Seçimi</h2>
 
               <!-- HazırLimit Teklifi -->
-              <div class="upsell-offer">
+              <div class="upsell-offer" onclick="goToPreviousPage()">
                 <p class="upsell-text">
                   12 ay vadeli 250,000 TL ön onaylı krediniz ile devam edebilirsiniz.
                 </p>
@@ -100,6 +244,70 @@
                   İlk taksidimi 3 ay ertelemek istiyorum.
                 </label>
               </div>
+              <!-- Çapraz Satış Önerileri Alanı -->
+              <div class="cross-sell-select-container">
+                <div class="custom-dropdown-cross-sell" id="cross-sell-dropdown">
+                  <div class="custom-dropdown-selected-cross-sell" onclick="toggleCrossSellDropdown()">
+                    Çapraz Satış Önerileri
+                  </div>
+                  <div class="custom-dropdown-list-cross-sell" id="cross-sell-dropdown-list">
+                    <div class="dropdown-option-cross-sell" data-value="kredi-karti">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Kredi Kartı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredi-karti" checked>
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="kredili-mevduat">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Kredili Mevduat Hesabı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredili-mevduat">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="otomatik-fatura">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Otomatik Fatura Talimatı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="otomatik-fatura">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="bireysel-emeklilik">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Bireysel Emeklilik</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="bireysel-emeklilik">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <!-- Kapat butonu -->
+                    <button class="close-cross-sell-btn" onclick="closeCrossSellDropdown()">Kapat</button>
+                  </div>
+                </div>
+                <!-- Seçilen değerleri saklamak için gizli input -->
+                <input type="hidden" id="cross-sell-select" value="">
+              </div>
+              
+
               <!-- Yenileme Butonu (Sayfa yüklendiğinde gizli) -->
               <button id="show-post-vade" style="display: block; margin: 10px auto;" onclick="showPostVade()">Devam</button>
               <div class="post-vade-container" style="display: none;">
@@ -138,8 +346,8 @@
                         </div>
                       </div>
                     </div>
-                  <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
-                </div>              
+                    <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
+                  </div>              
                 <!-- İlk Taksit Tarihi -->
                 <div class="date-input-container" style="width:90%; margin: 10px auto;">
                   <label class="input-label">İlk Taksit Tarihi</label>
@@ -170,11 +378,11 @@
                   <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
                   
                 </div>
-                <button onclick="nextScreen(1)" style="margin: 15px auto; display: block;">Devam</button>
+                <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
               </div>
             </div>
-            <!-- Ekran 2: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
-            <div class="screen" id="screen-2">
+            <!-- Ekran 4: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <div class="screen" id="screen-4">
               <h2>Gelir ve Kişisel Bilgiler</h2>
               
               <!-- Gelir Bilgisi -->
@@ -375,10 +583,98 @@
                 </select>
               </div>
               
-              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Devam</button>
+              <button onclick="currentScreen = 5; nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-            <!-- Ekran 3: İşlem Özeti -->
-            <div class="screen" id="screen-3">
+            <!-- Ekran 5: Kredi Revize -->
+            <div class="screen" id="screen-5">
+              <h2>Kredi Revize</h2>
+              
+              <!-- Talep Kredi Tutarı Girişi -->
+              <div class="input-with-info" style="width:90%; margin: 10px auto;">
+                <input id="revize-kredi-tutar-input" type="text" placeholder="Talep Kredi Tutarı (TL)" oninput="formatCurrency(this)" />
+                <span class="info-icon" onclick="toggleLegalInforev()">i</span>
+                <div class="legal-info-popup-rev" id="legal-info-popup-rev">
+                  <p>Onaylı kredi tutarı yanlızca azaltılabilir.</p>
+                </div>
+              </div>
+              
+              <!-- Vade Seçimi Alanı -->
+              <div class="vade-select-container">
+                <label for="revize-vade-select">Vade Seçimi</label>
+                <select id="revize-vade-select" onchange="vadeChange(this.value)">
+                  <option value="1">1 Ay</option>
+                  <option value="2">2 Ay</option>
+                  <option value="3">3 Ay</option>
+                  <option value="4">4 Ay</option>
+                  <option value="5">5 Ay</option>
+                  <option value="6">6 Ay</option>
+                  <option value="7">7 Ay</option>
+                  <option value="8">8 Ay</option>
+                  <option value="9">9 Ay</option>
+                  <option value="10">10 Ay</option>
+                  <option value="11">11 Ay</option>
+                  <option value="12" selected>12 Ay</option>
+                  <option value="13">13 Ay</option>
+                  <option value="14">14 Ay</option>
+                  <option value="15">15 Ay</option>
+                  <option value="16">16 Ay</option>
+                  <option value="17">17 Ay</option>
+                  <option value="18">18 Ay</option>
+                  <option value="19">19 Ay</option>
+                  <option value="20">20 Ay</option>
+                  <option value="21">21 Ay</option>
+                  <option value="22">22 Ay</option>
+                  <option value="23">23 Ay</option>
+                  <option value="24">24 Ay</option>
+                  <option value="25">25 Ay</option>
+                  <option value="26">26 Ay</option>
+                  <option value="27">27 Ay</option>
+                  <option value="28">28 Ay</option>
+                  <option value="29">29 Ay</option>
+                  <option value="30">30 Ay</option>
+                  <option value="31">31 Ay</option>
+                  <option value="32">32 Ay</option>
+                  <option value="33">33 Ay</option>
+                  <option value="34">34 Ay</option>
+                  <option value="35">35 Ay</option>
+                  <option value="36">36 Ay</option>
+                </select>            
+                <span class="info-icon-vade" onclick="toggleVadeInfo()">i</span>
+                <div class="vade-info-popup" id="vade-info-popup">
+                  <p>
+                    Onaylı kredi vadesi yanlızca arttırılabilir!
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Kapsayıcı Kutucuk: Ödeme Planı, Aylık Taksit, Toplam Geri Ödeme -->
+              <div class="repayment-info-box" style="width:90%; margin:10px ; padding:10px; background-color: rgba(52,152,219,0.1); border-radius:6px; text-align: left;">
+  
+                <!-- Faiz Oranı Bilgisi (Aylık Taksit'in üstünde) -->
+                <div class="installment-info" id="faiz-orani" style="width:90%; margin:10px auto; text-align: left;">Faiz Oranı: -</div>
+
+                <!-- Aylık Taksit Bilgisi -->
+                <div class="installment-info" id="installment-info" style="width:90%; margin:10px auto;">
+                  Aylık Taksit: -
+                </div>
+                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
+                <div class="installment-info"  style="width:90%; margin:10px auto; text-align: left;">
+                  Toplam Sigorta Primi: 500 TL
+                </div>
+                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
+                <div class="installment-info" id="total-repayment" style="width:90%; margin:10px auto; text-align: left;">
+                  Toplam Geri Ödeme: -
+                </div>
+                
+                <!-- Ödeme Planı Linki -->
+                <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
+                
+              </div>
+              
+              <button onclick="nextScreen(5)" style="margin: 15px auto; display: block;">Devam</button>
+            </div>
+            <!-- Ekran 6: İşlem Özeti -->
+            <div class="screen" id="screen-6">
               <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
               <h2 class="screen-heading">İşlem Özeti</h2>
               
@@ -388,10 +684,23 @@
               </div>
               
               <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="nextScreen(3)" class="continue-button">Başvur</button>
+              <button onclick="currentScreen = 7;nextScreen(6)" class="continue-button">Başvur</button>
             </div>
-            <!-- Ekran 4: Onay -->
-            <div class="screen" id="screen-4">
+            <!-- Ekran 7: İşlem Özeti -->
+            <div class="screen" id="screen-7">
+              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
+              <h2 class="screen-heading">İşlem Özeti</h2>
+              
+              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
+              <div class="summary-box">
+                <div class="summary-text">İşlem Özeti Detayları</div>
+              </div>
+              
+              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
+              <button onclick="nextScreen(7)" class="continue-button">Devam</button>
+            </div>
+            <!-- Ekran 8: Onay -->
+            <div class="screen" id="screen-8">
               <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
               <p class="confirmation-message">
                 Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
@@ -429,14 +738,47 @@
               </div>
               
               <!-- İki Devam Butonu -->
-              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Kullan</button>
+              <button onclick="nextScreen(8)" style="margin: 15px auto; display: block;">Kullan</button>
             </div>
-            <!-- Ekran 5: Sonuç -->
-            <div class="screen" id="screen-5">
-              <h1 class="confirmation-title">Krediniz Onaylandı</h1>
-              <p class="confirmation-message">
-                Kredi tutarı [Seçilen Hesap] adlı hesabınıza aktarıldı.
+            <!-- Ekran 9: Onaylandı -->
+            <div class="screen" id="screen-9">
+              <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
+              <div class="approved-icon">
+                <span>✔</span>
+              </div>
+              <div class="approved-title">Krediniz Hesabınıza Aktarıldı</div>
+              <p class="approved-description">
+                Yaptığınız ihtiyaç kredisi başvurusu onaylanmış ve kredi hesabınıza aktarılmıştır.
               </p>
+              <button class="continue-button">Tamam</button>
+            </div>
+            <!-- Ekran 10: Reddedildi -->
+            <div class="screen" id="screen-10">
+              <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
+              <div class="reject-icon">
+                <span>✕</span>
+              </div>
+              <div class="reject-title">Başvurunuz Reddedildi</div>
+              <p class="reject-description">
+                Yaptığınız ihtiyaç kredisi başvurusu, değerlendirme sonucunda maalesef onaylanmamıştır.
+              </p>
+              <p class="reject-description">
+                Başvurunuzu tekrar yapmadan önce aylık gelirinizi veya kredi tutarını yeniden değerlendirebilirsiniz.
+              </p>
+              <button class="continue-button">Tamam</button>
+            </div>
+            <!-- Ekran 11: Gri Alan -->
+            <div class="screen" id="screen-11">
+              <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
+              <div class="pending-icon">
+                <span>🕒</span>
+              </div>
+              <div class="pending-title">Başvurunuz Değerlendiriliyor</div>
+              <p class="pending-description">
+                Yaptığınız ihtiyaç kredisi başvurusu değerlendirmeye alınmıştır.
+                Kısa süre içinde size bilgi vereceğiz.
+              </p>
+              <button class="continue-button">Tamam</button>
             </div>
           </div>
           
@@ -455,7 +797,7 @@
     <div class="right-panel" id="flow-panel">
       <div class="flow-screens-header">
         <h2>Ekran Görünümü</h2>
-        <!-- button class="nextPageButton" onclick="window.location.href='index2.html';">Mevcut Başvurularım</button> -->
+         <button class="nextPageButton" onclick="window.location.href='index2.html';">Mevcut Başvurularım</button> 
         <div class="controls-container">
           <div class="zoom-controls">
             <button onclick="zoomOut()">–</button>

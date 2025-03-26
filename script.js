@@ -6,7 +6,7 @@ let selectedVade = null;
 let krediTuru = null;
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 11; i++) {
     addMiniScreen(i);
   }
   updateMiniScreenHighlight(currentScreen);
@@ -82,7 +82,7 @@ function addMiniScreen(stepNumber) {
   
   const miniTracker = document.createElement('div');
   miniTracker.className = 'mini-tracker';
-  miniTracker.innerText = `Adım ${stepNumber}/5`;
+  miniTracker.innerText = `Adım ${stepNumber}/11`;
   miniScreen.appendChild(miniTracker);
   
   flowScreens.appendChild(miniScreen);
@@ -138,7 +138,7 @@ function toggleOverlay() {
 }
 
 function updateTracker() {
-  const percentage = (currentScreen / 5) * 100;
+  const percentage = (currentScreen / 8) * 100;
   const tracker = document.getElementById('tracker-progress');
   if (tracker) {
     tracker.style.width = percentage + "%";
@@ -320,12 +320,21 @@ function krediTuruChange() {
 }
 
 // Pop-up fonksiyonları (Sayfa 5'te kullanılmıyor)
-function openOdemePlaniPopup() {}
-function closeOdemePlaniPopup() {}
+// Pop-up fonksiyonları (Sayfa 5'te kullanılmıyor)
+function openOdemePlaniPopup() {
+  // Örneğin, bu fonksiyonu ileride ödeme planı popup'ı için doldurabilirsiniz.
+}
+
+function closeOdemePlaniPopup() {
+  // Örneğin, bu fonksiyonu ileride ödeme planı popup'ı için doldurabilirsiniz.
+}
+
 function toggleLegalInfo() {
   const legalPopup = document.getElementById('legal-info-popup');
+  // window.getComputedStyle ile popup'ın stilini kontrol ediyoruz
   if (window.getComputedStyle(legalPopup).display === "none") {
     legalPopup.style.display = "block";
+    // Popup açıldığında, dışarı tıklanırsa kapatılması için event listener ekliyoruz
     setTimeout(() => {
       document.addEventListener('click', closeLegalPopupOnOutside);
     }, 0);
@@ -334,9 +343,26 @@ function toggleLegalInfo() {
     document.removeEventListener('click', closeLegalPopupOnOutside);
   }
 }
+
+function toggleLegalInforev() {
+  const legalPopup = document.getElementById('legal-info-popup-rev');
+  // window.getComputedStyle ile popup'ın stilini kontrol ediyoruz
+  if (window.getComputedStyle(legalPopup).display === "none") {
+    legalPopup.style.display = "block";
+    // Popup açıldığında, dışarı tıklanırsa kapatılması için event listener ekliyoruz
+    setTimeout(() => {
+      document.addEventListener('click', closeLegalPopupOnOutside);
+    }, 0);
+  } else {
+    legalPopup.style.display = "none";
+    document.removeEventListener('click', closeLegalPopupOnOutside);
+  }
+}
+
 function closeLegalPopupOnOutside(event) {
   const legalPopup = document.getElementById('legal-info-popup');
   const infoIcon = document.querySelector('.info-icon');
+  // Eğer tıklama popup veya info simgesinin dışında gerçekleşmişse popup'ı kapatıyoruz
   if (!legalPopup.contains(event.target) && !infoIcon.contains(event.target)) {
     legalPopup.style.display = "none";
     document.removeEventListener('click', closeLegalPopupOnOutside);
@@ -602,5 +628,154 @@ function showPostVade() {
   const upsellOffer = document.querySelector('.upsell-offer');
   if (upsellOffer) {
     upsellOffer.style.display = 'none';
+  }
+}
+
+function openOfferPopup(cardElement) {
+  // Popup container'ı oluştur
+  let popup = document.createElement('div');
+  popup.className = 'offer-popup';
+  popup.style.display = 'flex';
+  
+  // Popup içerik container'ı oluştur
+  let content = document.createElement('div');
+  content.className = 'offer-popup-content';
+  
+  // Kapatma butonu (opsiyonel)
+  let closeBtn = document.createElement('span');
+  closeBtn.className = 'close-popup';
+  closeBtn.innerText = '×';
+  closeBtn.onclick = function(e) {
+    e.stopPropagation();
+    popup.remove();
+  };
+  content.appendChild(closeBtn);
+  
+  // Butonlar için container oluştur
+  let btnContainer = document.createElement('div');
+  btnContainer.className = 'popup-buttons';
+  
+  // "Devam Et" butonu: ekran 2'den ekran 3'e geçiş yapılması için nextScreen(2) çağrılır
+  let devamBtn = document.createElement('button');
+  devamBtn.className = 'continue-button'; // Mevcut continue-button stilini kullanır
+  devamBtn.innerText = 'Devam Et';
+  devamBtn.onclick = function() {
+    currentScreen = 5
+    nextScreen(2); // Screen 2'nin aktif olduğu varsayılarak ekran geçişi tetikleniyor (screen-2'den screen-3'e)
+    popup.remove();
+  };
+  btnContainer.appendChild(devamBtn);
+  
+  // "Revize Et" butonu: benzer şekilde ekran geçişi
+  let revizeBtn = document.createElement('button');
+  revizeBtn.className = 'continue-button'; // Aynı stili kullanır
+  revizeBtn.innerText = 'Revize Et';
+  revizeBtn.onclick = function() {
+    currentScreen = 4
+    nextScreen(2); // Burada da ekran geçişi sağlanıyor; ihtiyaca göre farklı işlev eklenebilir.
+    popup.remove();
+  };
+  btnContainer.appendChild(revizeBtn);
+  
+  content.appendChild(btnContainer);
+  popup.appendChild(content);
+  
+  // Popup'ı mobil uygulama ekranı kapsayıcısı (.mobile-mockup) içine ekleyin
+  const mobileMockup = document.querySelector('.mobile-mockup');
+  mobileMockup.appendChild(popup);
+}
+
+// Toggle dropdown açma/kapama fonksiyonu
+function toggleCrossSellDropdown() {
+  const list = document.getElementById('cross-sell-dropdown-list');
+  list.style.display = (list.style.display === 'block') ? 'none' : 'block';
+}
+
+// On/Off toggle değişimini yöneten fonksiyon
+function toggleCrossSellOption(checkboxElem) {
+  console.log("Çapraz satış seçeneği (" + checkboxElem.getAttribute('data-value') + ") durumu:", checkboxElem.checked);
+  updateCrossSellSelections();
+}
+
+function updateCrossSellSelections() {
+  const options = document.querySelectorAll('.dropdown-option-cross-sell');
+  let selectedOptions = [];
+  options.forEach(option => {
+    const checkbox = option.querySelector('.switch input');
+    if (checkbox && checkbox.checked) {
+      selectedOptions.push(option.getAttribute('data-value'));
+    }
+  });
+  document.getElementById('cross-sell-select').value = JSON.stringify(selectedOptions);
+  console.log("Güncel çapraz satış seçimleri:", selectedOptions);
+}
+
+// Kapat butonuna tıklanıldığında açılır listeyi kapatan fonksiyon
+function closeCrossSellDropdown() {
+  document.getElementById('cross-sell-dropdown-list').style.display = 'none';
+}
+
+function filterOffers() {
+  const urunFilter = document.getElementById("urun-turu-filter").value;
+  const tarihFilter = document.getElementById("tarih-filter").value;
+  const offers = document.querySelectorAll('.offer-card');
+  const now = new Date();
+  
+  offers.forEach(function(offer) {
+    let show = true;
+    
+    // Ürün türü filtresi
+    const offerUrun = offer.getAttribute("data-urun");
+    if (urunFilter !== "all" && offerUrun !== urunFilter) {
+      show = false;
+    }
+    
+    // Tarih filtresi
+    if (tarihFilter !== "all") {
+      // data-tarih değeri YYYY-MM-DD formatında kabul ediliyor
+      const offerDateStr = offer.getAttribute("data-tarih");
+      const offerDate = new Date(offerDateStr);
+      // Hesapla ay farkı
+      let diffMonths = (now.getFullYear() - offerDate.getFullYear()) * 12 + (now.getMonth() - offerDate.getMonth());
+      // Eğer gün farkını da hesaba katmak isterseniz, örneğin diffMonths += (now.getDate() < offerDate.getDate() ? 1 : 0);
+      if (tarihFilter === "1" && diffMonths > 1) {
+        show = false;
+      }
+      if (tarihFilter === "2" && diffMonths > 2) {
+        show = false;
+      }
+    }
+    
+    // Kartı göster/gizle
+    offer.style.display = show ? "block" : "none";
+  });
+}
+
+
+// Bu fonksiyon, upsell-offer tıklandığında ekran 2'ye geçiş yapar ve ilk offer card'ı highlight eder.
+function goToPreviousPage() {
+  goToScreen(2); // Ekran 2'ye geçiş yapar (önceki sayfa)
+  highlightFirstOfferCard(); // İlk kartı vurgular
+}
+
+// İlk offer card'ı bulup highlight ekleyen fonksiyon
+function highlightFirstOfferCard() {
+  // Tüm offer-card'larda varsa active-offer sınıfını kaldırıyoruz
+  const allOffers = document.querySelectorAll('.offer-group .offer-card');
+  allOffers.forEach(card => card.classList.remove('active-offer'));
+  
+  // İlk offer card'ı seçiyoruz (örneğin, ilk grup altında ilk offer-card)
+  const firstOffer = document.querySelector('.offer-group .offer-card');
+  if (firstOffer) {
+    firstOffer.classList.add('active-offer');
+  }
+}
+
+function toggleVadeInfo() {
+  const popup = document.getElementById('vade-info-popup');
+  if (popup.style.display === 'block') {
+    popup.style.display = 'none';
+  } else {
+    popup.style.display = 'block';
   }
 }

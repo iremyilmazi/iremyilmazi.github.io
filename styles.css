@@ -122,6 +122,9 @@ body, html {
   width: 90%;
   margin: 10px auto;
 }
+
+
+
 .input-with-info input {
   box-sizing: border-box;  /* Padding dahil olacak şekilde kutu boyutlandırmasını ayarla */
   width: 100%;              /* Alanı kapsayacak */
@@ -158,22 +161,43 @@ body, html {
 /* Legal Info Pop-up */
 .legal-info-popup {
   position: absolute;
-  top: 105%;
-  right: 0;
-  width: 220px;
+  top: 105%;       /* Gerekirse bu değeri input yüksekliğine göre ayarlayın */
+  right: 0;        /* Eğer sağdan değil, soldan açılmasını isterseniz left: 0 deneyin */
+  width: 240px;    /* Genişliği biraz artırdım, isteğe bağlı */
   background-color: #fff;
   border: 1px solid #dfe6e9;
   border-radius: 4px;
   padding: 8px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Gölgede biraz yoğunluk artırıldı */
   display: none;
-  z-index: 50;
+  z-index: 100;    /* Z-index artırıldı */
 }
 .legal-info-popup p {
   font-size: 12px;
   color: #333;
   margin: 0;
 }
+
+/* Legal Info Pop-up */
+.legal-info-popup-rev {
+  position: absolute;
+  top: 105%;       /* Gerekirse bu değeri input yüksekliğine göre ayarlayın */
+  right: 0;        /* Eğer sağdan değil, soldan açılmasını isterseniz left: 0 deneyin */
+  width: 240px;    /* Genişliği biraz artırdım, isteğe bağlı */
+  background-color: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Gölgede biraz yoğunluk artırıldı */
+  display: none;
+  z-index: 100;    /* Z-index artırıldı */
+}
+.legal-info-popup-rev p {
+  font-size: 12px;
+  color: #333;
+  margin: 0;
+}
+
 
 /* Kredi Türü Açılır Liste Alanı - Modern Tasarım */
 .kredi-turu-select-container {
@@ -210,6 +234,7 @@ body, html {
   width: 90%;
   margin: 10px auto;
   text-align: left;
+  position: relative;
 }
 .vade-select-container label {
   font-weight: 500;
@@ -237,13 +262,13 @@ body, html {
 }
 .kredi-turu-select-container select,
 .vade-select-container select {
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 10px center;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%233498db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") no-repeat right 30px center;
   background-size: 12px;
 }
 /* Ekranlar Container'ı Tracker'ın altındaki alanı tam ortalamak için */
 .screens-container {
   position: absolute;
-  top: 60px; /* Navigasyon barı ve tracker'dan sonraki alan */
+  top: 40px; /* Navigasyon barı ve tracker'dan sonraki alan */
   left: 0;
   right: 0;
   bottom: 0;
@@ -478,7 +503,9 @@ body, html {
   color: #ff9800;
   margin: 0;
 }
-
+.upsell-offer:hover{
+  cursor: pointer;
+}
 /* Onay Mesajı */
 .confirmation-title {
   font-size: 28px;
@@ -867,6 +894,36 @@ body, html {
   background-color: #f0f8ff;
 }
 
+.screen-section:hover {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Her bölüm */
+.screen-section-notClickable {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Tıklanabilir hale getirilmiş bölüm için */
+.screen-section-notClickable.clickable {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.screen-section-notClickable.clickable:hover {
+  background-color: #f0f8ff;
+}
+
+
 /* Offer Card (kutucuk) stili */
 .offer-card {
   background: #fff;
@@ -901,6 +958,15 @@ body, html {
   color: #27ae60;
   font-weight: bold;
 }
+
+/* Durum: Kredi Kullanıma Hazır (yeşil) */
+.offer-status-decline {
+  font-size: 16px;
+  color: #be2121;
+  font-weight: bold;
+}
+
+
 
 /* Popup Genel Stili (yalnızca mobil uygulama ekranı üzerinde) */
 .offer-popup {
@@ -992,16 +1058,17 @@ body, html {
 
 /* Açılır Liste */
 .custom-dropdown-list {
-  position: fixed; /* Fixed konumlandırma, sayfa viewport’una göre konumlanır */
-  top: 427px;          /* Mobil uygulama ekranının üst kısmına hizalar */
-  left: 24px;
-  width: 326px;    /* Mobil uygulama ekranı genişliği (örneğin 375px) */
-  height: 481px;   /* Mobil uygulama ekranı yüksekliği (örneğin 812px) */
-  background: #fff;
+  position: absolute;
+  top: 100%; /* Seçili alanın hemen altına yerleşir */
+  left: 0;
+  width: 100%;
+  max-height: 300px; /* İhtiyaca göre ayarlanabilir */
+  background-color: #fff;
+  border: 1px solid #dfe6e9;
+  border-top: none;
   overflow-y: auto;
-  z-index: 200;    /* Diğer öğelerin üstünde görünmesi için yüksek z-index */
-  display: none;   /* Başlangıçta gizli */
-  padding: 20px;
+  z-index: 100;
+  display: none;
   box-sizing: border-box;
 }
 
@@ -1047,4 +1114,404 @@ body, html {
 }
 #show-post-vade:hover {
   background-color: #2980b9;
+}
+
+/* Çapraz Satış Önerileri Alanı */
+.cross-sell-select-container {
+  width: 90%;
+  margin: 10px auto;
+  text-align: left;
+}
+.cross-sell-select-container label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: block;
+  color: #2c3e50;
+}
+
+/* Custom Dropdown - Cross Sell */
+.custom-dropdown-cross-sell {
+  position: relative; /* Absolute konumlandırmalar için referans */
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.custom-dropdown-selected-cross-sell {
+  padding: 10px;
+  font-size: 14px;
+  color: #2c3e50;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="%232c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Açılır liste alanı; hemen cross-sell dropdown'un altında açılacak */
+.custom-dropdown-list-cross-sell {
+  position: absolute;
+  top: 100%; /* Seçili alanın hemen altına yerleştirir */
+  left: 0;
+  width: 100%;
+  max-height: 300px;  /* İhtiyaca göre ayarlayın */
+  background-color: #fff;
+  border: 1px solid #dfe6e9;
+  border-top: none;
+  overflow-y: auto;
+  z-index: 200;
+  display: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Her seçenek */
+.dropdown-option-cross-sell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.dropdown-option-cross-sell:last-child {
+  border-bottom: none;
+}
+.dropdown-option-cross-sell:hover {
+  background-color: #f7f7f7;
+}
+
+/* Seçenek içeriği */
+.option-info {
+  display: flex;
+  flex-direction: column;
+}
+.option-title-cross-sell {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+.option-detail-cross-sell {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 3px;
+}
+
+/* Toggle switch stili */
+.toggle-container {
+  margin-left: 10px;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 22px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+.switch input:checked + .slider {
+  background-color: #3498db;
+}
+.switch input:checked + .slider:before {
+  transform: translateX(18px);
+}
+/* Kapat Butonu */
+.close-cross-sell-btn {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.close-cross-sell-btn:hover {
+  background-color: #2980b9;
+}
+
+.offer-filter-container {
+  width: 95%;
+  margin: -18px auto;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: sticky;
+  background-color: white;
+}
+
+.filter-group {
+  flex: 1;
+}
+.filter-group label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: block;
+  color: #2c3e50;
+}
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #2c3e50;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.filter-group select:focus {
+  border-color: #3498db;
+}
+
+/* Offer-card stili (örnek) */
+.offer-card {
+  width: 90%;
+  max-width: 360px;
+  margin: 10px auto;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.offer-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.offer-detail {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Grup kapsayıcısı */
+.offer-group {
+  width: 102%;
+  margin: 10px auto;
+}
+
+/* Grup başlığı */
+.group-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-left: 5%;
+}
+
+/* Her offer card (kutucuk) */
+.offer-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+.offer-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.screen-sectionshl {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.offer-grid-container {
+  width: 104%;
+  height: calc(100vh - 150px);  /* Filtreler ve header alanı toplamı: 150px */
+  overflow-y: auto;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.active-offer {
+  border: 2px solid #3498db;
+  box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
+
+/* Vade bilgi popup'ı */
+.vade-info-popup {
+  position: absolute;
+  top: 100%;  /* Seçim alanının hemen altında */
+  right: 0;
+  width: 250px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: none; /* Başlangıçta gizli */
+  z-index: 10;
+}
+.vade-info-popup p {
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.info-icon-vade {
+  position: absolute;
+  right: 8px; /* 12px yerine 8px yaparak simgeyi içeri alıyoruz */
+  top: 66%;
+  transform: translateY(-50%);
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 100;
+}
+
+/* Başlık (Üstte) */
+.screen-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #2c3e50;
+}
+
+/* Büyük Red (X) ikonu */
+.reject-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #be2121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.reject-icon span {
+  font-size: 40px;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Başvurunuz Reddedildi başlığı */
+.reject-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Açıklama paragrafı */
+.reject-description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 20px 30px;
+  line-height: 1.5;
+}
+
+/* Sarı daire içinde saat ikonu */
+.pending-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f1c40f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.pending-icon span {
+  font-size: 40px;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Başvurunuz Değerlendiriliyor başlığı */
+.pending-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Açıklama paragrafı */
+.pending-description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 20px 30px;
+  line-height: 1.5;
+}
+
+/* Yeşil daire içinde onay (✔) ikonu */
+.approved-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.approved-icon span {
+  font-size: 40px;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Başvurunuz Onaylandı başlığı */
+.approved-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Açıklama paragrafı */
+.approved-description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 20px 30px;
+  line-height: 1.5;
 }
