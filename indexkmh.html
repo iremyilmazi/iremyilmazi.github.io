@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="pageId" content="1">
+  <title>İhtiyaç Kredisi Başvuru Akışı</title>
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Harici CSS dosyası -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- SOL PANEL: Mobil Uygulama Ekranı -->
+    <div class="left-panel">
+      <div class="mobile-mockup">
+        <div class="mobile-content">
+          <!-- Navigasyon Barı -->
+          <div class="nav-bar">
+            <div class="nav-top">
+              <div class="nav-indicators">
+                <span>12:45</span>
+                <span>🔋 85%</span>
+                <span>📶</span>
+              </div>
+              <div class="nav-title">İhtiyaç Kredisi</div>
+            </div>
+            <div class="tracker">
+              <div class="tracker-progress" id="tracker-progress"></div>
+            </div>
+          </div>
+          <!-- Ekranlar Container (Tracker altı, tam ortalanmış) -->
+          <div class="screens-container">
+            <!-- Ekran 1: Ana Menü -->
+            <div class="screen active" id="screen-1">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 2: Başvuru ve Hazır Limitlerim -->
+            <div class="screen" id="screen-2">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 3: Kredi Detayları Seçimi -->
+            <div class="screen" id="screen-3">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 4: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <div class="screen" id="screen-4">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 5: Kredi Revize -->
+            <div class="screen" id="screen-5">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 6: İşlem Özeti -->
+            <div class="screen" id="screen-6">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 7: İşlem Özeti -->
+            <div class="screen" id="screen-7">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 8: Onay -->
+            <div class="screen" id="screen-8">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 9: Onaylandı -->
+            <div class="screen" id="screen-9">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 10: Reddedildi -->
+            <div class="screen" id="screen-10">
+              <h2>KMH</h2>
+            </div>
+            <!-- Ekran 11: Gri Alan -->
+            <div class="screen" id="screen-11">
+              <h2>KMH</h2>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+    <!-- Sağ Panel: Mini Ekran Kopyaları -->
+    <div class="right-panel" id="flow-panel">
+      <div class="flow-screens-header">
+        <h2>Ekran Görünümü</h2>
+        <!-- Buton 1: Kredili Mevduat Hesabı -->
+        <button class="btn" onclick="window.location.href='index.html'">
+          Anasayfa
+        </button>
+         <!--<button class="nextPageButton" onclick="window.location.href='index2.html';">Mevcut Başvurularım</button> --> 
+        <div class="controls-container">
+          <div class="zoom-controls">
+            <button onclick="zoomOut()">–</button>
+            <button onclick="zoomIn()">+</button>
+          </div>
+          <div class="overlay-toggle">
+            <button onclick="toggleOverlay()">Gizle/Göster</button>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel-content">
+        <!-- Üst Bölüm: Mini Ekranlar -->
+        <div class="mini-screens-wrapper" id="mini-wrapper">
+          <div class="mini-screens-container" id="flow-screens">
+            <!-- Mini ekran kopyaları JS ile oluşturulacak -->
+          </div>
+          <div class="overlay" id="overlay"></div>
+        </div>
+        <!-- Resizer: Kullanıcının sürükleyip notlar alanının yüksekliğini ayarlayabileceği alan -->
+        <div class="resizer" id="resizer"></div>
+        <!-- Alt Bölüm: Notlar Alanı -->
+        <div class="notes-container">
+          <h3 class="notes-heading">Notlar</h3>
+          <!-- Filtreleme Alanı -->
+          <div class="notes-filter">
+            <label for="note-filter-select">Filtrele:</label>
+            <select id="note-filter-select" onchange="renderNotes(1)">
+              <option value="all" selected>Tüm Adımlar</option>
+              <option value="1">Adım 1</option>
+              <option value="2">Adım 2</option>
+              <option value="3">Adım 3</option>
+              <option value="4">Adım 4</option>
+              <option value="5">Adım 5</option>
+            </select>
+          </div>
+          <div class="notes-list" id="notes-list"></div>
+          <div class="notes-input-group">
+            <!-- Adım seçimi dropdown -->
+            <select id="note-step-select">
+              <option value="1">Adım 1</option>
+              <option value="2">Adım 2</option>
+              <option value="3">Adım 3</option>
+              <option value="4">Adım 4</option>
+              <option value="5">Adım 5</option>
+            </select>
+            <input type="text" id="note-input" placeholder="Yeni not ekle">
+            <button onclick="addNote(1)">Ekle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
