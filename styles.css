@@ -1534,3 +1534,30 @@ body, html {
   margin: 0 20px 30px;
   line-height: 1.5;
 }
+
+/* Yeni: Grup başlığı ve buton kapsayıcısı */
+.group-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  margin-bottom: 10px;
+}
+
+/* Yeni Başvuru butonu stili, mevcut buton stiline benzer */
+.new-application-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+.new-application-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #2471a3);
+  transform: translateY(-2px);
+}

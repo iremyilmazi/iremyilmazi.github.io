@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="pageId" content="1">
-  <title>MERHABA</title>
+  <title>BİREYSEL İHTİYAÇ KREDİSİ - BAŞVURU</title>
   <!-- Google Fonts: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <!-- Harici CSS dosyası -->
@@ -114,7 +114,10 @@
                 <div class="screen-sectionshl">
                   <!-- Grup 1: Krediler -->
                   <div class="offer-group">
-                    <h3 class="group-header">Krediler</h3>
+                    <div class="group-header-container">
+                      <h3 class="group-header">Krediler</h3>
+                      <button onclick="nextScreen(2)" class="new-application-btn">Yeni Başvuru</button>
+                    </div>
                     <!-- 1. Kart -->
                     <div class="offer-card" onclick="openOfferPopup(this)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
@@ -142,7 +145,10 @@
                   </div>
                   <!-- Grup 2: KMH -->
                   <div class="offer-group">
-                    <h3 class="group-header">KMH</h3>
+                    <div class="group-header-container">
+                      <h3 class="group-header">KMH</h3>
+                      <button class="new-application-btn">Yeni Başvuru</button>
+                    </div>
                     <div class="offer-card">
                       <div class="card-header">KMH</div>
                       <p>Detay 1</p>
@@ -158,7 +164,10 @@
                   </div>
                   <!-- Grup 3: Kredi Kartları -->
                   <div class="offer-group">
-                    <h3 class="group-header">Kredi Kartları</h3>
+                    <div class="group-header-container">
+                      <h3 class="group-header">Kredi Kartları</h3>
+                      <button class="new-application-btn">Yeni Başvuru</button>
+                    </div>
                     <div class="offer-card">
                       <div class="card-header">Kredi Kartları</div>
                       <p>Detay 1</p>
@@ -174,7 +183,6 @@
                   </div>
                 </div>
               </div>
-              <button onclick="nextScreen(2)" style="margin: 15px auto; display: block;">Yeni Başvuru</button>
             </div>
             <!-- Ekran 3: Kredi Detayları Seçimi -->
             <div class="screen" id="screen-3">
