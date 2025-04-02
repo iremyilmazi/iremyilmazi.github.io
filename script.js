@@ -779,3 +779,34 @@ function toggleVadeInfo() {
     popup.style.display = 'block';
   }
 }
+
+// Açılır listeyi göster/gizle fonksiyonu
+function toggleNewApplicationDropdown() {
+  const dropdown = document.getElementById('new-application-dropdown');
+  if (dropdown.style.display === 'block') {
+    dropdown.style.display = 'none';
+  } else {
+    dropdown.style.display = 'block';
+  }
+}
+
+// Seçim yapıldığında ilgili sayfaya geçişi sağlayan fonksiyon
+function goToNextScreen(selection) {
+  // Seçime göre hangi ekrana geçileceğini belirleyebilirsiniz.
+  // Örneğin: 
+  // 'kredi' seçilirse bireysel ihtiyaç kredisi akışı (örneğin, nextScreen(3))
+  // 'krediKart' seçilirse kredi kartları akışı (örneğin, nextScreen(4))
+  // 'kmh' seçilirse KMH akışı (örneğin, nextScreen(5))
+  // Aşağıdaki örnekte, tüm seçimler için aynı ekran numarasına geçiyoruz.
+  console.log("Seçilen seçenek:", selection);
+  // İhtiyacınıza göre seçim değerine göre farklı fonksiyonlar veya ekran numaraları kullanabilirsiniz.
+  if (selection === 'kredi') {
+    nextScreen(2);
+  } else if (selection === 'krediKart') {
+    ;
+  } else if (selection === 'kmh') {
+    ;
+  }
+  // Seçim yapıldıktan sonra açılır listeyi kapatıyoruz
+  document.getElementById('new-application-dropdown').style.display = 'none';
+}

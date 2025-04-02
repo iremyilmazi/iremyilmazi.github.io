@@ -985,7 +985,12 @@ body, html {
   font-weight: bold;
 }
 
-
+/* Durum: Kredi Kullanıma Hazır (yeşil) */
+.offer-status-reject {
+  font-size: 16px;
+  color: #f8ae04;
+  font-weight: bold;
+}
 
 /* Popup Genel Stili (yalnızca mobil uygulama ekranı üzerinde) */
 .offer-popup {
@@ -1535,29 +1540,81 @@ body, html {
   line-height: 1.5;
 }
 
-/* Yeni: Grup başlığı ve buton kapsayıcısı */
-.group-header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5%;
-  margin-bottom: 10px;
-}
-
-/* Yeni Başvuru butonu stili, mevcut buton stiline benzer */
+/* Yeni Başvuru Butonu */
 .new-application-btn {
-  padding: 8px 16px;
+  padding: 12px 24px;
   background: linear-gradient(135deg, #3498db, #2980b9);
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: block;
+  margin: 0 auto;
+}
+.new-application-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #2471a3);
+  transform: translateY(-3px);
+}
+
+/* Açılır Liste Kapsayıcısı */
+.new-application-dropdown {
+  position: absolute;
+  bottom: 100%; /* Butonun hemen üzerinde */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 360px;
+  background-color: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none; /* Başlangıçta gizli */
+  z-index: 100;
+  padding: 10px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Açılır Listedeki Seçenekler */
+.dropdown-option-btn {
+  width: 80%;
+  padding: 10px;
+  margin: 5px auto;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 25px;
   color: #fff;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
   transition: background 0.3s, transform 0.2s;
   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+  display: block;
 }
-.new-application-btn:hover {
+.dropdown-option-btn:hover {
   background: linear-gradient(135deg, #2980b9, #2471a3);
   transform: translateY(-2px);
+}
+
+/* Kapat Butonu */
+.dropdown-close-btn {
+  width: 80%;
+  padding: 10px;
+  margin: 5px auto;
+  background-color: #7f8c8d;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+  display: block;
+}
+.dropdown-close-btn:hover {
+  background-color: #95a5a6;
 }

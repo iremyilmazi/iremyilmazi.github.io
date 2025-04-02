@@ -37,8 +37,8 @@
               <div class="screen-sections">
                 <div class="screen-section-notClickable">...</div>
                 <div class="screen-section-notClickable">...</div>
-                <div class="screen-section-notClickable">Mevcut Kredilerim</div>
-                <div class="screen-section" clickable" onclick="nextScreen(1)">Başvuru Ve Hazır Limitlerim</div>
+                <div class="screen-section-notClickable">Krediler</div>
+                <div class="screen-section" clickable" onclick="nextScreen(1)">Başvurular</div>
                 <div class="screen-section-notClickable">...</div>
                 <div class="screen-section-notClickable">...</div>
                 <div class="screen-section-notClickable">...</div>
@@ -114,17 +114,14 @@
                 <div class="screen-sectionshl">
                   <!-- Grup 1: Krediler -->
                   <div class="offer-group">
-                    <div class="group-header-container">
-                      <h3 class="group-header">Krediler</h3>
-                      <button onclick="nextScreen(2)" class="new-application-btn">Yeni Başvuru</button>
-                    </div>
+                    <h3 class="group-header">Krediler</h3>
                     <!-- 1. Kart -->
                     <div class="offer-card" onclick="openOfferPopup(this)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 250,000</div>
                       <div class="offer-detail">Taksit Tutarı: 21,000</div>
                       <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
-                      <div class="offer-status">Kullanıma Hazır</div>
+                      <div class="offer-status">Hazır Limit</div>
                     </div>
                     <!-- 2. Kart -->
                     <div class="offer-card" onclick="openOfferPopup(this)">
@@ -132,9 +129,17 @@
                       <div class="offer-detail">Kredi Tutarı: 200,000</div>
                       <div class="offer-detail">Taksit Tutarı: 3,000</div>
                       <div class="offer-detail">Geçerlilik Tarihi: 18/03/2025</div>
-                      <div class="offer-status">Kullanıma Hazır</div>
+                      <div class="offer-status">Onaylı Başvuru</div>
                     </div>
                     <!-- 3. Kart -->
+                    <div class="offer-card">
+                      <div class="offer-header">Standart Teminatsız Kredi</div>
+                      <div class="offer-detail">Kredi Tutarı: 50,000</div>
+                      <div class="offer-detail">Taksit Tutarı: 6,000</div>
+                      <div class="offer-detail">Başvuru Tarihi: 20/01/2025</div>
+                      <div class="offer-status-reject">Başvurunuz Değerlendirmede</div>
+                    </div>
+                    <!-- 4. Kart -->
                     <div class="offer-card">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 50,000</div>
@@ -145,10 +150,7 @@
                   </div>
                   <!-- Grup 2: KMH -->
                   <div class="offer-group">
-                    <div class="group-header-container">
-                      <h3 class="group-header">KMH</h3>
-                      <button class="new-application-btn">Yeni Başvuru</button>
-                    </div>
+                    <h3 class="group-header">KMH</h3>
                     <div class="offer-card">
                       <div class="card-header">KMH</div>
                       <p>Detay 1</p>
@@ -164,10 +166,7 @@
                   </div>
                   <!-- Grup 3: Kredi Kartları -->
                   <div class="offer-group">
-                    <div class="group-header-container">
-                      <h3 class="group-header">Kredi Kartları</h3>
-                      <button class="new-application-btn">Yeni Başvuru</button>
-                    </div>
+                    <h3 class="group-header">Kredi Kartları</h3>
                     <div class="offer-card">
                       <div class="card-header">Kredi Kartları</div>
                       <p>Detay 1</p>
@@ -183,13 +182,25 @@
                   </div>
                 </div>
               </div>
+              <!-- Yeni Başvuru Alanı -->
+              <div class="new-application-container" style="width:90%; margin: 15px auto; text-align: center; position: relative;">
+                <button class="new-application-btn" onclick="toggleNewApplicationDropdown()">
+                  Yeni Başvuru
+                </button>
+                <!-- Açılır Liste: Başlangıçta gizli -->
+                <div id="new-application-dropdown" class="new-application-dropdown">
+                  <button class="dropdown-option-btn" onclick="goToNextScreen('kredi')">İhtiyaç Kredisi</button>
+                  <button class="dropdown-option-btn" onclick="goToNextScreen('krediKart')">Kredi Kartı</button>
+                  <button class="dropdown-option-btn" onclick="goToNextScreen('kmh')">KMH</button>
+                </div>
+              </div>
             </div>
             <!-- Ekran 3: Kredi Detayları Seçimi -->
             <div class="screen" id="screen-3">
               <h2>Kredi Detayları Seçimi</h2>
 
               <!-- HazırLimit Teklifi -->
-              <div class="upsell-offer" onclick="goToPreviousPage()">
+              <div class="upsell-offer" onclick="currentScreen = 5; nextScreen(3)">
                 <p class="upsell-text">
                   12 ay vadeli 250,000 TL ön onaylı krediniz ile devam edebilirsiniz.
                 </p>
@@ -650,7 +661,7 @@
                 <span class="info-icon-vade" onclick="toggleVadeInfo()">i</span>
                 <div class="vade-info-popup" id="vade-info-popup">
                   <p>
-                    Onaylı kredi vadesi yanlızca arttırılabilir!
+                    Onaylı kredi vadesi yanlızca arttırılabilir.
                   </p>
                 </div>
               </div>
