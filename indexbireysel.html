@@ -34,14 +34,15 @@
           <div class="screens-container">
             <!-- Ekran 1: Ana Menü -->
             <div class="screen active" id="screen-1">
+              <h3 class="group-header">İşlemler</h3>
               <div class="screen-sections">
-                <div class="screen-section-notClickable">...</div>
-                <div class="screen-section-notClickable">...</div>
-                <div class="screen-section-notClickable">Krediler</div>
-                <div class="screen-section" clickable" onclick="nextScreen(1)">Başvurular</div>
-                <div class="screen-section-notClickable">...</div>
-                <div class="screen-section-notClickable">...</div>
-                <div class="screen-section-notClickable">...</div>
+                <div class="screen-section-notClickable">Para Gönder</div>
+                <div class="screen-section-notClickable">QR İşlemleri</div>
+                <div class="screen-section-notClickable">Başvurular</div>
+                <div class="screen-section-rev1" clickable" onclick="nextScreen(1)">Krediler</div>
+                <div class="screen-section-notClickable-rev2">Ek Hesaplar</div>
+                <div class="screen-section-notClickable-rev2">Kredi Karları</div>
+                <div class="screen-section-notClickable">Döviz ve Kıymetli Maden</div>
               </div>
               <div class="bottom-nav">
                 <div class="nav-item">
@@ -89,33 +90,17 @@
             </div>
             <!-- Ekran 2: Başvuru ve Hazır Limitlerim -->
             <div class="screen" id="screen-2">
-              <!-- Filtre Alanları -->
-              <div class="offer-filter-container">
-                <div class="filter-group">
-                  <label for="urun-turu-filter" class="input-label">Ürün Türü:</label>
-                  <select id="urun-turu-filter" onchange="filterOffers()">
-                    <option value="all" selected>Tümü</option>
-                    <option value="kmh">KMH</option>
-                    <option value="krediler">Krediler</option>
-                    <option value="kartlar">Kartlar</option>
-                  </select>
-                </div>
-                <div class="filter-group">
-                  <label for="tarih-filter" class="input-label">Tarih:</label>
-                  <select id="tarih-filter" onchange="filterOffers()">
-                    <option value="all" selected>Tümü</option>
-                    <option value="1">Son bir ay</option>
-                    <option value="2">Son iki ay</option>
-                  </select>
-                </div>
-              </div>              
-              <!--hazır limit ve onaylı krediler-->
-              <div class="offer-grid-container">
-                <div class="screen-sectionshl">
-                  <!-- Grup 1: Krediler -->
+              <!-- Üst Tab Butonları -->
+              <div class="tab-container">
+                <button class="tab-btn active" onclick="showTab('tab1')">Teklifler</button>
+                <button class="tab-btn" onclick="showTab('tab2')">Başvurular</button>
+                <button class="tab-btn" onclick="showTab('tab3')">Krediler</button>
+              </div>         
+                <div class="tab-content active" id="tab1">
+                  <!-- Grup 1: İhtiyaç Kredisi -->
                   <div class="offer-group">
-                    <h3 class="group-header">Krediler</h3>
-                    <!-- 1. Kart -->
+                    <h3 class="group-header">İhtiyaç Kredisi</h3>
+                    <!-- Offer Card'lar -->
                     <div class="offer-card" onclick="openOfferPopup(this)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 250,000</div>
@@ -123,7 +108,22 @@
                       <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
                       <div class="offer-status">Hazır Limit</div>
                     </div>
-                    <!-- 2. Kart -->
+                    <h3 class="group-header">Taşıt Kredisi</h3>
+                    <!-- Offer Card'lar -->
+                    <div class="offer-card" >
+                      <div class="offer-header">Standart Teminatsız Kredi</div>
+                      <div class="offer-detail">Kredi Tutarı: 250,000</div>
+                      <div class="offer-detail">Taksit Tutarı: 21,000</div>
+                      <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
+                      <div class="offer-status">Hazır Limit</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-content" id="tab2">
+                  <!-- Grup 2: Taşıt Kredisi (Örnek KMH) -->
+                  <div class="offer-group">
+                    <h3 class="group-header">İhtiyaç Kredisi</h3>
                     <div class="offer-card" onclick="openOfferPopup(this)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 200,000</div>
@@ -131,7 +131,6 @@
                       <div class="offer-detail">Geçerlilik Tarihi: 18/03/2025</div>
                       <div class="offer-status">Onaylı Başvuru</div>
                     </div>
-                    <!-- 3. Kart -->
                     <div class="offer-card">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 50,000</div>
@@ -139,49 +138,22 @@
                       <div class="offer-detail">Başvuru Tarihi: 20/01/2025</div>
                       <div class="offer-status-reject">Başvurunuz Değerlendirmede</div>
                     </div>
-                    <!-- 4. Kart -->
+                  </div>
+                </div>
+
+                <div class="tab-content" id="tab3">
+                  <!-- Grup 2: Taşıt Kredisi (Örnek KMH) -->
+                  <div class="offer-group">
+                    <h3 class="group-header">İhtiyaç Kredisi</h3>
                     <div class="offer-card">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 50,000</div>
                       <div class="offer-detail">Taksit Tutarı: 6,000</div>
-                      <div class="offer-detail">Başvuru Tarihi: 20/01/2025</div>
-                      <div class="offer-status-decline">Reddedildi</div>
-                    </div>
-                  </div>
-                  <!-- Grup 2: KMH -->
-                  <div class="offer-group">
-                    <h3 class="group-header">KMH</h3>
-                    <div class="offer-card">
-                      <div class="card-header">KMH</div>
-                      <p>Detay 1</p>
-                    </div>
-                    <div class="offer-card">
-                      <div class="card-header">KMH</div>
-                      <p>Detay 2</p>
-                    </div>
-                    <div class="offer-card">
-                      <div class="card-header">KMH</div>
-                      <p>Detay 3</p>
-                    </div>
-                  </div>
-                  <!-- Grup 3: Kredi Kartları -->
-                  <div class="offer-group">
-                    <h3 class="group-header">Kredi Kartları</h3>
-                    <div class="offer-card">
-                      <div class="card-header">Kredi Kartları</div>
-                      <p>Detay 1</p>
-                    </div>
-                    <div class="offer-card">
-                      <div class="card-header">Kredi Kartları</div>
-                      <p>Detay 2</p>
-                    </div>
-                    <div class="offer-card">
-                      <div class="card-header">Kredi Kartları</div>
-                      <p>Detay 3</p>
+                      <div class="offer-detail">Kullandırım Tarihi: 20/01/2025</div>
                     </div>
                   </div>
                 </div>
-              </div>
+
               <!-- Yeni Başvuru Alanı -->
               <div class="new-application-container" style="width:90%; margin: 15px auto; text-align: center; position: relative;">
                 <button class="new-application-btn" onclick="toggleNewApplicationDropdown()">
@@ -190,8 +162,8 @@
                 <!-- Açılır Liste: Başlangıçta gizli -->
                 <div id="new-application-dropdown" class="new-application-dropdown">
                   <button class="dropdown-option-btn" onclick="goToNextScreen('kredi')">İhtiyaç Kredisi</button>
-                  <button class="dropdown-option-btn" onclick="goToNextScreen('krediKart')">Kredi Kartı</button>
-                  <button class="dropdown-option-btn" onclick="goToNextScreen('kmh')">KMH</button>
+                  <button class="dropdown-option-btn" onclick="goToNextScreen('krediKart')">Konut Kredisi</button>
+                  <button class="dropdown-option-btn" onclick="goToNextScreen('kmh')">Taşıt Kredisi</button>
                 </div>
               </div>
             </div>

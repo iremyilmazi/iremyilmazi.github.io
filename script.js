@@ -810,3 +810,16 @@ function goToNextScreen(selection) {
   // Seçim yapıldıktan sonra açılır listeyi kapatıyoruz
   document.getElementById('new-application-dropdown').style.display = 'none';
 }
+
+
+
+// Tab geçiş fonksiyonu
+function showTab(tabId) {
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}

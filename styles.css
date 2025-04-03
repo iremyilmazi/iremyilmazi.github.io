@@ -918,6 +918,49 @@ body, html {
   transition: background-color 0.3s;
 }
 
+
+
+
+/* Her bölüm */
+.screen-section-rev1 {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #baecde;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Tıklanabilir hale getirilmiş bölüm için */
+.screen-section-rev1.clickable {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.screen-section-rev1.clickable:hover {
+  background-color: #f0f8ff;
+}
+
+.screen-section-rev1:hover {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Her bölüm */
 .screen-section-notClickable {
   flex: 1;
@@ -941,6 +984,37 @@ body, html {
 .screen-section-notClickable.clickable:hover {
   background-color: #f0f8ff;
 }
+
+
+
+/* Her bölüm */
+.screen-section-notClickable-rev2 {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #baecde;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Tıklanabilir hale getirilmiş bölüm için */
+.screen-section-notClickable-rev2.clickable {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.screen-section-notClickable-rev2.clickable:hover {
+  background-color: #d9e9f7;
+}
+
+
+
+
+
 
 
 /* Offer Card (kutucuk) stili */
@@ -1322,7 +1396,7 @@ body, html {
 
 /* Offer-card stili (örnek) */
 .offer-card {
-  width: 90%;
+  width: 100%;
   max-width: 360px;
   margin: 10px auto;
   padding: 15px;
@@ -1345,7 +1419,7 @@ body, html {
 
 /* Grup kapsayıcısı */
 .offer-group {
-  width: 102%;
+  width: 100%;
   margin: 10px auto;
 }
 
@@ -1618,3 +1692,42 @@ body, html {
 .dropdown-close-btn:hover {
   background-color: #95a5a6;
 }
+
+
+
+/* Tab Butonları */
+.tab-container {
+  width: 100%;
+  margin: 20px auto; /* Üstten ve alttan boşluk */
+  display: flex;
+  justify-content: flex-start; /* Butonlar sola hizalı */
+  gap: 10px; /* Butonlar arasına boşluk */
+  overflow-x: hidden; /* Yatay taşmayı engelle */
+  box-sizing: border-box;
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+.tab-btn.active {
+  color: #000000;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Tab İçerikleri */
+.tab-content {
+  width: 90%;
+  margin: 10px auto;
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
