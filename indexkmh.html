@@ -101,13 +101,13 @@
                   <div class="offer-group">
                     <h3 class="group-header">Ek Hesap</h3>
                     <!-- Offer Card'lar -->
-                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
+                    <div class="offer-card" onclick="currentScreen = 4;nextScreen(2)">
                       <div class="offer-detail">Ek Hesap Limiti: 250,000</div>
                       <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
                       <div class="offer-status">Ek Hesap Teklifi</div>
                     </div>
                     <h3 class="group-header">Taksitli Ek Hesap</h3>
-                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
+                    <div class="offer-card" >
                       <div class="offer-detail">Ek Hesap Limiti: 250,000</div>
                       <div class="offer-detail">Geçerlilik Tarihi: 19/03/2025</div>
                       <div class="offer-status">Taksitli Ek Hesap Teklifi</div>
@@ -119,7 +119,7 @@
                   <!-- Grup 2: Taşıt Kredisi (Örnek KMH) -->
                   <div class="offer-group">
                     <h3 class="group-header">Ek Hesap</h3>
-                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
+                    <div class="offer-card" onclick="currentScreen = 4;nextScreen(2)">
                       <div class="offer-detail">Ek Hesap Limiti: 200,000</div>
                       <div class="offer-detail">Geçerlilik Tarihi: 18/03/2025</div>
                       <div class="offer-status">Onaylı Başvuru</div>
@@ -154,39 +154,330 @@
             </div>
             <!-- Ekran 3: Kredi Detayları Seçimi -->
             <div class="screen" id="screen-3">
-              <h2>KMH</h2>
+              <h2>Ek Hesap Detayları Seçimi</h2>
+
+              <!-- HazırLimit Teklifi -->
+              <div class="upsell-offer" onclick="currentScreen = 4; nextScreen(3)">
+                <p class="upsell-text">
+                  250,000 TL ön onaylı Ek Hesabınız ile devam edebilirsiniz.
+                </p>
+              </div>
+
+              <!-- Talep Edilen Kredi Tutarı Alanı ve Info Simge -->
+              <div class="input-with-info" style="width:90%; margin: 10px auto;">
+                <input id="kredi-tutar-input" type="text" placeholder="Talep Edilen Ek Hesap Tutarı (TL)" oninput="formatCurrency(this); updateInstallmentInfo();" />
+              </div>
+              <!-- Kredi Türü Açılır Liste Alanı -->
+              <div class="kredi-turu-select-container">
+                <label for="kredi-turu-select">Tanımlanacak Hesap</label>
+                <div class="custom-dropdown" id="custom-dropdown">
+                  <div class="custom-dropdown-selected" onclick="toggleDropdown()">
+                    Hesap 1
+                  </div>
+                  <div class="custom-dropdown-list" id="custom-dropdown-list">
+                    <div class="dropdown-option" data-value="sigortalı-issizlik" onclick="selectOption(this)">
+                      <div class="option-title">Hesap 1</div>
+                      <div class="option-detail">Kullanılabilir Bakiye: 100,000</div>
+                    </div>
+                    <div class="dropdown-option" data-value="sigortalı-hayat" onclick="selectOption(this)">
+                      <div class="option-title">Hesap 2</div>
+                      <div class="option-detail">Kullanılabilir Bakiye: 100,000</div>
+                    </div>
+                    <div class="dropdown-option" data-value="sigortasız" onclick="selectOption(this)">
+                      <div class="option-title">Hesap 3</div>
+                      <div class="option-detail">Kullanılabilir Bakiye: 100,000</div>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
+              </div>
+              <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
             <!-- Ekran 4: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
             <div class="screen" id="screen-4">
-              <h2>KMH</h2>
+              <h2>Gelir ve Kişisel Bilgiler</h2>
+              
+              <!-- Gelir Bilgisi -->
+              <div class="input-with-info" style="width:90%; margin: 10px auto;">
+                <input id="gelir-input" type="text" placeholder="Gelir Bilgisi (TL)" oninput="formatCurrency(this);" />
+                <!-- Info simgesi gerekirse buraya eklenebilir -->
+              </div>
+              
+              <!-- Çalışma Şekli -->
+              <div class="vade-select-container">
+                <label for="calisma-sekli">Çalışma Şekli</label>
+                <select id="calisma-sekli">
+                  <option value="Ev Hanımı">Ev Hanımı</option>
+                  <option value="Öğrenci">Öğrenci</option>
+                  <option value="Çalışmıyor">Çalışmıyor</option>
+                  <option value="Yan Gelir Sahibi">Yan Gelir Sahibi</option>
+                  <option value="Part Time Çalışan">Part Time Çalışan</option>
+                  <option value="Özel Sektör Ücretli">Özel Sektör Ücretli</option>
+                  <option value="Kamu Ücretli">Kamu Ücretli</option>
+                  <option value="Esnaf/Ticaret">Esnaf/Ticaret</option>
+                  <option value="Emekli">Emekli</option>
+                  <option value="Emekli Çalışıyor">Emekli Çalışıyor</option>
+                </select>
+              </div>
+              
+              <!-- Meslek -->
+              <div class="vade-select-container">
+                <label for="meslek">Meslek</label>
+                <select id="meslek">
+                  <option value="Antikacı">Antikacı</option>
+                  <option value="Asker">Asker</option>
+                  <option value="Aşçı">Aşçı</option>
+                  <option value="Avukat">Avukat</option>
+                  <option value="Ayakkabıcı">Ayakkabıcı</option>
+                  <option value="Bakan/Belediye">Bakan/Belediye</option>
+                  <option value="Başkanı/Diplomat/Büyükelçi/Kaymakam/Vali/Milletvekili/Müsteşar">Başkanı/Diplomat/Büyükelçi/Kaymakam/Vali/Milletvekili/Müsteşar</option>
+                  <option value="Bakkal/Market/Manav">Bakkal/Market/Manav</option>
+                  <option value="Balıkçı">Balıkçı</option>
+                  <option value="Bebek/Hasta Bakıcısı">Bebek/Hasta Bakıcısı</option>
+                  <option value="Bekçi/Güvenlik Görevlisi">Bekçi/Güvenlik Görevlisi</option>
+                  <option value="Berber/Kuaför/Güzellik Uzmanı">Berber/Kuaför/Güzellik Uzmanı</option>
+                  <option value="Beyaz Eşya/Elektronik Eşya Bayii">Beyaz Eşya/Elektronik Eşya Bayii</option>
+                  <option value="Biyolog">Biyolog</option>
+                  <option value="Cafe/Pastane Sahibi">Cafe/Pastane Sahibi</option>
+                  <option value="Camcı">Camcı</option>
+                  <option value="Çağrı Merkezi Çalışanı">Çağrı Merkezi Çalışanı</option>
+                  <option value="Çanta Satıcısı">Çanta Satıcısı</option>
+                  <option value="Çiçekçi">Çiçekçi</option>
+                  <option value="Çiftçi">Çiftçi</option>
+                  <option value="Dekorasyoncu">Dekorasyoncu</option>
+                  <option value="Denizci">Denizci</option>
+                  <option value="Devlet Memuru">Devlet Memuru</option>
+                  <option value="Diş Hekimi">Diş Hekimi</option>
+                  <option value="Diyetisyen">Diyetisyen</option>
+                  <option value="Doçent">Doçent</option>
+                  <option value="Doktor">Doktor</option>
+                  <option value="Döviz Bürosu Sahibi/Çalışanı">Döviz Bürosu Sahibi/Çalışanı</option>
+                  <option value="Ebe">Ebe</option>
+                  <option value="Eczacı">Eczacı</option>
+                  <option value="Elektrikçi">Elektrikçi</option>
+                  <option value="Emlakçı">Emlakçı</option>
+                  <option value="E-Ticaret Sitesi Sahibi">E-Ticaret Sitesi Sahibi</option>
+                  <option value="Fabrika Sahibi">Fabrika Sahibi</option>
+                  <option value="Fırıncı">Fırıncı</option>
+                  <option value="Finans/Bankacı/Sigortacı">Finans/Bankacı/Sigortacı</option>
+                  <option value="Finansal/Yatırım Danışmanı">Finansal/Yatırım Danışmanı</option>
+                  <option value="Fizyoterapist">Fizyoterapist</option>
+                  <option value="Fotoğrafçı/Film Yapımcısı – Yönetmeni">Fotoğrafçı/Film Yapımcısı – Yönetmeni</option>
+                  <option value="Garson">Garson</option>
+                  <option value="Gazete/Milli Piyango/İddaa Bayii Sahibi">Gazete/Milli Piyango/İddaa Bayii Sahibi</option>
+                  <option value="Gazeteci">Gazeteci</option>
+                  <option value="Gemi Kaptanı/Gemici">Gemi Kaptanı/Gemici</option>
+                  <option value="Hakim/Savcı">Hakim/Savcı</option>
+                  <option value="Hemşire">Hemşire</option>
+                  <option value="Hostes/Host">Hostes/Host</option>
+                  <option value="İhracatçı">İhracatçı</option>
+                  <option value="İmalathane Sahibi">İmalathane Sahibi</option>
+                  <option value="İmam/Din Görevlisi">İmam/Din Görevlisi</option>
+                  <option value="İş Güvenliği Uzmanı">İş Güvenliği Uzmanı</option>
+                  <option value="İş Makinesi Operatörü">İş Makinesi Operatörü</option>
+                  <option value="İşçi">İşçi</option>
+                  <option value="İtfaiyeci">İtfaiyeci</option>
+                  <option value="İthalatçı">İthalatçı</option>
+                  <option value="Kameraman/Işıkçı">Kameraman/Işıkçı</option>
+                  <option value="Kapıcı/Hademe">Kapıcı/Hademe</option>
+                  <option value="Kargo Acentası Sahibi">Kargo Acentası Sahibi</option>
+                  <option value="Kimyager">Kimyager</option>
+                  <option value="Kitapçı/Kırtasiyeci">Kitapçı/Kırtasiyeci</option>
+                  <option value="Koç (Yaşam, Meslek, Eğitim)">Koç (Yaşam, Meslek, Eğitim)</option>
+                  <option value="Konfeksiyoncu">Konfeksiyoncu</option>
+                  <option value="Kozmetik Ürünler/Parfümeri Sahibi">Kozmetik Ürünler/Parfümeri Sahibi</option>
+                  <option value="Kömür/Mermer Bayii">Kömür/Mermer Bayii</option>
+                  <option value="Kripto Para Borsası Çalışanı/Uzmanı/Yatırımcısı">Kripto Para Borsası Çalışanı/Uzmanı/Yatırımcısı</option>
+                  <option value="Kuru Temizlemeci">Kuru Temizlemeci</option>
+                  <option value="Kuruyemiş/Aktar">Kuruyemiş/Aktar</option>
+                  <option value="Kurye">Kurye</option>
+                  <option value="Kuyumcu">Kuyumcu</option>
+                  <option value="Kürkçü/Perukçu">Kürkçü/Perukçu</option>
+                  <option value="Lokanta/Restaurant Sahibi">Lokanta/Restaurant Sahibi</option>
+                  <option value="Makinist/Vatman">Makinist/Vatman</option>
+                  <option value="Mali Müşavir">Mali Müşavir</option>
+                  <option value="Manken">Manken</option>
+                  <option value="Marangoz">Marangoz</option>
+                  <option value="Matbaacı">Matbaacı</option>
+                  <option value="Medikal Ürünler Satıcısı">Medikal Ürünler Satıcısı</option>
+                  <option value="Menajer">Menajer</option>
+                  <option value="Meyve Sebze Komisyoncusu">Meyve Sebze Komisyoncusu</option>
+                  <option value="Mimar/İç Mimar">Mimar/İç Mimar</option>
+                  <option value="Mobilya İmalat/Satış">Mobilya İmalat/Satış</option>
+                  <option value="Modacı">Modacı</option>
+                  <option value="Muhasebeci">Muhasebeci</option>
+                  <option value="Muhtar">Muhtar</option>
+                  <option value="Mühendis">Mühendis</option>
+                  <option value="Müşteri Temsilcisi/Satış Temsilcisi/Pazarlamacı">Müşteri Temsilcisi/Satış Temsilcisi/Pazarlamacı</option>
+                  <option value="Müteahhit">Müteahhit</option>
+                  <option value="Müzisyen">Müzisyen</option>
+                  <option value="Nakliyeci">Nakliyeci</option>
+                  <option value="Nalbur">Nalbur</option>
+                  <option value="Noter">Noter</option>
+                  <option value="Otel/Pansiyon Sahibi">Otel/Pansiyon Sahibi</option>
+                  <option value="Oto Alım Satım/Kiralama Galerisi Sahibi">Oto Alım Satım/Kiralama Galerisi Sahibi</option>
+                  <option value="Oto Yedek Parça">Oto Yedek Parça</option>
+                  <option value="Oto Yıkama/Lastikçi">Oto Yıkama/Lastikçi</option>
+                  <option value="Öğretim Üyesi">Öğretim Üyesi</option>
+                  <option value="Öğretmen">Öğretmen</option>
+                  <option value="Pazarcı">Pazarcı</option>
+                  <option value="Pilot">Pilot</option>
+                  <option value="Polis">Polis</option>
+                  <option value="Profesör">Profesör</option>
+                  <option value="Psikolog">Psikolog</option>
+                  <option value="Reklamcı">Reklamcı</option>
+                  <option value="Ressam/Heykeltraş/Karikatürist">Ressam/Heykeltraş/Karikatürist</option>
+                  <option value="Saatçi">Saatçi</option>
+                  <option value="Sanatçı">Sanatçı</option>
+                  <option value="Sekreter/Yönetici Asistanı">Sekreter/Yönetici Asistanı</option>
+                  <option value="Senarist">Senarist</option>
+                  <option value="Seyyar Satıcı">Seyyar Satıcı</option>
+                  <option value="Simitçi">Simitçi</option>
+                  <option value="Sosyal Medya Fenomeni/Içerik Üreticisi">Sosyal Medya Fenomeni/Içerik Üreticisi</option>
+                  <option value="Sosyolog">Sosyolog</option>
+                  <option value="Sporcu/Antrenör">Sporcu/Antrenör</option>
+                  <option value="Şarküteri/Kantin Sahibi">Şarküteri/Kantin Sahibi</option>
+                  <option value="Şoför">Şoför</option>
+                  <option value="Tamirci">Tamirci</option>
+                  <option value="Tekel Bayi">Tekel Bayi</option>
+                  <option value="Teknisyen">Teknisyen</option>
+                  <option value="Tekstil Atölyesi Sahibi">Tekstil Atölyesi Sahibi</option>
+                  <option value="Telefon/Bilgisayar Bayii">Telefon/Bilgisayar Bayii</option>
+                  <option value="Temizlikçi/Ev Yardımcısı">Temizlikçi/Ev Yardımcısı</option>
+                  <option value="Tercüman">Tercüman</option>
+                  <option value="Terzi">Terzi</option>
+                  <option value="Tezgahtar">Tezgahtar</option>
+                  <option value="Toptancı">Toptancı</option>
+                  <option value="Tuhafiyeci/Mefruşatçı/Züccaciyeci">Tuhafiyeci/Mefruşatçı/Züccaciyeci</option>
+                  <option value="Tur Rehberi/Turizm Sektörü Çalışanı">Tur Rehberi/Turizm Sektörü Çalışanı</option>
+                  <option value="Turizmci">Turizmci</option>
+                  <option value="Vale">Vale</option>
+                  <option value="Veteriner">Veteriner</option>
+                  <option value="Yapımcı/Yönetmen">Yapımcı/Yönetmen</option>
+                  <option value="Yazar/Editör">Yazar/Editör</option>
+                  <option value="Yazılımcı/Analist">Yazılımcı/Analist</option>
+                  <option value="Zanaatkar">Zanaatkar</option>
+                </select>
+              </div>
+              
+              <!-- Unvan -->
+              <div class="vade-select-container">
+                <label for="unvan">Unvan</label>
+                <select id="unvan">
+                  <option value="Firma Sahibi/Ortak">Firma Sahibi/Ortak</option>
+                  <option value="Usta">Usta</option>
+                  <option value="Kalfa">Kalfa</option>
+                  <option value="Çırak">Çırak</option>
+                  <option value="İşçi">İşçi</option>
+                  <option value="Üst Düzey Yönetici (CEO/GM/GMY)">Üst Düzey Yönetici (CEO/GM/GMY)</option>
+                  <option value="Müdür">Müdür</option>
+                  <option value="Müdür Yard.">Müdür Yard.</option>
+                  <option value="Yönetici">Yönetici</option>
+                  <option value="Uzman">Uzman</option>
+                  <option value="Kıdemli Uzman">Kıdemli Uzman</option>
+                  <option value="Çalışan/İşçi">Çalışan/İşçi</option>
+                  <option value="Memur">Memur</option>
+                  <option value="Stajyer">Stajyer</option>
+                </select>
+              </div>
+              
+              <!-- Eğitim -->
+              <div class="vade-select-container">
+                <label for="egitim">Eğitim</label>
+                <select id="egitim">
+                  <option value="Okur Yazar">Okur Yazar</option>
+                  <option value="İlkokul">İlkokul</option>
+                  <option value="Ortaokul">Ortaokul</option>
+                  <option value="Lise">Lise</option>
+                  <option value="Yüksekokul">Yüksekokul</option>
+                  <option value="Lisans">Lisans</option>
+                  <option value="Yüksek Lisans">Yüksek Lisans</option>
+                </select>
+              </div>
+              
+              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-            <!-- Ekran 5: Kredi Revize -->
+            <!-- Ekran 5: İşlem Özeti -->
             <div class="screen" id="screen-5">
-              <h2>KMH</h2>
+              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
+              <h2 class="screen-heading">İşlem Özeti</h2>
+              
+              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
+              <div class="summary-box">
+                <div class="summary-text">İşlem Özeti Detayları</div>
+              </div>
+              
+              <!-- Sadece ok şeklinde geri dönüş simgesi -->
+              <span class="back-arrow" >&larr;</span>
+
+              <!-- Sözleşme Onayları -->
+              <div class="agreement-container">
+                <div class="agreement">
+                  <input type="checkbox" id="agreement1">
+                  <label for="agreement1">
+                    KMH Bilgilendirme ve Talep Formu’nu okudum, onaylıyorum.
+                  </label>
+                </div>
+                <div class="agreement">
+                  <input type="checkbox" id="agreement2">
+                  <label for="agreement2">
+                    KMH Sözleşmesi’ni okudum, onaylıyorum.
+                  </label>
+                </div>
+                <div class="agreement">
+                  <input type="checkbox" id="agreement3">
+                  <label for="agreement3">
+                    KMH Amaç Dışı Kullanım Taahhütnamesi’ni okudum, onaylıyorum.
+                  </label>
+                </div>
+                <div class="agreement">
+                  <input type="checkbox" id="agreement4">
+                  <label for="agreement4">
+                    KMH Limitimin düzenli olarak artırılmasını istiyorum.
+                  </label>
+                </div>
+
+              </div>
+              
+              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
+              <button onclick="nextScreen(5)" class="continue-button">Başvur</button>
             </div>
-            <!-- Ekran 6: İşlem Özeti -->
+            <!-- Ekran 6: Onaylandı -->
             <div class="screen" id="screen-6">
-              <h2>KMH</h2>
+              <div class="screen-title">Ek Hesap Başvurusu</div>
+              <div class="approved-icon">
+                <span>✔</span>
+              </div>
+              <div class="approved-title">Limit Başvurunuz Onaylandı</div>
+              <p class="approved-description">
+                ₺50.000,00 kredili mevduat limitiniz  “Harcama Hesabım” adlı hesabınıza aktarıldı. Kredili mevduat hesabı kullanımına ilişkin belgeler e-posta adresinize gönderildi.
+              </p>
+              <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 7: İşlem Özeti -->
+            <!-- Ekran 7: Reddedildi -->
             <div class="screen" id="screen-7">
-              <h2>KMH</h2>
+              <div class="screen-title">Ek Hesap Başvurusu</div>
+              <div class="reject-icon">
+                <span>✕</span>
+              </div>
+              <div class="reject-title">Limit Başvurunuz Onaylanmadı</div>
+              <p class="reject-description">
+                Kredili mevduat limit başvurunuz için girmiş olduğunuz bilgiler ile yapılan değerlendirme sonucunda başvurunuz olumsuz sonuçlanmıştır.
+              </p>
+              <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 8: Onay -->
+            <!-- Ekran 8: Gri Alan -->
             <div class="screen" id="screen-8">
-              <h2>KMH</h2>
-            </div>
-            <!-- Ekran 9: Onaylandı -->
-            <div class="screen" id="screen-9">
-              <h2>KMH</h2>
-            </div>
-            <!-- Ekran 10: Reddedildi -->
-            <div class="screen" id="screen-10">
-              <h2>KMH</h2>
-            </div>
-            <!-- Ekran 11: Gri Alan -->
-            <div class="screen" id="screen-11">
-              <h2>KMH</h2>
+              <div class="screen-title">Ek Hesap Başvurusu</div>
+              <div class="pending-icon">
+                <span>🕒</span>
+              </div>
+              <div class="pending-title">Başvurunuz Değerlendiriliyor</div>
+              <p class="pending-description">
+                Başvurunuz değerlendirmeye alındı.
+                En kısa sürede sizi bilgilendireceğiz..
+              </p>
+              <button class="continue-button">Tamam</button>
             </div>
           </div>        
         </div>
