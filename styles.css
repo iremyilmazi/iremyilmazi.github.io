@@ -1640,7 +1640,7 @@ body, html {
   bottom: 100%; /* Butonun hemen üzerinde */
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 97%;
   max-width: 360px;
   background-color: #fff;
   border: 1px solid #dfe6e9;
@@ -1697,11 +1697,11 @@ body, html {
 
 /* Tab Butonları */
 .tab-container {
-  width: 100%;
+  width: 101%;
   margin: 20px auto; /* Üstten ve alttan boşluk */
   display: flex;
   justify-content: flex-start; /* Butonlar sola hizalı */
-  gap: 10px; /* Butonlar arasına boşluk */
+  gap: 1px; /* Butonlar arasına boşluk */
   overflow-x: hidden; /* Yatay taşmayı engelle */
   box-sizing: border-box;
 }
@@ -1718,7 +1718,7 @@ body, html {
 }
 .tab-btn.active {
   color: #000000;
-  border-bottom: 2px solid #3498db;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 /* Tab İçerikleri */
