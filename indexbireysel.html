@@ -101,7 +101,7 @@
                   <div class="offer-group">
                     <h3 class="group-header">İhtiyaç Kredisi</h3>
                     <!-- Offer Card'lar -->
-                    <div class="offer-card" onclick="openOfferPopup(this)">
+                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 250,000</div>
                       <div class="offer-detail">Taksit Tutarı: 21,000</div>
@@ -124,7 +124,7 @@
                   <!-- Grup 2: Taşıt Kredisi (Örnek KMH) -->
                   <div class="offer-group">
                     <h3 class="group-header">İhtiyaç Kredisi</h3>
-                    <div class="offer-card" onclick="openOfferPopup(this)">
+                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 200,000</div>
                       <div class="offer-detail">Taksit Tutarı: 3,000</div>
@@ -576,93 +576,21 @@
               
               <button onclick="currentScreen = 5; nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
-            <!-- Ekran 5: Kredi Revize -->
+            <!-- Ekran 5: İşlem Özeti -->
             <div class="screen" id="screen-5">
-              <h2>Kredi Revize</h2>
+              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
+              <h2 class="screen-heading">İşlem Özeti</h2>
               
-              <!-- Talep Kredi Tutarı Girişi -->
-              <div class="input-with-info" style="width:90%; margin: 10px auto;">
-                <input id="revize-kredi-tutar-input" type="text" placeholder="Talep Kredi Tutarı (TL)" oninput="formatCurrency(this)" />
-                <span class="info-icon" onclick="toggleLegalInforev()">i</span>
-                <div class="legal-info-popup-rev" id="legal-info-popup-rev">
-                  <p>Onaylı kredi tutarı yanlızca azaltılabilir.</p>
-                </div>
+              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
+              <div class="summary-box">
+                <div class="summary-text">İşlem Özeti Detayları</div>
               </div>
-              
-              <!-- Vade Seçimi Alanı -->
-              <div class="vade-select-container">
-                <label for="revize-vade-select">Vade Seçimi</label>
-                <select id="revize-vade-select" onchange="vadeChange(this.value)">
-                  <option value="1">1 Ay</option>
-                  <option value="2">2 Ay</option>
-                  <option value="3">3 Ay</option>
-                  <option value="4">4 Ay</option>
-                  <option value="5">5 Ay</option>
-                  <option value="6">6 Ay</option>
-                  <option value="7">7 Ay</option>
-                  <option value="8">8 Ay</option>
-                  <option value="9">9 Ay</option>
-                  <option value="10">10 Ay</option>
-                  <option value="11">11 Ay</option>
-                  <option value="12" selected>12 Ay</option>
-                  <option value="13">13 Ay</option>
-                  <option value="14">14 Ay</option>
-                  <option value="15">15 Ay</option>
-                  <option value="16">16 Ay</option>
-                  <option value="17">17 Ay</option>
-                  <option value="18">18 Ay</option>
-                  <option value="19">19 Ay</option>
-                  <option value="20">20 Ay</option>
-                  <option value="21">21 Ay</option>
-                  <option value="22">22 Ay</option>
-                  <option value="23">23 Ay</option>
-                  <option value="24">24 Ay</option>
-                  <option value="25">25 Ay</option>
-                  <option value="26">26 Ay</option>
-                  <option value="27">27 Ay</option>
-                  <option value="28">28 Ay</option>
-                  <option value="29">29 Ay</option>
-                  <option value="30">30 Ay</option>
-                  <option value="31">31 Ay</option>
-                  <option value="32">32 Ay</option>
-                  <option value="33">33 Ay</option>
-                  <option value="34">34 Ay</option>
-                  <option value="35">35 Ay</option>
-                  <option value="36">36 Ay</option>
-                </select>            
-                <span class="info-icon-vade" onclick="toggleVadeInfo()">i</span>
-                <div class="vade-info-popup" id="vade-info-popup">
-                  <p>
-                    Onaylı kredi vadesi yanlızca arttırılabilir.
-                  </p>
-                </div>
-              </div>
-              
-              <!-- Kapsayıcı Kutucuk: Ödeme Planı, Aylık Taksit, Toplam Geri Ödeme -->
-              <div class="repayment-info-box" style="width:90%; margin:10px ; padding:10px; background-color: rgba(52,152,219,0.1); border-radius:6px; text-align: left;">
-  
-                <!-- Faiz Oranı Bilgisi (Aylık Taksit'in üstünde) -->
-                <div class="installment-info" id="faiz-orani" style="width:90%; margin:10px auto; text-align: left;">Faiz Oranı: -</div>
 
-                <!-- Aylık Taksit Bilgisi -->
-                <div class="installment-info" id="installment-info" style="width:90%; margin:10px auto;">
-                  Aylık Taksit: -
-                </div>
-                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
-                <div class="installment-info"  style="width:90%; margin:10px auto; text-align: left;">
-                  Toplam Sigorta Primi: 500 TL
-                </div>
-                <!-- Toplam Geri Ödeme Alanı (Yeni eklenen) -->
-                <div class="installment-info" id="total-repayment" style="width:90%; margin:10px auto; text-align: left;">
-                  Toplam Geri Ödeme: -
-                </div>
-                
-                <!-- Ödeme Planı Linki -->
-                <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
-                
-              </div>
+              <!-- Ödeme Planı Linki -->
+              <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
               
-              <button onclick="nextScreen(5)" style="margin: 15px auto; display: block;">Devam</button>
+              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
+              <button onclick="currentScreen = 6;nextScreen(5)" class="continue-button">Başvur</button>
             </div>
             <!-- Ekran 6: İşlem Özeti -->
             <div class="screen" id="screen-6">
@@ -674,24 +602,14 @@
                 <div class="summary-text">İşlem Özeti Detayları</div>
               </div>
               
+              <!-- Ödeme Planı Linki -->
+              <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
+              
               <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="currentScreen = 7;nextScreen(6)" class="continue-button">Başvur</button>
+              <button onclick="nextScreen(6)" class="continue-button">Devam</button>
             </div>
-            <!-- Ekran 7: İşlem Özeti -->
+            <!-- Ekran 7: Onay -->
             <div class="screen" id="screen-7">
-              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
-              <h2 class="screen-heading">İşlem Özeti</h2>
-              
-              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
-              <div class="summary-box">
-                <div class="summary-text">İşlem Özeti Detayları</div>
-              </div>
-              
-              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="nextScreen(7)" class="continue-button">Devam</button>
-            </div>
-            <!-- Ekran 8: Onay -->
-            <div class="screen" id="screen-8">
               <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
               <p class="confirmation-message">
                 Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
@@ -729,10 +647,10 @@
               </div>
               
               <!-- İki Devam Butonu -->
-              <button onclick="nextScreen(8)" style="margin: 15px auto; display: block;">Kullan</button>
+              <button onclick="nextScreen(7)" style="margin: 15px auto; display: block;">Kullan</button>
             </div>
-            <!-- Ekran 9: Onaylandı -->
-            <div class="screen" id="screen-9">
+            <!-- Ekran 8: Onaylandı -->
+            <div class="screen" id="screen-8">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="approved-icon">
                 <span>✔</span>
@@ -743,8 +661,8 @@
               </p>
               <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 10: Reddedildi -->
-            <div class="screen" id="screen-10">
+            <!-- Ekran 9: Reddedildi -->
+            <div class="screen" id="screen-9">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="reject-icon">
                 <span>✕</span>
@@ -758,8 +676,8 @@
               </p>
               <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 11: Gri Alan -->
-            <div class="screen" id="screen-11">
+            <!-- Ekran 10: Gri Alan -->
+            <div class="screen" id="screen-10">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="pending-icon">
                 <span>🕒</span>

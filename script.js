@@ -6,7 +6,7 @@ let selectedVade = null;
 let krediTuru = null;
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= 10; i++) {
     addMiniScreen(i);
   }
   updateMiniScreenHighlight(currentScreen);
@@ -82,7 +82,7 @@ function addMiniScreen(stepNumber) {
   
   const miniTracker = document.createElement('div');
   miniTracker.className = 'mini-tracker';
-  miniTracker.innerText = `Adım ${stepNumber}/11`;
+  miniTracker.innerText = `Adım ${stepNumber}/10`;
   miniScreen.appendChild(miniTracker);
   
   flowScreens.appendChild(miniScreen);
