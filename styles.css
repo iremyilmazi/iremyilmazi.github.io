@@ -1731,3 +1731,12 @@ body, html {
   display: block;
 }
 
+.back-arrow {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #3498db; /* İstediğiniz renk */
+  user-select: none;
+}

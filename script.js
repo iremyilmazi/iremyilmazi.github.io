@@ -4,6 +4,8 @@ let zoomFactor = 1.6;
 let overlayVisible = false;
 let selectedVade = null;
 let krediTuru = null;
+let screenHistory = [];
+let previousScreenNumber = null;
 
 document.addEventListener("DOMContentLoaded", function() {
   for (let i = 1; i <= 10; i++) {
@@ -42,7 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
   renderNotes(pageId);
 });
 
+
 function nextScreen(screen) {
+  // Geçiş öncesi, tamamlanan ekranı previousScreenNumber olarak saklıyoruz.
+  previousScreenNumber = screen;
+  
   document.getElementById(`screen-${screen}`).classList.remove('active');
   currentScreen++;
   const next = document.getElementById(`screen-${currentScreen}`);
@@ -822,4 +828,13 @@ function showTab(tabId) {
   const tabBtns = document.querySelectorAll('.tab-btn');
   tabBtns.forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
+}
+
+
+function goBack() {
+  if (previousScreenNumber) {
+    nextScreen(previousScreenNumber);
+  } else {
+    console.warn("Önceki ekran numarası tanımlı değil.");
+  }
 }
