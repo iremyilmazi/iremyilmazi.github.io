@@ -167,6 +167,7 @@
               <div class="input-with-info" style="width:90%; margin: 10px auto;">
                 <input id="kredi-tutar-input" type="text" placeholder="Talep Edilen Ek Hesap Tutarı (TL)" oninput="formatCurrency(this); updateInstallmentInfo();" />
               </div>
+
               <!-- Kredi Türü Açılır Liste Alanı -->
               <div class="kredi-turu-select-container">
                 <label for="kredi-turu-select">Tanımlanacak Hesap</label>
@@ -191,17 +192,20 @@
                 </div>
                 <input type="hidden" id="kredi-turu-select" value="sigortalı-issizlik">
               </div>
+
+              <!-- Gelir Bilgisi -->
+              <div class="input-with-info" style="width:90%; margin: 10px auto;">
+                <input id="gelir-input" type="text" placeholder="Gelir Bilgisi (TL)" oninput="formatCurrency(this);" />
+                <!-- Info simgesi gerekirse buraya eklenebilir -->
+              </div>
+
+
               <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
             <!-- Ekran 4: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
             <div class="screen" id="screen-4">
               <h2>Gelir ve Kişisel Bilgiler</h2>
               
-              <!-- Gelir Bilgisi -->
-              <div class="input-with-info" style="width:90%; margin: 10px auto;">
-                <input id="gelir-input" type="text" placeholder="Gelir Bilgisi (TL)" oninput="formatCurrency(this);" />
-                <!-- Info simgesi gerekirse buraya eklenebilir -->
-              </div>
               
               <!-- Çalışma Şekli -->
               <div class="vade-select-container">
