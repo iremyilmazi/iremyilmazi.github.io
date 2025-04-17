@@ -241,68 +241,6 @@
               <button id="show-post-vade" style="display: block; margin: 10px auto;" onclick="showPostVade()">Devam</button>
               <div class="post-vade-container" style="display: none;">
                 
-                <!-- Çapraz Satış Önerileri Alanı -->
-                <div class="cross-sell-select-container">
-                  <div class="custom-dropdown-cross-sell" id="cross-sell-dropdown">
-                    <div class="custom-dropdown-selected-cross-sell" onclick="toggleCrossSellDropdown()">
-                      Çapraz Satış Önerileri
-                    </div>
-                    <div class="custom-dropdown-list-cross-sell" id="cross-sell-dropdown-list">
-                      <div class="dropdown-option-cross-sell" data-value="kredi-karti">
-                        <div class="option-info">
-                          <div class="option-title-cross-sell">Kredi Kartı</div>
-                          <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
-                        </div>
-                        <div class="toggle-container">
-                          <label class="switch">
-                            <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredi-karti" checked>
-                            <span class="slider round"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="dropdown-option-cross-sell" data-value="kredili-mevduat">
-                        <div class="option-info">
-                          <div class="option-title-cross-sell">Kredili Mevduat Hesabı</div>
-                          <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
-                        </div>
-                        <div class="toggle-container">
-                          <label class="switch">
-                            <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredili-mevduat">
-                            <span class="slider round"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="dropdown-option-cross-sell" data-value="otomatik-fatura">
-                        <div class="option-info">
-                          <div class="option-title-cross-sell">Otomatik Fatura Talimatı</div>
-                          <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
-                        </div>
-                        <div class="toggle-container">
-                          <label class="switch">
-                            <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="otomatik-fatura">
-                            <span class="slider round"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <div class="dropdown-option-cross-sell" data-value="bireysel-emeklilik">
-                        <div class="option-info">
-                          <div class="option-title-cross-sell">Bireysel Emeklilik</div>
-                          <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
-                        </div>
-                        <div class="toggle-container">
-                          <label class="switch">
-                            <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="bireysel-emeklilik">
-                            <span class="slider round"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <!-- Kapat butonu -->
-                      <button class="close-cross-sell-btn" onclick="closeCrossSellDropdown()">Kapat</button>
-                    </div>
-                  </div>
-                  <!-- Seçilen değerleri saklamak için gizli input -->
-                  <input type="hidden" id="cross-sell-select" value="">
-                </div>
                 <!-- Kredi Türü Açılır Liste Alanı -->
                 <div class="kredi-turu-select-container">
                   <label for="kredi-turu-select">Kredi Türü</label>
@@ -371,8 +309,50 @@
                 <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
               </div>
             </div>
-            <!-- Ekran 4: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <!-- Ekran 4: Sigorta -->
             <div class="screen" id="screen-4">
+              <h2>Sigorta Sağlık Beyanı</h2>
+              <div class="question-block">
+                <p class="pending-descriptionq1">
+                  Sigorta poliçenizin düzenlenebilmesi için aşağıdaki soruları yanıtlayınız. 
+                </p>
+                <p class="pending-descriptionq2">
+                  1- Bugüne kadar kalp ve damar, beyin ve omurilik hastalıkları veya kanser gibi hastalıklardan birini geçirdiniz mi? 
+                </p>
+                <div class="radio-group">
+                  <label>
+                    <input type="radio" name="hospitalStay" value="yes" />
+                    Evet
+                  </label>
+                  <label>
+                    <input type="radio" name="hospitalStay" value="no" checked />
+                    Hayır
+                  </label>
+                </div>
+                <p class="pending-descriptionq3">
+                  2- Son beş sene içinde aralıksız beş gün ya da daha uzun süre boyunca hastanede yattınız mı? 
+                </p>
+                <div class="radio-group">
+                  <label>
+                    <input type="radio" name="hospitalStay" value="yes" />
+                    Evet
+                  </label>
+                  <label>
+                    <input type="radio" name="hospitalStay" value="no" checked />
+                    Hayır
+                  </label>
+                </div>
+              </div> 
+              <div class="agreement">
+                <input type="checkbox" id="agreement1">
+                <label for="agreement1">
+                  Veri sorumlusu ABC emeklilik tarafından kişisel verilerimin aydınlatma metninde belirtildiği şekilde işlenmesini ve aktarılmasını kabul ediyorum.
+                </label>
+              </div>
+              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
+            </div>
+            <!-- Ekran 5: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
+            <div class="screen" id="screen-5">
               <h2>Gelir ve Kişisel Bilgiler</h2>
               
               <!-- Gelir Bilgisi -->
@@ -573,26 +553,7 @@
                 </select>
               </div>
               
-              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
-            </div>
-            <!-- Ekran 5: İşlem Özeti -->
-            <div class="screen" id="screen-5">
-              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
-              <h2 class="screen-heading">İşlem Özeti</h2>
-              
-              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
-              <div class="summary-box">
-                <div class="summary-text">İşlem Özeti Detayları</div>
-              </div>
-
-              <!-- Ödeme Planı Linki -->
-              <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
-              
-              <!-- Sadece ok şeklinde geri dönüş simgesi -->
-              <span class="back-arrow" >&larr;</span>
-              
-              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="currentScreen = 6;nextScreen(5)" class="continue-button">Başvur</button>
+              <button onclick="nextScreen(5)" style="margin: 15px auto; display: block;">Devam</button>
             </div>
             <!-- Ekran 6: İşlem Özeti -->
             <div class="screen" id="screen-6">
@@ -603,6 +564,25 @@
               <div class="summary-box">
                 <div class="summary-text">İşlem Özeti Detayları</div>
               </div>
+
+              <!-- Ödeme Planı Linki -->
+              <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
+              
+              <!-- Sadece ok şeklinde geri dönüş simgesi -->
+              <span class="back-arrow" >&larr;</span>
+              
+              <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
+              <button onclick="currentScreen = 7;nextScreen(6)" class="continue-button">Başvur</button>
+            </div>
+            <!-- Ekran 7: İşlem Özeti -->
+            <div class="screen" id="screen-7">
+              <!-- Üstte, ekranın en üstünde hizalanmış "İşlem Özeti" başlığı -->
+              <h2 class="screen-heading">İşlem Özeti</h2>
+              
+              <!-- Ortada, kalan alanı kaplayan İşlem Özeti kutucuğu -->
+              <div class="summary-box">
+                <div class="summary-text">İşlem Özeti Detayları</div>
+              </div>
               
               <!-- Ödeme Planı Linki -->
               <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
@@ -611,10 +591,10 @@
               <span class="back-arrow" >&larr;</span>
 
               <!-- En altta, ekranın altına yaslanmış "Devam" butonu -->
-              <button onclick="nextScreen(6)" class="continue-button">Devam</button>
+              <button onclick="nextScreen(7)" class="continue-button">Devam</button>
             </div>
-            <!-- Ekran 7: Onay -->
-            <div class="screen" id="screen-7">
+            <!-- Ekran 8: Onay -->
+            <div class="screen" id="screen-8">
               <h1 class="confirmation-title">Kredi Başvurunuz Onaylandı!</h1>
               <p class="confirmation-message">
                 Onaylı kredinizi, kredi tutarının yatırılacağı hesabı seçerek kullanabilirsiniz.
@@ -652,10 +632,10 @@
               </div>
               
               <!-- İki Devam Butonu -->
-              <button onclick="nextScreen(7)" style="margin: 15px auto; display: block;">Kullan</button>
+              <button onclick="nextScreen(8)" style="margin: 15px auto; display: block;">Kullan</button>
             </div>
-            <!-- Ekran 8: Onaylandı -->
-            <div class="screen" id="screen-8">
+            <!-- Ekran 9: Onaylandı -->
+            <div class="screen" id="screen-9">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="approved-icon">
                 <span>✔</span>
@@ -666,8 +646,8 @@
               </p>
               <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 9: Reddedildi -->
-            <div class="screen" id="screen-9">
+            <!-- Ekran 10: Reddedildi -->
+            <div class="screen" id="screen-10">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="reject-icon">
                 <span>✕</span>
@@ -681,8 +661,8 @@
               </p>
               <button class="continue-button">Tamam</button>
             </div>
-            <!-- Ekran 10: Gri Alan -->
-            <div class="screen" id="screen-10">
+            <!-- Ekran 11: Gri Alan -->
+            <div class="screen" id="screen-11">
               <div class="screen-title">İhtiyaç Kredisi Başvurusu</div>
               <div class="pending-icon">
                 <span>🕒</span>

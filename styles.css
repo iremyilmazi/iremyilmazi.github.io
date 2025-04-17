@@ -1740,3 +1740,64 @@ body, html {
   color: #3498db; /* İstediğiniz renk */
   user-select: none;
 }
+
+/* Ekran 4’teki evet/hayır seçeneği */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 10px 0 20px;
+}
+.radio-group label {
+  font-size: 14px;
+  color: #2c3e50;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.radio-group input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #3498db; /* modern tarza uygun mavi ton */
+}
+
+/* Açıklama paragrafı */
+.pending-descriptionq1 {
+  font-size: 16px;
+  color: #555;
+  margin: 98px 20px 30px;
+  line-height: 1.5;
+  font-weight: bold
+}
+
+/* Açıklama paragrafı */
+.pending-descriptionq2 {
+  font-size: 14px;
+  color: #555;
+  margin: -31px 47px 0px;
+  line-height: 1.5;
+}
+
+/* Açıklama paragrafı */
+.pending-descriptionq3 {
+  font-size: 14px;
+  color: #555;
+  margin: 0 50px 0px;
+  line-height: 1.5;
+}
+
+/* Soru bloklarını ayrı kartlar gibi göstermek için */
+.question-block {
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px auto
+}
+
+/* Soru metni */
+.question-block p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
