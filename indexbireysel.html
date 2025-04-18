@@ -101,7 +101,7 @@
                   <div class="offer-group">
                     <h3 class="group-header">İhtiyaç Kredisi</h3>
                     <!-- Offer Card'lar -->
-                    <div class="offer-card" onclick="currentScreen = 5;nextScreen(2)">
+                    <div class="offer-card" onclick="openCancelConfirmation()">
                       <div class="offer-header">Standart Teminatsız Kredi</div>
                       <div class="offer-detail">Kredi Tutarı: 250,000</div>
                       <div class="offer-detail">Taksit Tutarı: 21,000</div>
@@ -164,6 +164,20 @@
                   <button class="dropdown-option-btn" onclick="goToNextScreen('kredi')">İhtiyaç Kredisi</button>
                   <button class="dropdown-option-btn" onclick="goToNextScreen('krediKart')">Konut Kredisi</button>
                   <button class="dropdown-option-btn" onclick="goToNextScreen('kmh')">Taşıt Kredisi</button>
+                </div>
+              </div>
+              <!-- ———————— ONAY POPUP ———————— -->
+              <div id="cancel-modal" class="modal-overlay">
+                <div class="modal-content">
+                  <p class="modal-text">
+                    Onaylanmış 250,000 TL tutarında ve 12 ay vadeli bir kredi başvurunuz bulunmaktadır.  
+                    Yeni başvurunuza devam etmeniz durumunda, mevcut başvurunuz iptal edilecektir.  
+                    Devam etmek istiyor musunuz?
+                  </p>
+                  <div class="modal-buttons">
+                    <button id="modal-yes" class="modal-btn">Evet</button>
+                    <button id="modal-no" class="modal-btn">Hayır</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -306,6 +320,7 @@
                   <div class="odeme-plani-link" style="width:90%; margin: 10px ; text-align: right;" onclick="openOdemePlaniPopup()">Ödeme Planı</div>
                   
                 </div>
+                <p>Paylaştığınız kişisel bilgileriniz sadece bankacılık işlemleri için kullanılır ve saklanır. KVKK ile ilgili aydınlatma metni’mize buradan ulaşabilirsiniz.</p>
                 <button onclick="nextScreen(3)" style="margin: 15px auto; display: block;">Devam</button>
               </div>
             </div>
@@ -349,7 +364,8 @@
                   Veri sorumlusu ABC emeklilik tarafından kişisel verilerimin aydınlatma metninde belirtildiği şekilde işlenmesini ve aktarılmasını kabul ediyorum.
                 </label>
               </div>
-              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Devam</button>
+              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Sigortasız Olarak Devam Et</button>
+              <button onclick="nextScreen(4)" style="margin: 15px auto; display: block;">Sigorta Sağlık Beyanını Onayla</button>
             </div>
             <!-- Ekran 5: Gelir ve İş Bilgileri (Yeni Eklenen Alanlar) -->
             <div class="screen" id="screen-5">

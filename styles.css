@@ -1801,3 +1801,64 @@ body, html {
   color: #333;
   line-height: 1.4;
 }
+
+/* Popup arka planı */
+.modal-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;           /* JS’le gösterilecek */
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+/* Popup kutusu */
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Popup metni */
+.modal-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Düğme grubu */
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+/* Popup butonları */
+.modal-btn {
+  flex: 1;
+  padding: 10px 0;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.modal-btn.alt {
+  background: #ccc;
+}
+.modal-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #2471a3);
+}
+.modal-btn.alt:hover {
+  background: #bbb;
+}

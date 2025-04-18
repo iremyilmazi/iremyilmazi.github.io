@@ -838,3 +838,30 @@ function goBack() {
     console.warn("Önceki ekran numarası tanımlı değil.");
   }
 }
+
+
+// Popup’ı açar
+function openCancelConfirmation() {
+  document.getElementById('cancel-modal').style.display = 'flex';
+}
+
+// Popup dışında tıklayınca da kapansın isterseniz:
+document.getElementById('cancel-modal').addEventListener('click', function(e) {
+  if (e.target.id === 'cancel-modal') {
+    this.style.display = 'none';
+  }
+});
+
+// “Hayır” — popup’ı kapat
+document.getElementById('modal-no').addEventListener('click', function() {
+  document.getElementById('cancel-modal').style.display = 'none';
+  currentScreen = 5;
+  nextScreen(2);
+});
+
+// “Evet” — mevcut başvuruyu iptal edip yeni başvuru
+document.getElementById('modal-yes').addEventListener('click', function() {
+  document.getElementById('cancel-modal').style.display = 'none';
+  // Mevcut kodunuzla aynı mantık:
+  nextScreen(2);
+});
