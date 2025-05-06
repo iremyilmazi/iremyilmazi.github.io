@@ -250,7 +250,69 @@
                 </label>
               </div>
               
-              
+              <!-- Çapraz Satış Önerileri Alanı -->
+              <div class="cross-sell-select-container">
+                <div class="custom-dropdown-cross-sell" id="cross-sell-dropdown">
+                  <div class="custom-dropdown-selected-cross-sell" onclick="toggleCrossSellDropdown()">
+                    Çapraz Satış Önerileri
+                  </div>
+                  <div class="custom-dropdown-list-cross-sell" id="cross-sell-dropdown-list">
+                    <div class="dropdown-option-cross-sell" data-value="kredi-karti">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Kredi Kartı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredi-karti" checked>
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="kredili-mevduat">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Kredili Mevduat Hesabı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="kredili-mevduat">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="otomatik-fatura">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Otomatik Fatura Talimatı</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="otomatik-fatura">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="dropdown-option-cross-sell" data-value="bireysel-emeklilik">
+                      <div class="option-info">
+                        <div class="option-title-cross-sell">Bireysel Emeklilik</div>
+                        <div class="option-detail-cross-sell">Faiz oranı indirimi: %0.05</div>
+                      </div>
+                      <div class="toggle-container">
+                        <label class="switch">
+                          <input type="checkbox" onchange="toggleCrossSellOption(this)" data-value="bireysel-emeklilik">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <!-- Kapat butonu -->
+                    <button class="close-cross-sell-btn" onclick="closeCrossSellDropdown()">Kapat</button>
+                  </div>
+                </div>
+                <!-- Seçilen değerleri saklamak için gizli input -->
+                <input type="hidden" id="cross-sell-select" value="">
+              </div>
+
               <!-- Yenileme Butonu (Sayfa yüklendiğinde gizli) -->
               <button id="show-post-vade" style="display: block; margin: 10px auto;" onclick="showPostVade()">Devam</button>
               <div class="post-vade-container" style="display: none;">
