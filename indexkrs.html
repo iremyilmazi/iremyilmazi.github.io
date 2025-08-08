@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRS Parser</title>
+    <link rel="stylesheet" href="stylekrs.css">
+
+    <!-- AG Grid CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css">
+</head>
+<body>
+    <div class="input-container">
+        <div class="input-area">
+            <h1>KRS Parser</h1>
+            <textarea id="inputText" placeholder="Metni buraya giriniz..."></textarea>
+            <button id="parseBtn">Parse Et</button>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="tabs-and-table">
+            <div class="tabs tabs-vertical" id="tabs"></div>
+            <div class="content-area">
+                <div id="gridContainer" class="ag-theme-alpine" style="height: 500px; margin-top: 0;"></div>
+                <div id="tableActions" style="margin: -4px 0px -27px 0; display: flex; justify-content: flex-end; gap: 9px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AG Grid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <script src="scriptkrs.js"></script>
+</body>
+</html>
