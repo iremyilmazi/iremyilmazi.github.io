@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="pageTitle">İrem Yılmaz - Özgeçmiş</title>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3b82f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+<script>
+        (function () {
+            const savedTheme = localStorage.getItem('siteTheme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+
+        window.toggleTheme = function () {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
+        };
+    </script>
+<style type="text/tailwindcss">
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6 0%, #cbd5e1 100%);
+        }
+        .dark .timeline-line::before {
+            background: linear-gradient(to bottom, #3b82f6 0%, #334155 100%);
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 16px;
+            }
+        }
+        .nav-link {
+            @apply px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors relative;
+        }
+        .nav-link.active {
+            @apply text-primary dark:text-white;
+        }
+        .nav-link.active::after {
+            content: '';
+            @apply absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
+<div class="fixed top-6 right-6 z-50 flex flex-wrap items-center gap-2 p-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg max-w-[calc(100vw-2rem)]">
+<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium bg-primary text-white" href="#about" id="navAbout">Hakkımda</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="codep.html" id="navProjects">Projeler</a>
+<button class="px-3 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" id="langToggle">EN</button>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center justify-center" onclick="toggleTheme()">
+<span class="material-symbols-outlined text-yellow-500 dark:hidden">light_mode</span>
+<span class="material-symbols-outlined text-blue-400 hidden dark:block">dark_mode</span>
+</button>
+</div>
+<div class="max-w-5xl mx-auto px-4 pt-24 pb-12 lg:pt-28 lg:pb-20" id="about">
+<header class="flex flex-col md:flex-row items-center gap-8 mb-20">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative w-48 h-48 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl">
+<img alt="İrem Yılmaz Portrait" class="w-full h-full object-cover" src="mpht.jpeg"/>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h1 class="font-display text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+                İrem <span class="text-primary">YILMAZ</span>
+</h1>
+<p class="text-xl font-medium text-slate-500 dark:text-slate-400 mb-6" id="roleTitle">Kredi ve Veri Analitiği Uzmanı</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4">
+<a class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-sm border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors" href="mailto:uremhoru8@gmail.com">
+<span class="material-icons-round text-primary text-sm">email</span>
+<span class="text-sm font-medium">uremhoru8@gmail.com</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-sm border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors" href="tel:05442604046">
+<span class="material-icons-round text-primary text-sm">phone</span>
+<span class="text-sm font-medium">0544 260 40 46</span>
+</a>
+<span class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-sm border border-slate-200 dark:border-slate-700">
+<span class="material-icons-round text-primary text-sm">location_on</span>
+<span class="text-sm font-medium">Sultangazi, İstanbul</span>
+</span>
+</div>
+<div class="mt-5 flex justify-center md:justify-start">
+<a class="inline-flex items-center justify-center gap-2 px-8 py-2.5 min-w-[240px] bg-primary text-white rounded-full shadow-sm hover:bg-blue-600 transition-colors font-medium text-sm" href="codep.html" id="projectsCta">
+<span class="material-icons-round text-[18px]">visibility</span>
+Projelerimi İncele
+</a>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<aside class="lg:col-span-4 space-y-12">
+<section>
+<div class="flex items-center gap-3 mb-6">
+<div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+<span class="material-icons-round text-primary">school</span>
+</div>
+<h2 class="font-display text-2xl font-bold tracking-tight" id="educationHeading">Eğitim</h2>
+</div>
+<div class="space-y-6">
+<div class="relative pl-4 border-l-2 border-primary/20">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">2020 - 2025</span>
+<h3 class="font-bold text-slate-900 dark:text-white" id="edu1Title">İşletme Lisans Derecesi</h3>
+<p class="text-sm text-slate-500" id="edu1School">İstanbul Üniversitesi (İşletme Fakültesi)</p>
+</div>
+<div class="relative pl-4 border-l-2 border-primary/20">
+<span class="text-xs font-bold text-primary uppercase tracking-wider" id="edu2Date">2022 - Devam</span>
+<h3 class="font-bold text-slate-900 dark:text-white" id="edu2Title">Ekonometri Lisans Derecesi (Çift Ana Dal)</h3>
+<p class="text-sm text-slate-500" id="edu2School">İstanbul Üniversitesi (İktisat Fakültesi)</p>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-3 mb-6">
+<div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+<span class="material-icons-round text-purple-500">psychology</span>
+</div>
+<h2 class="font-display text-2xl font-bold tracking-tight" id="skillsHeading">Beceriler</h2>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">Python</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">SQL</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">R Programming</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">SPSS</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">C</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">SYMPHONY</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium" id="skillDecisionSupport">Decision Support Systems</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium">MS Office</span>
+<span class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md text-sm font-medium" id="skillDriverLicense">B Sınıfı Sürücü Ehliyeti</span>
+</div>
+</section>
+<div class="grid grid-cols-2 gap-8">
+<section>
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-icons-round text-slate-400 text-base">translate</span> <span id="languagesHeading">Diller</span>
+                    </h3>
+<ul class="text-sm space-y-2 text-slate-600 dark:text-slate-400">
+<li id="langItem1">İngilizce</li>
+<li id="langItem2">Türkçe (Ana dil)</li>
+</ul>
+</section>
+<section>
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-icons-round text-slate-400 text-base">interests</span> <span id="hobbiesHeading">Hobiler</span>
+                    </h3>
+<ul class="text-sm space-y-2 text-slate-600 dark:text-slate-400">
+<li id="hobby1">Piyano</li>
+<li id="hobby2">Fotoğrafçılık</li>
+<li id="hobby3">Resim</li>
+<li id="hobby4">Voleybol</li>
+</ul>
+</section>
+</div>
+<section class="p-6 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+<h3 class="text-lg font-bold mb-4" id="referencesHeading">Referanslar</h3>
+<div class="space-y-4">
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Eren GÜLPINAR</p>
+<p class="text-sm text-slate-500" id="ref1Role">Fups Bank - Kredi ve Risk Yönetiminden Sorumlu Genel Müdür Yardımcısı</p>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">İrfan KAHRAMAN</p>
+<p class="text-sm text-slate-500" id="ref2Role">Vakıf Katılım Bankası - Kredi Analitiği Bölüm Başkanı</p>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Prof. Dr. Emrah ÖNDER</p>
+<p class="text-sm text-slate-500" id="ref3Role">İstanbul Üniversitesi - Sayısal Yöntemler Ana Bilim Dalı</p>
+</div>
+</div>
+</section>
+</aside>
+<main class="lg:col-span-8">
+<section class="mb-12" id="experience">
+<div class="flex items-center gap-3 mb-8">
+<div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+<span class="material-icons-round text-green-500">work</span>
+</div>
+<h2 class="font-display text-2xl font-bold tracking-tight" id="experienceHeading">Deneyim</h2>
+</div>
+<div class="relative timeline-line space-y-12">
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-white dark:ring-background-dark z-10">
+<span class="material-icons-round">analytics</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white" id="exp1Title">Kredi ve Veri Analitiği Uzmanı</h3>
+<span class="text-sm font-semibold text-primary bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full mt-2 md:mt-0" id="exp1Date">10.2023 - Devam</span>
+</div>
+<p class="text-slate-500 font-medium mb-4">FUPS BANK</p>
+<ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400 list-disc ml-4" id="exp1Bullets">
+<li>Dijital bankacılıkta bireysel ve ticari segmentlerde müşteri deneyimi, kredi analitiği ve veri analitiği odaklı çalışmalar yürüttüm.</li>
+<li>Python ile web scraping, sentiment analizi, dashboard ve raporlama çözümleri geliştirerek sosyal medya, dijital kanallar ve core banking verilerinden aksiyona dönük analizler ürettim.</li>
+<li>Bireysel ve ticari ürünlere yönelik datamart kurguları tasarlayarak KKB ve Risk Merkezi gibi kaynaklardan gelen verilerin doğru adreslenmiş inputlara dönüşmesini sağladım.</li>
+<li>Karar Destek Sistemleri (KDS) kapsamında kredi parametrelerinin oluşturulması, test edilmesi, skorlama ve analitik modellerin geliştirilmesi süreçlerinde aktif rol aldım.</li>
+<li>Kredi tahsis ve risk yönetimi süreçlerini analitik testler ve kullanıcı senaryoları ile destekleyerek karar süreçlerinin veri odaklı optimize edilmesine katkı sundum.</li>
+<li>Canlıya geçiş öncesinde bireysel ve ticari kredi senaryolarını kapsayan sentetik veri setleri oluşturarak kredi kuralları, KDS parametreleri ve modellerin uçtan uca test edilmesini sağladım.</li>
+</ul>
+</div>
+</div>
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 z-10">
+<span class="material-icons-round">business_center</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white" id="exp2Title">Tam Zamanlı Şube Yaz Stajı</h3>
+<span class="text-sm font-semibold text-slate-500 bg-slate-100 dark:bg-slate-700/50 px-3 py-1 rounded-full mt-2 md:mt-0">08.2023 - 09.2023</span>
+</div>
+<p class="text-slate-500 font-medium mb-4">HalkBank</p>
+<p class="text-sm text-slate-600 dark:text-slate-400" id="exp2Desc">Vezne işlemlerinden başlayarak bireysel ve ticari (KOBİ) müşteri süreçlerini gözlemledim; bireysel kredi, kredi kartı kullandırımı ile ticari tarafta çek ve senet süreçlerinde deneyim kazandım.</p>
+</div>
+</div>
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 z-10">
+<span class="material-icons-round">account_balance</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white" id="exp3Title">Tam Zamanlı Genel Müdürlük Yaz Stajı</h3>
+<span class="text-sm font-semibold text-slate-500 bg-slate-100 dark:bg-slate-700/50 px-3 py-1 rounded-full mt-2 md:mt-0">08.2022 - 09.2022</span>
+</div>
+<p class="text-slate-500 font-medium mb-4">VakıfBank</p>
+<p class="text-sm text-slate-600 dark:text-slate-400" id="exp3Desc">Kredi kartı başvurularının tüm aşamalarını gözlemleyerek kart tahsisi, limit artırımı ve bankacılık kanunu çerçevesinde kriter değerlendirme süreçlerini öğrendim. Proje departmanında SAP ve SQL kullanım alanlarını gözlemledim.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-12" id="projects">
+<div class="flex items-center gap-3 mb-8">
+<div class="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+<span class="material-icons-round text-orange-500">favorite</span>
+</div>
+<h2 class="font-display text-2xl font-bold tracking-tight" id="projectsHeading">Gönüllülük Projesi</h2>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+<div class="flex flex-col md:flex-row justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Yirmiüç</h3>
+</div>
+<span class="text-sm font-semibold text-slate-500 bg-slate-100 dark:bg-slate-700/50 px-3 py-1 rounded-full mt-2 md:mt-0">10.2021 - 02.2024</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" id="volunteerDesc">
+                        23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.
+                    </p>
+</div>
+</section>
+</main>
+</div>
+<footer class="mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+</footer>
+</div>
+
+<script>
+    const i18n = {
+        tr: {
+            pageTitle: 'İrem Yılmaz - Özgeçmiş',
+            navAbout: 'Hakkımda',
+            navExperience: 'Deneyim',
+            navProjects: 'Projeler',
+            projectsCta: 'Projelerimi İncele',
+            roleTitle: 'Kredi ve Veri Analitiği Uzmanı',
+            educationHeading: 'Eğitim',
+            edu1Title: 'İşletme Lisans Derecesi',
+            edu1School: 'İstanbul Üniversitesi (İşletme Fakültesi)',
+            edu2Date: '2022 - Devam',
+            edu2Title: 'Ekonometri Lisans Derecesi (Çift Ana Dal)',
+            edu2School: 'İstanbul Üniversitesi (İktisat Fakültesi)',
+            skillsHeading: 'Beceriler',
+            skillDecisionSupport: 'Karar Destek Sistemleri',
+            skillDriverLicense: 'B Sınıfı Sürücü Ehliyeti',
+            languagesHeading: 'Diller',
+            langItem1: 'İngilizce',
+            langItem2: 'Türkçe (Ana dil)',
+            hobbiesHeading: 'Hobiler',
+            hobby1: 'Piyano',
+            hobby2: 'Fotoğrafçılık',
+            hobby3: 'Resim',
+            hobby4: 'Voleybol',
+            referencesHeading: 'Referanslar',
+            ref1Role: 'Fups Bank - Kredi ve Risk Yönetiminden Sorumlu Genel Müdür Yardımcısı',
+            ref2Role: 'Vakıf Katılım Bankası - Kredi Analitiği Bölüm Başkanı',
+            ref3Role: 'İstanbul Üniversitesi - Sayısal Yöntemler Ana Bilim Dalı',
+            experienceHeading: 'Deneyim',
+            exp1Title: 'Kredi ve Veri Analitiği Uzmanı',
+            exp1Date: '10.2023 - Devam',
+            exp2Title: 'Tam Zamanlı Şube Yaz Stajı',
+            exp2Desc: 'Vezne işlemlerinden başlayarak bireysel ve ticari (KOBİ) müşteri süreçlerini gözlemledim; bireysel kredi, kredi kartı kullandırımı ile ticari tarafta çek ve senet süreçlerinde deneyim kazandım.',
+            exp3Title: 'Tam Zamanlı Genel Müdürlük Yaz Stajı',
+            exp3Desc: 'Kredi kartı başvurularının tüm aşamalarını gözlemleyerek kart tahsisi, limit artırımı ve bankacılık kanunu çerçevesinde kriter değerlendirme süreçlerini öğrendim. Proje departmanında SAP ve SQL kullanım alanlarını gözlemledim.',
+            projectsHeading: 'Gönüllülük Projesi',
+            volunteerDesc: '23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.',
+            exp1Bullets: [
+                'Dijital bankacılıkta bireysel ve ticari segmentlerde müşteri deneyimi, kredi analitiği ve veri analitiği odaklı çalışmalar yürüttüm.',
+                'Python ile web scraping, sentiment analizi, dashboard ve raporlama çözümleri geliştirerek sosyal medya, dijital kanallar ve core banking verilerinden aksiyona dönük analizler ürettim.',
+                'Bireysel ve ticari ürünlere yönelik datamart kurguları tasarlayarak KKB ve Risk Merkezi gibi kaynaklardan gelen verilerin doğru adreslenmiş inputlara dönüşmesini sağladım.',
+                'Karar Destek Sistemleri (KDS) kapsamında kredi parametrelerinin oluşturulması, test edilmesi, skorlama ve analitik modellerin geliştirilmesi süreçlerinde aktif rol aldım.',
+                'Kredi tahsis ve risk yönetimi süreçlerini analitik testler ve kullanıcı senaryoları ile destekleyerek karar süreçlerinin veri odaklı optimize edilmesine katkı sundum.',
+                'Canlıya geçiş öncesinde bireysel ve ticari kredi senaryolarını kapsayan sentetik veri setleri oluşturarak kredi kuralları, KDS parametreleri ve modellerin uçtan uca test edilmesini sağladım.'
+            ]
+        },
+        en: {
+            pageTitle: 'İrem Yılmaz - Resume',
+            navAbout: 'About',
+            navExperience: 'Experience',
+            navProjects: 'Projects',
+            projectsCta: 'View My Projects',
+            roleTitle: 'Credit and Data Analytics Specialist',
+            educationHeading: 'Education',
+            edu1Title: 'Bachelor of Business Administration',
+            edu1School: 'Istanbul University (Faculty of Business)',
+            edu2Date: '2022 - Present',
+            edu2Title: 'Bachelor of Econometrics (Double Major)',
+            edu2School: 'Istanbul University (Faculty of Economics)',
+            skillsHeading: 'Skills',
+            skillDecisionSupport: 'Decision Support Systems',
+            skillDriverLicense: 'Class B Driver License',
+            languagesHeading: 'Languages',
+            langItem1: 'English',
+            langItem2: 'Turkish (Native)',
+            hobbiesHeading: 'Hobbies',
+            hobby1: 'Piano',
+            hobby2: 'Photography',
+            hobby3: 'Painting',
+            hobby4: 'Volleyball',
+            referencesHeading: 'References',
+            ref1Role: 'Fups Bank - Deputy General Manager Responsible for Credit and Risk Management',
+            ref2Role: 'Vakıf Katılım Bankası - Head of Credit Analytics',
+            ref3Role: 'Istanbul University - Department of Quantitative Methods',
+            experienceHeading: 'Experience',
+            exp1Title: 'Credit and Data Analytics Specialist',
+            exp1Date: '10.2023 - Present',
+            exp2Title: 'Full-Time Branch Summer Intern',
+            exp2Desc: 'I observed individual and commercial (SME) customer operations beginning with teller transactions; gained hands-on exposure to retail loans, credit card issuance, and commercial check/promissory note processes.',
+            exp3Title: 'Full-Time Head Office Summer Intern',
+            exp3Desc: 'I observed all stages of credit card applications and learned card allocation, limit increase, and criteria evaluation processes within banking regulations. I also observed SAP and SQL usage areas in the project department.',
+            projectsHeading: 'Volunteer Project',
+            volunteerDesc: 'During my time as a volunteer within 23, I actively took part in experience-based programs focused on developing leadership competencies. Through Akademi 23 and Atölye 23, I gained cross-sector insights and experience in career planning and personal development. By joining the 23 Social Entrepreneurship Program, I contributed to social-impact projects and advanced my leadership, teamwork, communication, and problem-solving skills.',
+            exp1Bullets: [
+                'Conducted customer experience, credit analytics, and data analytics studies for retail and commercial segments in digital banking.',
+                'Built Python-based web scraping, sentiment analysis, dashboard, and reporting solutions to generate actionable insights from social media, digital channels, and core banking data.',
+                'Designed datamart structures for retail and commercial products, ensuring correctly addressed inputs from sources such as KKB and Risk Center.',
+                'Actively contributed to creating and testing credit parameters, and developing scoring and analytical models within Decision Support Systems (KDS).',
+                'Supported credit allocation and risk management processes with analytical tests and user scenarios, helping optimize data-driven decision flows.',
+                'Created synthetic datasets for retail and commercial credit scenarios before go-live, enabling end-to-end testing of credit rules, KDS parameters, and analytical models.'
+            ]
+        }
+    };
+
+    const translatableIds = [
+        'pageTitle', 'navAbout', 'navExperience', 'navProjects', 'projectsCta', 'roleTitle',
+        'educationHeading', 'edu1Title', 'edu1School', 'edu2Date', 'edu2Title', 'edu2School',
+        'skillsHeading', 'skillDecisionSupport', 'skillDriverLicense',
+        'languagesHeading', 'langItem1', 'langItem2', 'hobbiesHeading', 'hobby1', 'hobby2', 'hobby3', 'hobby4',
+        'referencesHeading', 'ref1Role', 'ref2Role', 'ref3Role',
+        'experienceHeading', 'exp1Title', 'exp1Date', 'exp2Title', 'exp2Desc', 'exp3Title', 'exp3Desc',
+        'projectsHeading', 'volunteerDesc'
+    ];
+
+    function applyLanguage(lang) {
+        const dict = i18n[lang];
+        translatableIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el || !dict[id]) return;
+            el.textContent = dict[id];
+        });
+
+        const bullets = document.getElementById('exp1Bullets');
+        if (bullets && Array.isArray(dict.exp1Bullets)) {
+            bullets.innerHTML = dict.exp1Bullets.map((item) => `<li>${item}</li>`).join('');
+        }
+
+        document.documentElement.lang = lang;
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            langToggle.textContent = lang === 'tr' ? 'EN' : 'TR';
+        }
+
+        const navProjects = document.getElementById('navProjects');
+        if (navProjects) {
+            navProjects.setAttribute('href', `codep.html?lang=${lang}`);
+        }
+
+        const projectsCta = document.getElementById('projectsCta');
+        if (projectsCta) {
+            projectsCta.setAttribute('href', `codep.html?lang=${lang}`);
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        params.set('lang', lang);
+        const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+        window.history.replaceState({}, '', newUrl);
+
+        localStorage.setItem('cvLanguage', lang);
+    }
+
+    const langToggle = document.getElementById('langToggle');
+    const urlLanguage = new URLSearchParams(window.location.search).get('lang');
+    const initialLanguage = (urlLanguage === 'tr' || urlLanguage === 'en')
+        ? urlLanguage
+        : (localStorage.getItem('cvLanguage') || 'tr');
+    applyLanguage(initialLanguage);
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            const current = document.documentElement.lang === 'en' ? 'en' : 'tr';
+            applyLanguage(current === 'tr' ? 'en' : 'tr');
+        });
+    }
+</script>
+
+</body></html>

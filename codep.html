@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İrem Yılmaz - Projeler</title>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a"
+            },
+            fontFamily: {
+              display: ["Lexend", "sans-serif"],
+              sans: ["Inter", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+<script>
+      (function () {
+        const savedTheme = localStorage.getItem('siteTheme');
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (savedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+
+      window.toggleTheme = function () {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
+      };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300 min-h-screen">
+<div class="fixed top-6 right-6 z-50 flex flex-wrap items-center gap-2 p-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg max-w-[calc(100vw-2rem)]">
+<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="code.html#about" id="navAbout">Hakkımda</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium bg-primary text-white" href="codep.html" id="navProjects">Projeler</a>
+<button class="px-3 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" id="langToggle">EN</button>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center justify-center" onclick="toggleTheme()">
+<span class="material-symbols-outlined text-yellow-500 dark:hidden">light_mode</span>
+<span class="material-symbols-outlined text-blue-400 hidden dark:block">dark_mode</span>
+</button>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 pt-24 pb-12 lg:pt-28 lg:pb-20">
+<header class="text-center mb-12 max-w-3xl mx-auto">
+<h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-5" id="projectsMainTitle">
+        Gerçekleştirdiğim <span class="text-primary" id="projectsMainTitleHighlight">Projeler</span>
+</h1>
+<p class="text-lg text-slate-500 dark:text-slate-400 leading-relaxed" id="projectsSubtitle">
+                Her projede birden fazla görsel arasında geçiş yapabilir, karta tıklayıp detayları açabilirsiniz.
+            </p>
+</header>
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid"></section>
+
+<footer class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors" href="code.html" id="backToCvBtn">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Özgeçmişe Dön
+            </a>
+</footer>
+</div>
+
+<div class="fixed inset-0 bg-slate-900/70 hidden items-center justify-center z-[80] p-4" id="projectModal">
+<div class="w-full max-w-5xl max-h-[92vh] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl">
+<div class="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+<h2 class="font-display text-xl font-bold text-slate-900 dark:text-white" id="modalTitle"></h2>
+<button class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700" id="closeModal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-5 overflow-y-auto max-h-[calc(92vh-72px)]">
+<div class="relative mb-5">
+<img alt="Proje görseli" class="w-full h-[240px] md:h-[360px] object-cover rounded-xl border border-slate-200 dark:border-slate-700 cursor-zoom-in" id="modalImage" src=""/>
+<button class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-600" id="modalPrev">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-600" id="modalNext">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<div class="absolute bottom-3 left-1/2 -translate-x-1/2 text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-900/70 text-white" id="modalCounter"></div>
+</div>
+<div class="space-y-4 text-sm leading-7 text-slate-600 dark:text-slate-300" id="modalDetails"></div>
+</div>
+</div>
+</div>
+
+<div class="fixed inset-0 bg-black/95 hidden items-center justify-center z-[95] p-4 cursor-zoom-out" id="imageFullscreen">
+<img alt="Tam ekran proje görseli" class="max-w-[95vw] max-h-[95vh] object-contain" id="fullscreenImage" src=""/>
+</div>
+
+<script>
+    const i18n = {
+      tr: {
+        pageTitle: 'İrem Yılmaz - Projeler',
+        navAbout: 'Hakkımda',
+        navProjects: 'Projeler',
+        mainTitle: 'Gerçekleştirdiğim',
+        mainTitleHighlight: 'Projeler',
+        subtitle: 'Her projede birden fazla görsel arasında geçiş yapabilir, karta tıklayıp detayları açabilirsiniz.',
+        backToCv: 'Özgeçmişe Dön',
+        footer: '',
+        detailsBtn: 'Detayları Aç'
+      },
+      en: {
+        pageTitle: 'İrem Yılmaz - Projects',
+        navAbout: 'About',
+        navProjects: 'Projects',
+        mainTitle: 'My',
+        mainTitleHighlight: 'Projects',
+        subtitle: 'You can switch between multiple images in each project and click cards to open details.',
+        backToCv: 'Back to Resume',
+        footer: '',
+        detailsBtn: 'View Details'
+      }
+    };
+
+    const projectTextEn = {
+      'KRS Parser': {
+        title: 'KRS Parser',
+        summary: 'A tool that parses raw KRS outputs by segment structure and converts them into an analysis-ready format.',
+        tags: ['Parsing', 'KRS', 'Excel Export']
+      },
+      'Benchmark Çalışması': {
+        title: 'Benchmark Study',
+        summary: 'A benchmark analysis of banking customer feedback from Google Play and Şikayetvar over the last 3 months.',
+        tags: ['Web Scraping', 'Sentiment', 'Benchmark']
+      },
+      'Başvuru Akışı Demo': {
+        title: 'Application Flow Demo',
+        summary: 'An end-to-end demo flow built to validate personal loan application experience before productization.',
+        tags: ['UX', 'Credit Flow', 'Demo']
+      },
+      'Desktop Overlay': {
+        title: 'Desktop Overlay',
+        summary: 'A personal productivity app combining tasks, quick notes, focus timer, and calendar-linked tracking.',
+        tags: ['Task Management', 'Pomodoro', 'Notes']
+      },
+      'MarketInsight TR': {
+        title: 'MarketInsight TR',
+        summary: 'A multi-channel insight platform combining data collection, NLP/sentiment analysis, and AI summaries.',
+        tags: ['AI Summary', 'Multi-Channel Analytics', 'Market Insights']
+      },
+      'InputHub': {
+        title: 'InputHub',
+        summary: 'A centralized platform for managing KDS parameter test screenshots across scenarios and environments.',
+        tags: ['KDS', 'Test Management', 'Evidence Records']
+      }
+    };
+
+    const projectDetailsEn = {
+      'KRS Parser': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">KRS Parser – Credit Reference System Raw Data Parsing Tool</h3>
+        <p>This project was developed to parse the raw and hard-to-read data output obtained as a result of a Credit Reference System (KRS) query and convert it into an understandable, analyzable, and user-friendly format through segment structures compliant with KRS documentation.</p>
+        <p>The application parses all main segments in the KRS response, such as <strong>GGS2, GGS9, GGCI, GGAP, GGNS, GGAD, GGPD</strong>, according to correct length, index, and field definitions. The fields within each segment are presented to the user under meaningful headings, in a comparative and table-based structure.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Core Competencies</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Automatic segment-based parsing of raw KRS data strings</li>
+          <li>Parsing segments and fields in full one-to-one compliance with official KRS definitions</li>
+          <li>Column-based comparative display of repeated records within the same segment</li>
+          <li>Ability to export data to Excel, copy, and transpose</li>
+          <li>A user-friendly structure that minimizes the need for manual interpretation</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Added Value</h4>
+        <p>Thanks to this tool, operations, risk, credit, and data analytics teams can review KRS output quickly, accurately, and in a standardized format without manual decoding. It provides significant efficiency in terms of data accuracy and time savings, especially in banking and financial technology projects.</p>
+      `,
+      'Benchmark Çalışması': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Banking Sector Customer Feedback Analysis and Benchmark Study</h3>
+        <p>This project was developed to analyze customer comments and complaints belonging to institutions operating in the banking sector and reveal the customer experience outlook for the last 3 months before the study period.</p>
+        <p>Customer comments on Google Play Store and Şikayetvar platforms were collected automatically via <strong>web scraping</strong>, then processed through text data cleaning and analysis stages.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Project Scope and Approach</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Collecting customer comments from Google Play and Şikayetvar through automated data gathering (web scraping)</li>
+          <li>Preprocessing comment and complaint texts (cleaning, normalization)</li>
+          <li>Frequency analysis, sentiment tendency, and word cloud studies on text data</li>
+          <li>Displaying bank-based comment/complaint intensities with time series charts</li>
+          <li>Presenting representative customer comments in the interface via random sampling</li>
+          <li>Producing insights on 3-month banking customer perception using the outputs</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Generated Insights</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>The most frequently complained topics by customers (e.g., credit card fees, refund processes, customer services)</li>
+          <li>Benchmark comparison among banks in terms of customer satisfaction and complaint density</li>
+          <li>Prominent problem areas in digital channels (mobile app, call center)</li>
+          <li>Visual monitoring of fluctuations in periodical customer perception</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Added Value</h4>
+        <p>This study supports data-driven decision-making mechanisms for customer experience, digital channel performance, and complaint management processes in banking. It provides measurable and concrete insights especially for customer-focused strategy development, product improvement, and competitive analysis.</p>
+      `,
+      'Başvuru Akışı Demo': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Retail Loan Application Process – Experience-Focused Demo Design Project</h3>
+        <p>This project is a demo application flow study developed to enable effective review and experience of the retail loan application process before it is finalized.</p>
+        <p>The objective was to allow managers and relevant teams to experience the existing design end-to-end from a customer perspective before the process was finalized, and to make potential problem areas visible at an early stage.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Project Approach and Scope</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Modeling the retail loan application as a step-by-step, scenario-based demo flow</li>
+          <li>Simulating steps such as loan type selection, loan details, insurance and income declaration, and transaction summary with realistic screens</li>
+          <li>Allowing managers and teams to experience the process like customers and provide feedback</li>
+          <li>Conducting design and business rule discussions on a concrete demo before the final process was set</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Provided Contributions</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Enabled the loan application process to be handled with a shared understanding across the institution</li>
+          <li>Improved communication and decision speed between design, product, software, and business units</li>
+          <li>Used as a reference demo tool for transferring the final process to relevant teams</li>
+          <li>Helped identify potential user experience problems before development</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Ongoing Impact</h4>
+        <p>This work was not limited to the retail loan application; it was later used as a reference in designing overdraft account and credit card application processes. Thus, a reusable experience approach for application flows across the institution was established.</p>
+      `,
+      'Desktop Overlay': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Desktop Overlay – Personal Productivity and Daily Work Management Application</h3>
+        <p>This project is a personal productivity application developed to help individuals working in a high-intensity work environment manage daily tasks easily, continue active workflows without interruption, and take quick notes during meetings.</p>
+        <p>The application offers components such as daily to-do list (task management), quick-access note-taking, focus/pomodoro, and system status on a single screen to minimize time and attention loss during work life.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Core Features and Approach</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Personal task management structure where daily tasks can be easily added and tracked</li>
+          <li>Instant note-taking with quick access during meetings and work</li>
+          <li>Pomodoro/focus approach supporting concentration</li>
+          <li>Associating records with a calendar and enabling chronological tracking of past work</li>
+          <li>Providing usage similar to a personal work-life journal by making daily workflow trackable</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Added Value</h4>
+        <p>This application helps users manage their workday in a more planned and controlled way, while contributing to building personal work memory through completed tasks and notes. It is positioned as a practical solution that both increases productivity and provides retrospective traceability in daily operational intensity.</p>
+      `,
+      'MarketInsight TR': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">MarketInsight TR – Multi-Channel Customer Interaction Analytics and AI-Supported Market Insight Platform</h3>
+        <p>This project is a comprehensive insight platform developed to monitor customer experience and market perception in the banking sector end-to-end, combining a multi-channel data collection + deep analysis + AI summarization approach.</p>
+        <p>The application regularly collects customer interactions from platforms such as X (Twitter), LinkedIn, Google Play, Şikayetvar, and similar social media/feedback channels using web scraping and automation methods. Collected raw data is processed through both text and numerical analysis after text cleaning and enrichment stages.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Key Competencies</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Automatic data collection from multiple platforms and a daily-running pipeline</li>
+          <li>Deep analysis processes on text data (theme/category, sentiment, word cloud, pattern detection)</li>
+          <li>Trend and distribution analyses monitoring the overall market and periodical change tracking</li>
+          <li>AI summaries providing daily/weekly “most important developments” view and rapid decision support</li>
+          <li>Bank-based detail pages including complaint topics, prominent issues, recent agenda items, and sample records</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Added Value</h4>
+        <p>The platform reduces manual tracking needs and makes market changes automatically monitorable on a daily basis; it reveals overall market status and bank-based differentiation through customer voice (VoC). Thus, it provides early warning, benchmark, and action-oriented decision support infrastructure for product, customer experience, and strategy teams.</p>
+      `,
+      'InputHub': `
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">InputHub – Parameter Test Scenarios and Screenshot Management Platform</h3>
+        <p>This project was developed due to difficulties in managing screenshots generated during testing processes of parameters used in the bank’s decision support system. The goal was to store parameters—worked on across multiple scenarios and multiple environments (test, prod-like, etc.)—in a structured, traceable, and accessible way in line with audit and reporting needs.</p>
+        <p>The application enables screenshots of parameter-based test scenarios to be collected under a central structure, associated with scenarios, and managed process-wise. Thus, the operational burden caused by manual and scattered storage methods has been eliminated.</p>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Project Scope and Approach</h4>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>A structure suitable for testing decision support parameters across multiple scenarios and environments</li>
+          <li>Controlled addition and storage of related screenshots for each scenario</li>
+          <li>Centralized management of evidence-level records for audit and control processes</li>
+          <li>Standardization of testing processes within the unit and making them reportable</li>
+          <li>Easy accessibility and traceability of past parameter test studies</li>
+        </ul>
+        <h4 class="text-base font-bold text-slate-900 dark:text-white">Provided Added Value</h4>
+        <p>For test and validation processes critical to decision support systems, this project has enabled:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Meeting audit requirements,</li>
+          <li>Preserving test results without loss and fragmentation,</li>
+          <li>Making processes more transparent and manageable for management and related teams.</li>
+        </ul>
+        <p>The application continues to be actively used as a tool that increases operational efficiency and strengthens control mechanisms.</p>
+      `
+    };
+
+    const urlLanguage = new URLSearchParams(window.location.search).get('lang');
+    let currentLanguage = (urlLanguage === 'tr' || urlLanguage === 'en')
+      ? urlLanguage
+      : (localStorage.getItem('projectsLanguage') || 'tr');
+
+    const projectImages = {
+      p1: ['p11.png', 'p12.png'],
+      p2: ['p21.png', 'p22.png', 'p23.png'],
+      p3: ['p31.png', 'p32.png', 'p33.png'],
+      p4: ['p41.png'],
+      p5: ['p51.png', 'p52.png', 'p53.png'],
+      p6: ['p61.png', 'p62.png', 'p63.png']
+    };
+
+    const projects = [
+      {
+        title: 'KRS Parser',
+        summary: 'KRS ham veri çıktısını segment yapısına göre otomatik ayrıştırıp kullanıcı dostu hale getiren araç.',
+        tags: ['Parse', 'KRS', 'Excel Export'],
+        images: projectImages.p1,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">KRS Parser – Kredi Referans Sistemi Ham Veri Ayrıştırma Aracı</h3>
+          <p>Bu proje, <strong>Kredi Referans Sistemi (KRS)</strong> sorgusu sonucunda elde edilen <strong>ham ve okunması zor veri çıktısını</strong>, KRS dokümantasyonuna uygun <strong>segment yapıları</strong> üzerinden ayrıştırarak <strong>anlaşılır, analiz edilebilir ve kullanıcı dostu</strong> bir formata dönüştürmek amacıyla geliştirilmiştir.</p>
+          <p>Uygulama; KRS yanıtında yer alan <strong>GGS2, GGS9, GGCI, GGAP, GGNS, GGAD, GGPD</strong> gibi tüm ana segmentleri doğru uzunluk, indeks ve alan tanımlarına göre <strong>parse</strong> eder. Her bir segment içerisindeki alanlar; anlamlı başlıklar altında, karşılaştırmalı ve tablo bazlı bir yapıda kullanıcıya sunulur.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Temel Yetkinlikler</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>KRS ham veri <strong>string</strong>’inin <strong>segment bazlı otomatik ayrıştırılması</strong></li>
+            <li>Segment ve alanların <strong>resmî KRS tanımlarına birebir uyumlu</strong> şekilde <strong>parse</strong> edilmesi</li>
+            <li>Aynı segmentin tekrar eden kayıtlarının <strong>kolon bazlı karşılaştırmalı gösterimi</strong></li>
+            <li>Verilerin <strong>Excel’e aktarılabilmesi</strong>, kopyalanabilmesi ve <strong>transpose</strong> edilebilmesi</li>
+            <li>Kullanıcı dostu arayüz ile <strong>manuel yorum ihtiyacını minimize eden</strong> yapı</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Katma Değer</h4>
+          <p>Bu araç sayesinde operasyon, risk, kredi ve veri analitiği ekipleri; KRS çıktısını manuel çözümleme ihtiyacı olmadan, <strong>hızlı, hatasız ve standart bir biçimde</strong> inceleyebilir. Özellikle bankacılık ve finansal teknoloji projelerinde, <strong>veri doğruluğu ve zaman tasarrufu</strong> açısından ciddi bir verimlilik sağlar.</p>
+        `,
+        details: `KRS Parser – Kredi Referans Sistemi Ham Veri Ayrıştırma Aracı
+
+Bu proje, Kredi Referans Sistemi (KRS) sorgusu sonucunda elde edilen ham ve okunması zor veri çıktısını, KRS dokümantasyonuna uygun segment yapıları üzerinden ayrıştırarak anlaşılır, analiz edilebilir ve kullanıcı dostu bir formata dönüştürmek amacıyla geliştirilmiştir.
+
+Uygulama; KRS yanıtında yer alan GGS2, GGS9, GGCI, GGAP, GGNS, GGAD, GGPD gibi tüm ana segmentleri doğru uzunluk, indeks ve alan tanımlarına göre parse eder. Her bir segment içerisindeki alanlar; anlamlı başlıklar altında, karşılaştırmalı ve tablo bazlı bir yapıda kullanıcıya sunulur.
+
+Bu araç sayesinde operasyon, risk, kredi ve veri analitiği ekipleri; KRS çıktısını manuel çözümleme ihtiyacı olmadan hızlı, hatasız ve standart bir biçimde inceleyebilir.`
+      },
+      {
+        title: 'Benchmark Çalışması',
+        summary: 'Google Play ve Şikayetvar yorumlarını toplayıp son 3 aylık bankacılık müşteri algısını benchmark eden analiz çalışması.',
+        tags: ['Web Scraping', 'Sentiment', 'Benchmark'],
+        images: projectImages.p2,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Bankacılık Sektörü Müşteri Geri Bildirim Analizi ve Benchmark Çalışması</h3>
+          <p>Bu proje, bankacılık sektöründe faaliyet gösteren kurumlara ait müşteri yorum ve şikayetlerini analiz ederek, çalışmanın yapıldığı dönemden önceki son <strong>3 aylık</strong> müşteri deneyimi görünümünü ortaya koymak amacıyla geliştirilmiştir.</p>
+          <p>Google Play Store ve Şikayetvar platformlarında yer alan müşteri yorumları; <strong>web scraping</strong> yöntemiyle otomatik olarak toplanmış, ardından metin verisi temizleme ve analiz süreçlerinden geçirilmiştir.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Proje Kapsamı ve Yaklaşım</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Google Play ve Şikayetvar üzerinden müşteri yorumlarının otomatik veri toplama (<strong>web scraping</strong>) yöntemiyle elde edilmesi</li>
+            <li>Yorum ve şikayet metinlerinin ön işleme (temizleme, normalizasyon) adımlarından geçirilmesi</li>
+            <li>Metin verisi üzerinde frekans analizi, duygu eğilimi (<strong>sentiment</strong>) ve kelime bulutu çalışmaları</li>
+            <li>Banka bazlı yorum/şikayet yoğunluklarının zaman serisi grafikleriyle gösterimi</li>
+            <li>Rastgele örnekleme yöntemiyle temsil edici müşteri yorumlarının arayüzde sunulması</li>
+            <li>Elde edilen çıktılarla bankacılık sektörünün son 3 aylık müşteri algısına dair içgörü üretilmesi</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Üretilen İçgörüler</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Müşterilerin en sık şikayet ettiği konuların (kredi kartı ücretleri, iade süreçleri, müşteri hizmetleri vb.) belirlenmesi</li>
+            <li>Bankalar arasında müşteri memnuniyeti ve şikayet yoğunluğu açısından <strong>benchmark karşılaştırması</strong></li>
+            <li>Dijital kanallar (mobil uygulama, çağrı merkezi) özelinde öne çıkan problem alanlarının görünür kılınması</li>
+            <li>Dönemsel müşteri algısı dalgalanmalarının görsel olarak izlenebilmesi</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Katma Değer</h4>
+          <p>Bu çalışma, bankacılık sektöründe müşteri deneyimi, dijital kanal performansı ve şikayet yönetimi süreçlerine yönelik <strong>veriye dayalı karar alma</strong> mekanizmalarını desteklemektedir. Özellikle müşteri odaklı strateji geliştirme, ürün iyileştirme ve rekabet analizi açısından <strong>ölçülebilir ve somut içgörüler</strong> sunmaktadır.</p>
+        `,
+        details: `Bankacılık Sektörü Müşteri Geri Bildirim Analizi ve Benchmark Çalışması
+
+Bu proje, bankacılık sektöründe faaliyet gösteren kurumlara ait müşteri yorum ve şikayetlerini analiz ederek, çalışmanın yapıldığı dönemden önceki son 3 aylık müşteri deneyimi görünümünü ortaya koymak amacıyla geliştirilmiştir.
+
+Google Play Store ve Şikayetvar platformlarında yer alan müşteri yorumları web scraping yöntemiyle otomatik olarak toplanmış, ardından metin verisi temizleme ve analiz süreçlerinden geçirilmiştir.
+
+Elde edilen veriler bankalar bazında karşılaştırmalı şekilde ele alınarak sektörel eğilimler, öne çıkan problem alanları, duygu eğilimleri ve dönemsel dalgalanmalar raporlanmıştır.`
+      },
+      {
+        title: 'Başvuru Akışı Demo',
+        summary: 'Bireysel kredi başvuru sürecini ürünleşmeden önce müşteri perspektifinde deneyimletmek için hazırlanan demo akış.',
+        tags: ['UX', 'Kredi Süreci', 'Demo'],
+        images: projectImages.p3,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Bireysel Kredi Başvuru Süreci – Deneyimleme Odaklı Demo Tasarım Projesi</h3>
+          <p>Bu proje, bireysel kredi başvuru sürecinin henüz nihai hale gelmeden önce etkili şekilde incelenebilmesi ve deneyimlenebilmesi amacıyla geliştirilmiş bir demo başvuru akışı çalışmasıdır.</p>
+          <p>Amaç; kredi başvuru süreci tamamlanmadan önce, yöneticilerin ve ilgili ekiplerin mevcut tasarımı bir müşteri perspektifinden <strong>uçtan uca deneyimleyebilmesini</strong> sağlamak ve olası problem alanlarını erken aşamada görünür kılmaktır.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Proje Yaklaşımı ve Kapsam</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Bireysel kredi başvurusunun adım adım ilerleyen, kullanıcı senaryolu <strong>demo akış</strong> olarak modellenmesi</li>
+            <li>Kredi türü seçimi, kredi detayları, sigorta ve gelir beyanı, işlem özeti gibi adımların gerçeğe yakın ekranlarla simüle edilmesi</li>
+            <li>Yöneticiler ve ekiplerin süreci müşteri gibi deneyimleyerek geri bildirim verebilmesinin sağlanması</li>
+            <li>Nihai süreç netleşmeden tasarım ve iş kuralı tartışmalarının somut demo üzerinden yürütülmesi</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Sağlanan Katkılar</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Kredi başvuru sürecinin kurum içinde ortak bir anlayışla ele alınmasını sağladı</li>
+            <li>Tasarım, ürün, yazılım ve iş birimleri arasında iletişimi ve karar alma hızını artırdı</li>
+            <li>Nihai sürecin ilgili ekiplere aktarımında referans alınan bir demo araç olarak kullanıldı</li>
+            <li>Olası kullanıcı deneyimi problemlerinin geliştirme öncesinde tespit edilmesine katkı sundu</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Devam Eden Etki</h4>
+          <p>Bu çalışma yalnızca bireysel kredi başvurusu ile sınırlı kalmamış; sonrasında kredi mevduat hesabı ve kredi kartı başvuru süreçlerinin tasarlanmasında da referans alınmıştır. Böylece kurum genelinde başvuru süreçleri için tekrar kullanılabilir bir deneyimleme yaklaşımı oluşturulmuştur.</p>
+        `,
+        details: `Bireysel Kredi Başvuru Süreci – Deneyimleme Odaklı Demo Tasarım Projesi
+
+Bu proje, bireysel kredi başvuru sürecinin henüz nihai hale gelmeden önce etkili şekilde incelenebilmesi ve deneyimlenebilmesi amacıyla geliştirilmiş bir demo başvuru akışı çalışmasıdır.
+
+Amaç; yöneticilerin ve ilgili ekiplerin mevcut tasarımı bir müşteri perspektifinden uçtan uca deneyimleyebilmesini sağlamak ve olası problem alanlarını erken aşamada görünür kılmaktır.
+
+Çalışma, tasarım/ürün/yazılım ekipleri arasındaki iletişimi hızlandırmış; kredi mevduat hesabı ve kredi kartı başvuru süreçlerinde de referans yaklaşım olarak kullanılmaya devam etmiştir.`
+      },
+      {
+        title: 'Desktop Overlay',
+        summary: 'Görev takibi, not alma, odaklanma ve takvim bağlantısını tek ekranda birleştiren kişisel verimlilik uygulaması.',
+        tags: ['Task Management', 'Pomodoro', 'Not Alma'],
+        images: projectImages.p4,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Desktop Overlay – Kişisel Verimlilik ve Günlük İş Yönetimi Uygulaması</h3>
+          <p>Bu proje, yoğun iş temposu içerisinde çalışan bireylerin günlük görevlerini kolayca yönetebilmeleri, aktif çalışma akışını bölmeden ilerleyebilmeleri ve toplantılar sırasında hızlı not alabilmeleri amacıyla geliştirilmiş bir kişisel verimlilik uygulamasıdır.</p>
+          <p>Uygulama; günlük yapılacaklar listesi (<strong>task management</strong>), hızlı erişimle not alma, odaklanma (<strong>focus / pomodoro</strong>) ve sistem durumu gibi bileşenleri tek bir ekran üzerinden sunarak, iş hayatı sırasında zaman ve dikkat kaybını minimize etmeyi hedefler.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Temel Özellikler ve Yaklaşım</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Günlük görevlerin kolayca eklenip takip edilebildiği bireysel task yönetimi yapısı</li>
+            <li>Toplantı ve çalışma esnasında hızlı erişimle anlık not alma imkânı</li>
+            <li>Odaklanmayı destekleyen pomodoro / focus yaklaşımı</li>
+            <li>Yapılan kayıtların takvim ile ilişkilendirilmesi ve geçmiş işlerin kronolojik olarak izlenebilmesi</li>
+            <li>Günlük çalışma akışını izlenebilir kılarak kişisel iş hayatı günlüğü benzeri bir kullanım sunması</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Sağlanan Katma Değer</h4>
+          <p>Bu uygulama, kullanıcıların iş gününü daha planlı ve kontrollü şekilde yönetmesine yardımcı olurken; yapılan görevler ve alınan notlar sayesinde <strong>kişisel iş hafızası</strong> oluşturulmasına katkı sağlar. Günlük operasyonel yoğunluk içinde hem verimliliği artıran hem de geriye dönük izlenebilirlik sunan pratik bir çözüm olarak konumlanmaktadır.</p>
+        `,
+        details: `Desktop Overlay – Kişisel Verimlilik ve Günlük İş Yönetimi Uygulaması
+
+Bu proje, yoğun iş temposu içinde çalışan bireylerin günlük görevlerini kolayca yönetebilmesi, aktif çalışma akışını bölmeden ilerleyebilmesi ve toplantılar sırasında hızlı not alabilmesi amacıyla geliştirilmiştir.
+
+Uygulama; günlük yapılacaklar listesi, hızlı not alma, odaklanma (focus/pomodoro) ve sistem durumu gibi bileşenleri tek bir ekran üzerinden sunar.
+
+Takvim entegrasyonu ile geçmiş işlerin kronolojik izlenmesini sağlar ve kişisel iş hafızası oluşturulmasına katkı sunar.`
+      },
+      {
+        title: 'MarketInsight TR',
+        summary: 'Çok kanallı veri toplama, metin/sayısal analiz ve AI özetleme ile pazar içgörüsü üreten platform.',
+        tags: ['AI Özet', 'Çok Kanallı Analitik', 'Pazar İçgörüsü'],
+        images: projectImages.p5,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">MarketInsight TR – Çok Kanallı Müşteri Etkileşimi Analitiği ve AI Destekli Pazar İçgörü Platformu</h3>
+          <p>Bu proje, bankacılık sektöründeki müşteri deneyimi ve pazar algısını uçtan uca izlemek amacıyla geliştirilmiş, <strong>çok kanallı veri toplama + derinlemesine analiz + AI özetleme</strong> yaklaşımını bir araya getiren kapsamlı bir içgörü platformudur.</p>
+          <p>Uygulama; X (Twitter), LinkedIn, Google Play, Şikayetvar ve benzeri sosyal medya/geri bildirim platformlarından müşteri etkileşimlerini web scraping ve otomasyon yöntemleriyle düzenli olarak toplar. Toplanan ham veriler metin temizleme ve zenginleştirme adımlarından geçirilerek hem metin hem sayısal analizlerle işlenir.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Öne Çıkan Yetkinlikler</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Çoklu platformlardan otomatik veri toplama ve günlük işleyen pipeline</li>
+            <li>Metin verisi üzerinde derin analiz süreçleri (tema/kategori, duygu, kelime bulutu, örüntü tespiti)</li>
+            <li>Pazar genelini izleyen trend ve dağılım analizleri ile dönemsel değişim takibi</li>
+            <li>AI özet ile günlük/haftalık “en önemli gelişmeler” görünümü ve hızlı karar desteği</li>
+            <li>Banka bazlı detay sayfaları: şikayet başlıkları, öne çıkan problemler, son dönem gündem maddeleri ve örnek kayıtlar</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Katma Değer</h4>
+          <p>Platform, manuel takip ihtiyacını azaltarak pazardaki değişimleri günlük bazda otomatik izlenebilir hale getirir; müşteri sesi (VoC) üzerinden pazarın genel durumunu ve banka bazlı farklılaşmaları görünür kılar. Bu sayede ürün, müşteri deneyimi ve strateji ekipleri için <strong>erken uyarı, benchmark ve aksiyon odaklı karar destek</strong> altyapısı sağlar.</p>
+        `,
+        details: `MarketInsight TR – Çok Kanallı Müşteri Etkileşimi Analitiği ve AI Destekli Pazar İçgörü Platformu
+
+Bu proje, bankacılık sektöründeki müşteri deneyimi ve pazar algısını uçtan uca izlemek amacıyla geliştirilmiş kapsamlı bir içgörü platformudur.
+
+X (Twitter), LinkedIn, Google Play, Şikayetvar gibi platformlardan müşteri etkileşimleri otomatik olarak toplanır; metin temizleme ve zenginleştirme sonrasında tema/duygu/anahtar kelime analizleri ile sayısal trend analizleri yapılır.
+
+Elde edilen bulgular AI destekli özetleme ile sadeleştirilir ve günlük/haftalık karar süreçleri için aksiyon alınabilir içgörülere dönüştürülür.`
+      },
+      {
+        title: 'InputHub',
+        summary: 'Karar destek sistemi test ekran görüntülerinin senaryo ve ortam bazlı yönetimi için geliştirilen merkezi platform.',
+        tags: ['KDS', 'Test Yönetimi', 'Kanıt Kayıt'],
+        images: projectImages.p6,
+        detailsHtml: `
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">InputHub - Parametre Testleri Senaryo ve Ekran Görüntüsü Yönetim Platformu</h3>
+          <p>Bu proje, bankada <strong>karar destek sistemi</strong> kapsamında kullanılan parametrelerin test süreçlerinde ortaya çıkan <strong>ekran görüntülerinin yönetilmesindeki zorluklar</strong> nedeniyle geliştirilmiştir. Özellikle birden fazla senaryo ve birden fazla ortamda (test, <strong>prod</strong> benzeri vb.) çalışılan parametrelerin, denetimsel ve raporlama ihtiyaçları doğrultusunda <strong>düzenli, izlenebilir ve erişilebilir şekilde saklanması</strong> hedeflenmiştir.</p>
+          <p>Uygulama; parametre bazında oluşturulan test senaryolarına ait ekran görüntülerinin merkezi bir yapı altında toplanmasını, senaryolarla ilişkilendirilmesini ve süreç bazlı olarak yönetilmesini sağlar. Böylece manuel ve dağınık depolama yöntemlerinin yarattığı operasyonel yük ortadan kaldırılmıştır.</p>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Proje Kapsamı ve Yaklaşım</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Karar destek parametrelerinin <strong>çoklu senaryo ve çoklu ortam</strong> üzerinden test edilmesine uygun yapı</li>
+            <li>Her senaryo için ilgili <strong>ekran görüntülerinin kontrollü şekilde eklenmesi ve saklanması</strong></li>
+            <li>Denetim ve kontrol süreçlerinde kullanılabilecek <strong>kanıt niteliğinde kayıtların</strong> merkezi yönetimi</li>
+            <li>Birim içerisinde test süreçlerinin <strong>standartlaştırılması ve raporlanabilir hale getirilmesi</strong></li>
+            <li>Parametre testlerine ilişkin geçmiş çalışmaların <strong>kolay erişilebilir ve izlenebilir</strong> olması</li>
+          </ul>
+          <h4 class="text-base font-bold text-slate-900 dark:text-white">Sağlanan Katma Değer</h4>
+          <p>Bu proje, karar destek sistemleri için kritik olan test ve doğrulama süreçlerinde;</p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Denetimsel gerekliliklerin karşılanmasını,</li>
+            <li>Test sonuçlarının kaybolmadan ve dağılmadan saklanmasını,</li>
+            <li>Yönetim ve ilgili ekipler için süreçlerin daha <strong>şeffaf ve yönetilebilir</strong> hale gelmesini sağlamıştır.</li>
+          </ul>
+          <p>Uygulama, operasyonel verimliliği artıran ve kontrol mekanizmalarını güçlendiren bir araç olarak <strong>aktif şekilde kullanılmaya devam etmektedir</strong>.</p>
+        `,
+        details: `Karar Destek Parametre Testleri – Senaryo ve Ekran Görüntüsü Yönetim Platformu`
+      }
+    ];
+
+    const projectOrder = [
+      'MarketInsight TR',
+      'InputHub',
+      'Benchmark Çalışması',
+      'Başvuru Akışı Demo',
+      'KRS Parser',
+      'Desktop Overlay'
+    ];
+
+    const displayProjects = projectOrder
+      .map(title => projects.find(p => p.title === title))
+      .filter(Boolean);
+
+    const grid = document.getElementById('projectsGrid');
+    const cardState = {};
+    const langToggle = document.getElementById('langToggle');
+
+    function getLocalizedProject(project) {
+      if (currentLanguage !== 'en') return project;
+      const en = projectTextEn[project.title];
+      if (!en) return project;
+      return {
+        ...project,
+        title: en.title || project.title,
+        summary: en.summary || project.summary,
+        tags: en.tags || project.tags
+      };
+    }
+
+    function applyLanguage() {
+      const dict = i18n[currentLanguage] || i18n.tr;
+      document.documentElement.lang = currentLanguage;
+      document.title = dict.pageTitle;
+
+      const mainTitle = document.getElementById('projectsMainTitle');
+      const mainTitleHighlight = document.getElementById('projectsMainTitleHighlight');
+      const subtitle = document.getElementById('projectsSubtitle');
+      const navAbout = document.getElementById('navAbout');
+      const navProjects = document.getElementById('navProjects');
+      const backBtn = document.getElementById('backToCvBtn');
+      const footer = document.getElementById('projectsFooterText');
+
+      if (mainTitle) {
+        mainTitle.childNodes[0].nodeValue = `${dict.mainTitle} `;
+      }
+      if (navAbout) {
+        navAbout.textContent = dict.navAbout;
+        navAbout.setAttribute('href', `code.html?lang=${currentLanguage}#about`);
+      }
+      if (navProjects) {
+        navProjects.textContent = dict.navProjects;
+        navProjects.setAttribute('href', `codep.html?lang=${currentLanguage}`);
+      }
+      if (mainTitleHighlight) mainTitleHighlight.textContent = dict.mainTitleHighlight;
+      if (subtitle) subtitle.textContent = dict.subtitle;
+      if (backBtn) {
+        backBtn.lastChild.textContent = ` ${dict.backToCv}`;
+        backBtn.setAttribute('href', `code.html?lang=${currentLanguage}`);
+      }
+      if (footer) {
+        footer.textContent = dict.footer;
+        footer.classList.toggle('hidden', !dict.footer);
+      }
+      if (langToggle) langToggle.textContent = currentLanguage === 'tr' ? 'EN' : 'TR';
+
+      const params = new URLSearchParams(window.location.search);
+      params.set('lang', currentLanguage);
+      const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+      window.history.replaceState({}, '', newUrl);
+
+      renderCards();
+      if (!modal.classList.contains('hidden')) renderModal();
+    }
+
+    function renderCards() {
+      grid.innerHTML = displayProjects.map((p, i) => {
+        const localized = getLocalizedProject(p);
+        cardState[i] = cardState[i] || 0;
+        return `
+          <article class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer" data-project-index="${i}">
+            <div class="relative">
+              <img src="${p.images[cardState[i]]}" alt="${localized.title} görseli" class="project-card-image w-full h-52 object-cover" data-image-for="${i}"/>
+              <button class="card-prev absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-600" data-index="${i}">
+                <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+              </button>
+              <button class="card-next absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-600" data-index="${i}">
+                <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+              </button>
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-slate-900/70 text-white" data-counter-for="${i}">${cardState[i] + 1}/${p.images.length}</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">${localized.title}</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">${localized.summary}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                ${localized.tags.map(tag => `<span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700/50 rounded text-[11px] font-semibold text-slate-600 dark:text-slate-300">${tag}</span>`).join('')}
+              </div>
+              <button class="text-sm font-semibold text-primary hover:underline">${(i18n[currentLanguage] || i18n.tr).detailsBtn}</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function changeCardImage(projectIndex, step) {
+      const images = displayProjects[projectIndex].images;
+      cardState[projectIndex] = (cardState[projectIndex] + step + images.length) % images.length;
+      const img = document.querySelector(`[data-image-for="${projectIndex}"]`);
+      const counter = document.querySelector(`[data-counter-for="${projectIndex}"]`);
+      if (img) img.src = images[cardState[projectIndex]];
+      if (counter) counter.textContent = `${cardState[projectIndex] + 1}/${images.length}`;
+    }
+
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImage = document.getElementById('modalImage');
+    const modalCounter = document.getElementById('modalCounter');
+    const modalDetails = document.getElementById('modalDetails');
+    const closeModal = document.getElementById('closeModal');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
+    const imageFullscreen = document.getElementById('imageFullscreen');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+    let activeProject = 0;
+    let activeImage = 0;
+
+    function renderModal() {
+      const p = displayProjects[activeProject];
+      const localized = getLocalizedProject(p);
+      modalTitle.textContent = localized.title;
+      modalImage.src = p.images[activeImage];
+      modalCounter.textContent = `${activeImage + 1}/${p.images.length}`;
+      const enDetails = projectDetailsEn[p.title];
+      if (currentLanguage === 'en' && enDetails) {
+        modalDetails.innerHTML = enDetails;
+      } else {
+        modalDetails.innerHTML = p.detailsHtml || p.details.split('\n\n').map(par => `<p>${par}</p>`).join('');
+      }
+    }
+
+    function openModal(index) {
+      activeProject = index;
+      activeImage = 0;
+      renderModal();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFn() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function openFullscreenImage() {
+      if (!modalImage || !imageFullscreen || !fullscreenImage) return;
+      fullscreenImage.src = modalImage.src;
+      imageFullscreen.classList.remove('hidden');
+      imageFullscreen.classList.add('flex');
+    }
+
+    function closeFullscreenImage() {
+      if (!imageFullscreen) return;
+      imageFullscreen.classList.add('hidden');
+      imageFullscreen.classList.remove('flex');
+    }
+
+    function showPrevImage() {
+      const images = displayProjects[activeProject].images;
+      activeImage = (activeImage - 1 + images.length) % images.length;
+      renderModal();
+      if (imageFullscreen && !imageFullscreen.classList.contains('hidden') && fullscreenImage) {
+        fullscreenImage.src = displayProjects[activeProject].images[activeImage];
+      }
+    }
+
+    function showNextImage() {
+      const images = displayProjects[activeProject].images;
+      activeImage = (activeImage + 1) % images.length;
+      renderModal();
+      if (imageFullscreen && !imageFullscreen.classList.contains('hidden') && fullscreenImage) {
+        fullscreenImage.src = displayProjects[activeProject].images[activeImage];
+      }
+    }
+
+    if (langToggle) {
+      langToggle.addEventListener('click', () => {
+        currentLanguage = currentLanguage === 'tr' ? 'en' : 'tr';
+        localStorage.setItem('projectsLanguage', currentLanguage);
+        applyLanguage();
+      });
+    }
+
+    applyLanguage();
+
+    grid.addEventListener('click', (e) => {
+      const prevBtn = e.target.closest('.card-prev');
+      const nextBtn = e.target.closest('.card-next');
+      if (prevBtn) {
+        e.stopPropagation();
+        changeCardImage(Number(prevBtn.dataset.index), -1);
+        return;
+      }
+      if (nextBtn) {
+        e.stopPropagation();
+        changeCardImage(Number(nextBtn.dataset.index), 1);
+        return;
+      }
+
+      const card = e.target.closest('[data-project-index]');
+      if (!card) return;
+      openModal(Number(card.dataset.projectIndex));
+    });
+
+    closeModal.addEventListener('click', closeModalFn);
+
+    modalImage.addEventListener('click', openFullscreenImage);
+    imageFullscreen.addEventListener('click', closeFullscreenImage);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFn();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const isModalOpen = !modal.classList.contains('hidden');
+
+      if (e.key === 'Escape') {
+        if (imageFullscreen && !imageFullscreen.classList.contains('hidden')) {
+          closeFullscreenImage();
+        } else {
+          closeModalFn();
+        }
+        return;
+      }
+
+      if (!isModalOpen) return;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showPrevImage();
+      }
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showNextImage();
+      }
+    });
+
+    modalPrev.addEventListener('click', showPrevImage);
+
+    modalNext.addEventListener('click', showNextImage);
+</script>
+
+</body></html>
