@@ -9,70 +9,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#3b82f6",
-                        "background-light": "#f8fafc",
-                        "background-dark": "#0f172a",
-                    },
-                    fontFamily: {
-                        display: ["Lexend", "sans-serif"],
-                        sans: ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.75rem",
-                    },
-                },
-            },
-        };
-    </script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3b82f6",
+            "background-light": "#f8fafc",
+            "background-dark": "#0f172a",
+          },
+          fontFamily: {
+            display: ["Lexend", "sans-serif"],
+            sans: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem",
+          },
+        },
+      },
+    };
+  </script>
 <script>
-        (function () {
-            const savedTheme = localStorage.getItem('siteTheme');
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else if (savedTheme === 'light') {
-                document.documentElement.classList.remove('dark');
-            }
-        })();
+    (function () {
+      const savedTheme = localStorage.getItem('siteTheme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
 
-        window.toggleTheme = function () {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
-        };
-    </script>
+    window.toggleTheme = function () {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
+    };
+  </script>
 <style type="text/tailwindcss">
-        .timeline-line::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #3b82f6 0%, #cbd5e1 100%);
-        }
-        .dark .timeline-line::before {
-            background: linear-gradient(to bottom, #3b82f6 0%, #334155 100%);
-        }
-        @media (max-width: 768px) {
-            .timeline-line::before {
-                left: 16px;
-            }
-        }
-        .nav-link {
-            @apply px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors relative;
-        }
-        .nav-link.active {
-            @apply text-primary dark:text-white;
-        }
-        .nav-link.active::after {
-            content: '';
-            @apply absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full;
-        }
-    </style>
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #3b82f6 0%, #cbd5e1 100%);
+    }
+    .dark .timeline-line::before {
+      background: linear-gradient(to bottom, #3b82f6 0%, #334155 100%);
+    }
+    @media (max-width: 768px) {
+      .timeline-line::before {
+        left: 16px;
+      }
+    }
+    .nav-link {
+      @apply px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors relative;
+    }
+    .nav-link.active {
+      @apply text-primary dark:text-white;
+    }
+    .nav-link.active::after {
+      content: '';
+      @apply absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full;
+    }
+  </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
 <div class="fixed top-6 right-6 z-50 flex flex-wrap items-center gap-2 p-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg max-w-[calc(100vw-2rem)]">
@@ -94,7 +94,7 @@
 </div>
 <div class="text-center md:text-left">
 <h1 class="font-display text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
-                İrem <span class="text-primary">YILMAZ</span>
+        İrem <span class="text-primary">YILMAZ</span>
 </h1>
 <p class="text-xl font-medium text-slate-500 dark:text-slate-400 mb-6" id="roleTitle">Kredi ve Veri Analitiği Uzmanı</p>
 <div class="flex flex-wrap justify-center md:justify-start gap-4">
@@ -164,7 +164,7 @@ Projelerimi İncele
 <section>
 <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
 <span class="material-icons-round text-slate-400 text-base">translate</span> <span id="languagesHeading">Diller</span>
-                    </h3>
+          </h3>
 <ul class="text-sm space-y-2 text-slate-600 dark:text-slate-400">
 <li id="langItem1">İngilizce</li>
 <li id="langItem2">Türkçe (Ana dil)</li>
@@ -173,7 +173,7 @@ Projelerimi İncele
 <section>
 <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
 <span class="material-icons-round text-slate-400 text-base">interests</span> <span id="hobbiesHeading">Hobiler</span>
-                    </h3>
+          </h3>
 <ul class="text-sm space-y-2 text-slate-600 dark:text-slate-400">
 <li id="hobby1">Piyano</li>
 <li id="hobby2">Fotoğrafçılık</li>
@@ -272,8 +272,8 @@ Projelerimi İncele
 <span class="text-sm font-semibold text-slate-500 bg-slate-100 dark:bg-slate-700/50 px-3 py-1 rounded-full mt-2 md:mt-0">10.2021 - 02.2024</span>
 </div>
 <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" id="volunteerDesc">
-                        23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.
-                    </p>
+            23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.
+          </p>
 </div>
 </section>
 </main>
@@ -283,161 +283,161 @@ Projelerimi İncele
 </div>
 
 <script>
-    const i18n = {
-        tr: {
-            pageTitle: 'İrem Yılmaz - Özgeçmiş',
-            navAbout: 'Hakkımda',
-            navExperience: 'Deneyim',
-            navProjects: 'Projeler',
-            projectsCta: 'Projelerimi İncele',
-            roleTitle: 'Kredi ve Veri Analitiği Uzmanı',
-            educationHeading: 'Eğitim',
-            edu1Title: 'İşletme Lisans Derecesi',
-            edu1School: 'İstanbul Üniversitesi (İşletme Fakültesi)',
-            edu2Date: '2022 - Devam',
-            edu2Title: 'Ekonometri Lisans Derecesi (Çift Ana Dal)',
-            edu2School: 'İstanbul Üniversitesi (İktisat Fakültesi)',
-            skillsHeading: 'Beceriler',
-            skillDecisionSupport: 'Karar Destek Sistemleri',
-            skillDriverLicense: 'B Sınıfı Sürücü Ehliyeti',
-            languagesHeading: 'Diller',
-            langItem1: 'İngilizce',
-            langItem2: 'Türkçe (Ana dil)',
-            hobbiesHeading: 'Hobiler',
-            hobby1: 'Piyano',
-            hobby2: 'Fotoğrafçılık',
-            hobby3: 'Resim',
-            hobby4: 'Voleybol',
-            referencesHeading: 'Referanslar',
-            ref1Role: 'Fups Bank - Kredi ve Risk Yönetiminden Sorumlu Genel Müdür Yardımcısı',
-            ref2Role: 'Vakıf Katılım Bankası - Kredi Analitiği Bölüm Başkanı',
-            ref3Role: 'İstanbul Üniversitesi - Sayısal Yöntemler Ana Bilim Dalı',
-            experienceHeading: 'Deneyim',
-            exp1Title: 'Kredi ve Veri Analitiği Uzmanı',
-            exp1Date: '10.2023 - Devam',
-            exp2Title: 'Tam Zamanlı Şube Yaz Stajı',
-            exp2Desc: 'Vezne işlemlerinden başlayarak bireysel ve ticari (KOBİ) müşteri süreçlerini gözlemledim; bireysel kredi, kredi kartı kullandırımı ile ticari tarafta çek ve senet süreçlerinde deneyim kazandım.',
-            exp3Title: 'Tam Zamanlı Genel Müdürlük Yaz Stajı',
-            exp3Desc: 'Kredi kartı başvurularının tüm aşamalarını gözlemleyerek kart tahsisi, limit artırımı ve bankacılık kanunu çerçevesinde kriter değerlendirme süreçlerini öğrendim. Proje departmanında SAP ve SQL kullanım alanlarını gözlemledim.',
-            projectsHeading: 'Gönüllülük Projesi',
-            volunteerDesc: '23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.',
-            exp1Bullets: [
-                'Dijital bankacılıkta bireysel ve ticari segmentlerde müşteri deneyimi, kredi analitiği ve veri analitiği odaklı çalışmalar yürüttüm.',
-                'Python ile web scraping, sentiment analizi, dashboard ve raporlama çözümleri geliştirerek sosyal medya, dijital kanallar ve core banking verilerinden aksiyona dönük analizler ürettim.',
-                'Bireysel ve ticari ürünlere yönelik datamart kurguları tasarlayarak KKB ve Risk Merkezi gibi kaynaklardan gelen verilerin doğru adreslenmiş inputlara dönüşmesini sağladım.',
-                'Karar Destek Sistemleri (KDS) kapsamında kredi parametrelerinin oluşturulması, test edilmesi, skorlama ve analitik modellerin geliştirilmesi süreçlerinde aktif rol aldım.',
-                'Kredi tahsis ve risk yönetimi süreçlerini analitik testler ve kullanıcı senaryoları ile destekleyerek karar süreçlerinin veri odaklı optimize edilmesine katkı sundum.',
-                'Canlıya geçiş öncesinde bireysel ve ticari kredi senaryolarını kapsayan sentetik veri setleri oluşturarak kredi kuralları, KDS parametreleri ve modellerin uçtan uca test edilmesini sağladım.'
-            ]
-        },
-        en: {
-            pageTitle: 'İrem Yılmaz - Resume',
-            navAbout: 'About',
-            navExperience: 'Experience',
-            navProjects: 'Projects',
-            projectsCta: 'View My Projects',
-            roleTitle: 'Credit and Data Analytics Specialist',
-            educationHeading: 'Education',
-            edu1Title: 'Bachelor of Business Administration',
-            edu1School: 'Istanbul University (Faculty of Business)',
-            edu2Date: '2022 - Present',
-            edu2Title: 'Bachelor of Econometrics (Double Major)',
-            edu2School: 'Istanbul University (Faculty of Economics)',
-            skillsHeading: 'Skills',
-            skillDecisionSupport: 'Decision Support Systems',
-            skillDriverLicense: 'Class B Driver License',
-            languagesHeading: 'Languages',
-            langItem1: 'English',
-            langItem2: 'Turkish (Native)',
-            hobbiesHeading: 'Hobbies',
-            hobby1: 'Piano',
-            hobby2: 'Photography',
-            hobby3: 'Painting',
-            hobby4: 'Volleyball',
-            referencesHeading: 'References',
-            ref1Role: 'Fups Bank - Deputy General Manager Responsible for Credit and Risk Management',
-            ref2Role: 'Vakıf Katılım Bankası - Head of Credit Analytics',
-            ref3Role: 'Istanbul University - Department of Quantitative Methods',
-            experienceHeading: 'Experience',
-            exp1Title: 'Credit and Data Analytics Specialist',
-            exp1Date: '10.2023 - Present',
-            exp2Title: 'Full-Time Branch Summer Intern',
-            exp2Desc: 'I observed individual and commercial (SME) customer operations beginning with teller transactions; gained hands-on exposure to retail loans, credit card issuance, and commercial check/promissory note processes.',
-            exp3Title: 'Full-Time Head Office Summer Intern',
-            exp3Desc: 'I observed all stages of credit card applications and learned card allocation, limit increase, and criteria evaluation processes within banking regulations. I also observed SAP and SQL usage areas in the project department.',
-            projectsHeading: 'Volunteer Project',
-            volunteerDesc: 'During my time as a volunteer within 23, I actively took part in experience-based programs focused on developing leadership competencies. Through Akademi 23 and Atölye 23, I gained cross-sector insights and experience in career planning and personal development. By joining the 23 Social Entrepreneurship Program, I contributed to social-impact projects and advanced my leadership, teamwork, communication, and problem-solving skills.',
-            exp1Bullets: [
-                'Conducted customer experience, credit analytics, and data analytics studies for retail and commercial segments in digital banking.',
-                'Built Python-based web scraping, sentiment analysis, dashboard, and reporting solutions to generate actionable insights from social media, digital channels, and core banking data.',
-                'Designed datamart structures for retail and commercial products, ensuring correctly addressed inputs from sources such as KKB and Risk Center.',
-                'Actively contributed to creating and testing credit parameters, and developing scoring and analytical models within Decision Support Systems (KDS).',
-                'Supported credit allocation and risk management processes with analytical tests and user scenarios, helping optimize data-driven decision flows.',
-                'Created synthetic datasets for retail and commercial credit scenarios before go-live, enabling end-to-end testing of credit rules, KDS parameters, and analytical models.'
-            ]
-        }
-    };
+  const i18n = {
+    tr: {
+      pageTitle: 'İrem Yılmaz - Özgeçmiş',
+      navAbout: 'Hakkımda',
+      navExperience: 'Deneyim',
+      navProjects: 'Projeler',
+      projectsCta: 'Projelerimi İncele',
+      roleTitle: 'Kredi ve Veri Analitiği Uzmanı',
+      educationHeading: 'Eğitim',
+      edu1Title: 'İşletme Lisans Derecesi',
+      edu1School: 'İstanbul Üniversitesi (İşletme Fakültesi)',
+      edu2Date: '2022 - Devam',
+      edu2Title: 'Ekonometri Lisans Derecesi (Çift Ana Dal)',
+      edu2School: 'İstanbul Üniversitesi (İktisat Fakültesi)',
+      skillsHeading: 'Beceriler',
+      skillDecisionSupport: 'Karar Destek Sistemleri',
+      skillDriverLicense: 'B Sınıfı Sürücü Ehliyeti',
+      languagesHeading: 'Diller',
+      langItem1: 'İngilizce',
+      langItem2: 'Türkçe (Ana dil)',
+      hobbiesHeading: 'Hobiler',
+      hobby1: 'Piyano',
+      hobby2: 'Fotoğrafçılık',
+      hobby3: 'Resim',
+      hobby4: 'Voleybol',
+      referencesHeading: 'Referanslar',
+      ref1Role: 'Fups Bank - Kredi ve Risk Yönetiminden Sorumlu Genel Müdür Yardımcısı',
+      ref2Role: 'Vakıf Katılım Bankası - Kredi Analitiği Bölüm Başkanı',
+      ref3Role: 'İstanbul Üniversitesi - Sayısal Yöntemler Ana Bilim Dalı',
+      experienceHeading: 'Deneyim',
+      exp1Title: 'Kredi ve Veri Analitiği Uzmanı',
+      exp1Date: '10.2023 - Devam',
+      exp2Title: 'Tam Zamanlı Şube Yaz Stajı',
+      exp2Desc: 'Vezne işlemlerinden başlayarak bireysel ve ticari (KOBİ) müşteri süreçlerini gözlemledim; bireysel kredi, kredi kartı kullandırımı ile ticari tarafta çek ve senet süreçlerinde deneyim kazandım.',
+      exp3Title: 'Tam Zamanlı Genel Müdürlük Yaz Stajı',
+      exp3Desc: 'Kredi kartı başvurularının tüm aşamalarını gözlemleyerek kart tahsisi, limit artırımı ve bankacılık kanunu çerçevesinde kriter değerlendirme süreçlerini öğrendim. Proje departmanında SAP ve SQL kullanım alanlarını gözlemledim.',
+      projectsHeading: 'Gönüllülük Projesi',
+      volunteerDesc: '23 bünyesinde gönüllü olarak görev aldığım süre boyunca liderlik yetkinliklerini geliştirmeye odaklanan deneyim temelli programlarda aktif rol aldım. Akademi 23 ve Atölye 23 kapsamında farklı sektörler hakkında bilgi edinerek kariyer planlama ve kişisel gelişim alanlarında deneyim kazandım. 23 Sosyal Girişim Programı’na katılarak toplumsal etki odaklı projelerde yer aldım ve liderlik, takım çalışması, iletişim ile problem çözme yetkinliklerimi ileri seviyede geliştirdim.',
+      exp1Bullets: [
+        'Dijital bankacılıkta bireysel ve ticari segmentlerde müşteri deneyimi, kredi analitiği ve veri analitiği odaklı çalışmalar yürüttüm.',
+        'Python ile web scraping, sentiment analizi, dashboard ve raporlama çözümleri geliştirerek sosyal medya, dijital kanallar ve core banking verilerinden aksiyona dönük analizler ürettim.',
+        'Bireysel ve ticari ürünlere yönelik datamart kurguları tasarlayarak KKB ve Risk Merkezi gibi kaynaklardan gelen verilerin doğru adreslenmiş inputlara dönüşmesini sağladım.',
+        'Karar Destek Sistemleri (KDS) kapsamında kredi parametrelerinin oluşturulması, test edilmesi, skorlama ve analitik modellerin geliştirilmesi süreçlerinde aktif rol aldım.',
+        'Kredi tahsis ve risk yönetimi süreçlerini analitik testler ve kullanıcı senaryoları ile destekleyerek karar süreçlerinin veri odaklı optimize edilmesine katkı sundum.',
+        'Canlıya geçiş öncesinde bireysel ve ticari kredi senaryolarını kapsayan sentetik veri setleri oluşturarak kredi kuralları, KDS parametreleri ve modellerin uçtan uca test edilmesini sağladım.'
+      ]
+    },
+    en: {
+      pageTitle: 'İrem Yılmaz - Resume',
+      navAbout: 'About',
+      navExperience: 'Experience',
+      navProjects: 'Projects',
+      projectsCta: 'View My Projects',
+      roleTitle: 'Credit and Data Analytics Specialist',
+      educationHeading: 'Education',
+      edu1Title: 'Bachelor of Business Administration',
+      edu1School: 'Istanbul University (Faculty of Business)',
+      edu2Date: '2022 - Present',
+      edu2Title: 'Bachelor of Econometrics (Double Major)',
+      edu2School: 'Istanbul University (Faculty of Economics)',
+      skillsHeading: 'Skills',
+      skillDecisionSupport: 'Decision Support Systems',
+      skillDriverLicense: 'Class B Driver License',
+      languagesHeading: 'Languages',
+      langItem1: 'English',
+      langItem2: 'Turkish (Native)',
+      hobbiesHeading: 'Hobbies',
+      hobby1: 'Piano',
+      hobby2: 'Photography',
+      hobby3: 'Painting',
+      hobby4: 'Volleyball',
+      referencesHeading: 'References',
+      ref1Role: 'Fups Bank - Deputy General Manager Responsible for Credit and Risk Management',
+      ref2Role: 'Vakıf Katılım Bankası - Head of Credit Analytics',
+      ref3Role: 'Istanbul University - Department of Quantitative Methods',
+      experienceHeading: 'Experience',
+      exp1Title: 'Credit and Data Analytics Specialist',
+      exp1Date: '10.2023 - Present',
+      exp2Title: 'Full-Time Branch Summer Intern',
+      exp2Desc: 'I observed individual and commercial (SME) customer operations beginning with teller transactions; gained hands-on exposure to retail loans, credit card issuance, and commercial check/promissory note processes.',
+      exp3Title: 'Full-Time Head Office Summer Intern',
+      exp3Desc: 'I observed all stages of credit card applications and learned card allocation, limit increase, and criteria evaluation processes within banking regulations. I also observed SAP and SQL usage areas in the project department.',
+      projectsHeading: 'Volunteer Project',
+      volunteerDesc: 'During my time as a volunteer within 23, I actively took part in experience-based programs focused on developing leadership competencies. Through Akademi 23 and Atölye 23, I gained cross-sector insights and experience in career planning and personal development. By joining the 23 Social Entrepreneurship Program, I contributed to social-impact projects and advanced my leadership, teamwork, communication, and problem-solving skills.',
+      exp1Bullets: [
+        'Conducted customer experience, credit analytics, and data analytics studies for retail and commercial segments in digital banking.',
+        'Built Python-based web scraping, sentiment analysis, dashboard, and reporting solutions to generate actionable insights from social media, digital channels, and core banking data.',
+        'Designed datamart structures for retail and commercial products, ensuring correctly addressed inputs from sources such as KKB and Risk Center.',
+        'Actively contributed to creating and testing credit parameters, and developing scoring and analytical models within Decision Support Systems (KDS).',
+        'Supported credit allocation and risk management processes with analytical tests and user scenarios, helping optimize data-driven decision flows.',
+        'Created synthetic datasets for retail and commercial credit scenarios before go-live, enabling end-to-end testing of credit rules, KDS parameters, and analytical models.'
+      ]
+    }
+  };
 
-    const translatableIds = [
-        'pageTitle', 'navAbout', 'navExperience', 'navProjects', 'projectsCta', 'roleTitle',
-        'educationHeading', 'edu1Title', 'edu1School', 'edu2Date', 'edu2Title', 'edu2School',
-        'skillsHeading', 'skillDecisionSupport', 'skillDriverLicense',
-        'languagesHeading', 'langItem1', 'langItem2', 'hobbiesHeading', 'hobby1', 'hobby2', 'hobby3', 'hobby4',
-        'referencesHeading', 'ref1Role', 'ref2Role', 'ref3Role',
-        'experienceHeading', 'exp1Title', 'exp1Date', 'exp2Title', 'exp2Desc', 'exp3Title', 'exp3Desc',
-        'projectsHeading', 'volunteerDesc'
-    ];
+  const translatableIds = [
+    'pageTitle', 'navAbout', 'navExperience', 'navProjects', 'projectsCta', 'roleTitle',
+    'educationHeading', 'edu1Title', 'edu1School', 'edu2Date', 'edu2Title', 'edu2School',
+    'skillsHeading', 'skillDecisionSupport', 'skillDriverLicense',
+    'languagesHeading', 'langItem1', 'langItem2', 'hobbiesHeading', 'hobby1', 'hobby2', 'hobby3', 'hobby4',
+    'referencesHeading', 'ref1Role', 'ref2Role', 'ref3Role',
+    'experienceHeading', 'exp1Title', 'exp1Date', 'exp2Title', 'exp2Desc', 'exp3Title', 'exp3Desc',
+    'projectsHeading', 'volunteerDesc'
+  ];
 
-    function applyLanguage(lang) {
-        const dict = i18n[lang];
-        translatableIds.forEach((id) => {
-            const el = document.getElementById(id);
-            if (!el || !dict[id]) return;
-            el.textContent = dict[id];
-        });
+  function applyLanguage(lang) {
+    const dict = i18n[lang];
+    translatableIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el || !dict[id]) return;
+      el.textContent = dict[id];
+    });
 
-        const bullets = document.getElementById('exp1Bullets');
-        if (bullets && Array.isArray(dict.exp1Bullets)) {
-            bullets.innerHTML = dict.exp1Bullets.map((item) => `<li>${item}</li>`).join('');
-        }
-
-        document.documentElement.lang = lang;
-        const langToggle = document.getElementById('langToggle');
-        if (langToggle) {
-            langToggle.textContent = lang === 'tr' ? 'EN' : 'TR';
-        }
-
-        const navProjects = document.getElementById('navProjects');
-        if (navProjects) {
-            navProjects.setAttribute('href', `codep.html?lang=${lang}`);
-        }
-
-        const projectsCta = document.getElementById('projectsCta');
-        if (projectsCta) {
-            projectsCta.setAttribute('href', `codep.html?lang=${lang}`);
-        }
-
-        const params = new URLSearchParams(window.location.search);
-        params.set('lang', lang);
-        const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
-        window.history.replaceState({}, '', newUrl);
-
-        localStorage.setItem('cvLanguage', lang);
+    const bullets = document.getElementById('exp1Bullets');
+    if (bullets && Array.isArray(dict.exp1Bullets)) {
+      bullets.innerHTML = dict.exp1Bullets.map((item) => `<li>${item}</li>`).join('');
     }
 
+    document.documentElement.lang = lang;
     const langToggle = document.getElementById('langToggle');
-    const urlLanguage = new URLSearchParams(window.location.search).get('lang');
-    const initialLanguage = (urlLanguage === 'tr' || urlLanguage === 'en')
-        ? urlLanguage
-        : (localStorage.getItem('cvLanguage') || 'tr');
-    applyLanguage(initialLanguage);
-
     if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            const current = document.documentElement.lang === 'en' ? 'en' : 'tr';
-            applyLanguage(current === 'tr' ? 'en' : 'tr');
-        });
+      langToggle.textContent = lang === 'tr' ? 'EN' : 'TR';
     }
+
+    const navProjects = document.getElementById('navProjects');
+    if (navProjects) {
+      navProjects.setAttribute('href', `codep.html?lang=${lang}`);
+    }
+
+    const projectsCta = document.getElementById('projectsCta');
+    if (projectsCta) {
+      projectsCta.setAttribute('href', `codep.html?lang=${lang}`);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    params.set('lang', lang);
+    const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+    window.history.replaceState({}, '', newUrl);
+
+    localStorage.setItem('cvLanguage', lang);
+  }
+
+  const langToggle = document.getElementById('langToggle');
+  const urlLanguage = new URLSearchParams(window.location.search).get('lang');
+  const initialLanguage = (urlLanguage === 'tr' || urlLanguage === 'en')
+    ? urlLanguage
+    : (localStorage.getItem('cvLanguage') || 'tr');
+  applyLanguage(initialLanguage);
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      const current = document.documentElement.lang === 'en' ? 'en' : 'tr';
+      applyLanguage(current === 'tr' ? 'en' : 'tr');
+    });
+  }
 </script>
 
 </body></html>

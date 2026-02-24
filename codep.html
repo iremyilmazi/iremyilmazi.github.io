@@ -43,7 +43,7 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300 min-h-screen">
 <div class="fixed top-6 right-6 z-50 flex flex-wrap items-center gap-2 p-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg max-w-[calc(100vw-2rem)]">
-<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="code.html#about" id="navAbout">Hakkımda</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="index.html#about" id="navAbout">Hakkımda</a>
 <a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium bg-primary text-white" href="codep.html" id="navProjects">Projeler</a>
 <button class="px-3 py-1 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" id="langToggle">EN</button>
 <button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors flex items-center justify-center" onclick="toggleTheme()">
@@ -65,7 +65,7 @@
 <section class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid"></section>
 
 <footer class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
-<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors" href="code.html" id="backToCvBtn">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors" href="index.html" id="backToCvBtn">
 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 Özgeçmişe Dön
             </a>
@@ -518,7 +518,7 @@ Elde edilen bulgular AI destekli özetleme ile sadeleştirilir ve günlük/hafta
       }
       if (navAbout) {
         navAbout.textContent = dict.navAbout;
-        navAbout.setAttribute('href', `code.html?lang=${currentLanguage}#about`);
+        navAbout.setAttribute('href', `index.html?lang=${currentLanguage}#about`);
       }
       if (navProjects) {
         navProjects.textContent = dict.navProjects;
@@ -528,7 +528,7 @@ Elde edilen bulgular AI destekli özetleme ile sadeleştirilir ve günlük/hafta
       if (subtitle) subtitle.textContent = dict.subtitle;
       if (backBtn) {
         backBtn.lastChild.textContent = ` ${dict.backToCv}`;
-        backBtn.setAttribute('href', `code.html?lang=${currentLanguage}`);
+        backBtn.setAttribute('href', `index.html?lang=${currentLanguage}`);
       }
       if (footer) {
         footer.textContent = dict.footer;
